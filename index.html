@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="light">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YDT Diagnostic Mock Exam | 40 Soruluk Tanılama Sınavı</title>
+  <title>AG Teaching Portal | Educational Content & Exam Simulators</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -14,16 +14,14 @@
       --card-bg: #ffffff;
       --text: #0f172a;
       --text-muted: #64748b;
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
       --primary-light: #eff6ff;
-      --success: #16a34a;
-      --success-light: #dcfce7;
-      --danger: #dc2626;
-      --danger-light: #fee2e2;
-      --warning: #d97706;
-      --warning-light: #fef3c7;
       --border: #e2e8f0;
+      --tag-ielts: #ef4444;
+      --tag-sat: #8b5cf6;
+      --tag-ydt: #f59e0b;
+      --tag-esl: #10b981;
       --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
       --radius: 12px;
       --font: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -49,21 +47,25 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
+      padding-bottom: 60px;
     }
 
     header {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 0.75rem 1.5rem;
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+
+    .header-content {
+      max-width: 1240px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: var(--shadow);
-      z-index: 10;
     }
 
     .brand {
@@ -73,1848 +75,2405 @@
     }
 
     .brand-icon {
-      background: linear-gradient(135deg, #2563eb, #8b5cf6);
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
       color: white;
       font-weight: 800;
-      padding: 6px 12px;
-      border-radius: 8px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 1.2rem;
     }
 
-    .brand-title {
+    .brand h1 {
+      font-size: 1.25rem;
       font-weight: 700;
-      font-size: 1.1rem;
     }
 
-    .header-controls {
+    .brand p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .theme-toggle {
+      background: var(--primary-light);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 1240px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.08));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .hero-banner h2 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-banner p {
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 1.5rem auto;
+      font-size: 1rem;
+    }
+
+    /* Standalone Domain Launchpads */
+    .domain-launchpads {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .launchpad-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .launchpad-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .card-ielts::before { background: #ef4444; }
+    .card-sat::before { background: #8b5cf6; }
+    .card-ydt::before { background: #f59e0b; }
+    .card-esl::before { background: #10b981; }
+
+    .launchpad-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px -4px rgb(0 0 0 / 0.1);
+    }
+
+    .launchpad-header {
       display: flex;
       align-items: center;
       gap: 12px;
+      margin-bottom: 0.75rem;
     }
 
-    .timer-box {
-      font-family: var(--font-mono);
-      font-size: 1.1rem;
+    .launchpad-icon {
+      font-size: 1.5rem;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+    }
+
+    .launchpad-title {
+      font-size: 1.15rem;
       font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 8px;
-      background: var(--primary-light);
-      color: var(--primary);
     }
 
-    .btn {
-      padding: 8px 16px;
+    .launchpad-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .launchpad-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
       border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.9rem;
-      transition: all 0.2s;
+      text-decoration: none;
+      color: white;
+      transition: opacity 0.2s;
     }
 
-    .btn:hover {
-      background: var(--primary-light);
-      border-color: var(--primary);
+    .launchpad-btn:hover { opacity: 0.9; }
+
+    .btn-ielts { background: #ef4444; }
+    .btn-sat { background: #8b5cf6; }
+    .btn-ydt { background: #f59e0b; }
+    .btn-esl { background: #10b981; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
     }
 
-    .btn-primary {
+    .section-heading h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 2rem;
+      align-items: center;
+    }
+
+    .filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn.active {
       background: var(--primary);
       color: white;
       border-color: var(--primary);
     }
 
-    .btn-primary:hover {
+    .search-input {
+      flex: 1;
+      min-width: 250px;
+      padding: 10px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-family: inherit;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .content-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .content-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .domain-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .domain-IELTS { background: #fee2e2; color: #dc2626; }
+    .domain-SAT { background: #ede9fe; color: #7c3aed; }
+    .domain-YDT { background: #fef3c7; color: #d97706; }
+    .domain-ESL { background: #dcfce7; color: #16a34a; }
+    .domain-General { background: #e2e8f0; color: #475569; }
+
+    .level-badge {
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .card-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-launch {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      background: var(--primary);
+      color: white;
+      transition: background 0.2s;
+    }
+
+    .btn-launch:hover {
       background: var(--primary-hover);
     }
 
-    .main-container {
-      flex: 1;
-      display: flex;
-      overflow: hidden;
-    }
-
-    .sidebar {
-      width: 280px;
-      background: var(--surface);
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      padding: 1.25rem;
-      overflow-y: auto;
-    }
-
-    .sidebar-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      letter-spacing: 0.5px;
-    }
-
-    .grid-navigator {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
-      margin-bottom: 1.5rem;
-    }
-
-    .nav-btn {
-      aspect-ratio: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--text);
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.2s;
-    }
-
-    .nav-btn.active {
-      border-color: var(--primary);
-      background: var(--primary-light);
-      color: var(--primary);
-    }
-
-    .nav-btn.answered {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-    }
-
-    .nav-btn.flagged {
-      border-color: var(--warning);
-      background: var(--warning-light);
-      color: var(--warning);
-    }
-
-    .workspace {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: var(--bg);
-      overflow: hidden;
-    }
-
-    .content-area {
-      flex: 1;
-      padding: 2rem;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .split-pane {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 100%;
-      height: 100%;
-      gap: 1.5rem;
-    }
-
-    .pane-left {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      overflow-y: auto;
-      box-shadow: var(--shadow);
-    }
-
-    .pane-right {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      overflow-y: auto;
-    }
-
-    .question-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2rem;
-      width: 100%;
-      max-width: 720px;
-      box-shadow: var(--shadow);
-    }
-
-    .question-section {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      color: var(--primary);
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
-    }
-
-    .question-stem {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      white-space: pre-line;
-    }
-
-    .options-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 1.5rem;
-    }
-
-    .option-card {
-      display: flex;
-      align-items: center;
-      padding: 12px 16px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
-    .option-card:hover {
-      background: var(--bg);
-      border-color: var(--primary);
-    }
-
-    .option-card.selected {
-      background: var(--primary-light);
-      border-color: var(--primary);
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    .option-letter {
-      font-family: var(--font-mono);
-      font-weight: 700;
-      margin-right: 12px;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      border: 2px solid currentColor;
-    }
-
-    .workspace-footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .flag-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--warning);
-      border-color: var(--warning);
-    }
-
-    .flag-btn.active {
-      background: var(--warning-light);
-    }
-
-    /* Explanation Section */
-    .explanation-box {
-      margin-top: 1rem;
-      padding: 1.25rem;
-      background: var(--bg);
-      border-left: 4px solid var(--primary);
-      border-radius: 4px;
-      display: none;
-    }
-
-    .explanation-box.visible {
-      display: block;
-    }
-
-    /* Results Screen */
-    .results-screen {
-      padding: 2rem;
-      max-width: 900px;
-      width: 100%;
-      margin: 0 auto;
-      overflow-y: auto;
-      height: 100%;
-    }
-
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .summary-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: var(--shadow);
-    }
-
-    .summary-num {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .review-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .review-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      box-shadow: var(--shadow);
-    }
-
-    .review-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-    }
-
-    .status-badge {
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-    }
-
-    .status-correct { background: var(--success-light); color: var(--success); }
-    .status-wrong { background: var(--danger-light); color: var(--danger); }
-    .status-empty { background: var(--border); color: var(--text-muted); }
-
-    .accordion-toggle {
-      background: var(--primary-light);
-      color: var(--primary);
-      border: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      margin-top: 1rem;
-    }
-
-    .text-pane-title {
-      font-weight: 800;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 4px;
+    .btn-interactive {
+      background: linear-gradient(135deg, #10b981, #059669);
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="brand">
-      <div class="brand-icon">YDT</div>
-      <div class="brand-title">YDT İngilizce Tanılama Sınavı</div>
-    </div>
-    <div class="header-controls">
-      <button class="btn" onclick="toggleTheme()">🌓 Tema</button>
-      <div class="timer-box" id="timer">60:00</div>
-      <button class="btn btn-primary" onclick="submitExam()">Sınavı Bitir</button>
+    <div class="header-content">
+      <div class="brand">
+        <div class="brand-icon">AG</div>
+        <div>
+          <h1>AG Teaching & Exam Prep Hub</h1>
+          <p>ESL • IELTS Academic • Digital SAT • YDT</p>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌓 Theme</button>
     </div>
   </header>
 
-  <div class="main-container">
-    <div class="sidebar" id="sidebarContainer">
-      <div class="sidebar-title">Soru Gezgini</div>
-      <div class="grid-navigator" id="navigatorGrid"></div>
-      <div style="margin-top: auto;">
-        <button class="btn btn-primary" style="width: 100%;" onclick="submitExam()">Sınavı Tamamla</button>
-      </div>
+  <main>
+    <div class="hero-banner">
+      <h2>Master Curriculum & Interactive Exam Center</h2>
+      <p>Select an independent domain portal below or search across all verified lesson plans, high-yield discrete drills, and client-side exam simulators.</p>
     </div>
 
-    <div class="workspace">
-      <div class="content-area" id="workspaceContent">
-        <!-- Question content loaded here dynamically -->
-      </div>
-
-      <div class="workspace-footer" id="workspaceFooter">
-        <button class="btn flag-btn" id="flagBtn" onclick="toggleFlag()"><span id="flagIcon">🏳️</span> İşaretle</button>
-        <div style="display: flex; gap: 12px;">
-          <button class="btn" onclick="prevQuestion()">Geri</button>
-          <button class="btn btn-primary" onclick="nextQuestion()">İleri</button>
+    <!-- Independent Domain Portals Launchpad -->
+    <div class="section-heading">
+      <h3>🚀 Independent Domain Portals</h3>
+    </div>
+    <div class="domain-launchpads">
+      <div class="launchpad-card card-ielts">
+        <div>
+          <div class="launchpad-header">
+            <span class="launchpad-icon" style="background: #fee2e2; color: #dc2626;">🎯</span>
+            <div>
+              <div class="launchpad-title">IELTS Academic</div>
+              <div style="font-size: 0.75rem; color: #ef4444; font-weight: 700;">Band 5.0 → 9.0</div>
+            </div>
+          </div>
+          <p class="launchpad-desc">Academic Reading masterclasses, Writing Task 1 interactive packs, Speaking mocks & scoring criteria.</p>
         </div>
+        <a href="IELTS/index.html" class="launchpad-btn btn-ielts">
+          Open IELTS Portal ➔
+        </a>
+      </div>
+
+      <div class="launchpad-card card-sat">
+        <div>
+          <div class="launchpad-header">
+            <span class="launchpad-icon" style="background: #ede9fe; color: #7c3aed;">🏛️</span>
+            <div>
+              <div class="launchpad-title">Digital SAT</div>
+              <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 700;">College Board Blueprint</div>
+            </div>
+          </div>
+          <p class="launchpad-desc">Reading & Writing item sets, Math domain problem banks, adaptive practice modules & Desmos guides.</p>
+        </div>
+        <a href="SAT/index.html" class="launchpad-btn btn-sat">
+          Open SAT Portal ➔
+        </a>
+      </div>
+
+      <div class="launchpad-card card-ydt">
+        <div>
+          <div class="launchpad-header">
+            <span class="launchpad-icon" style="background: #fef3c7; color: #d97706;">📚</span>
+            <div>
+              <div class="launchpad-title">YDT İngilizce</div>
+              <div style="font-size: 0.75rem; color: #d97706; font-weight: 700;">ÖSYM Standardı</div>
+            </div>
+          </div>
+          <p class="launchpad-desc">Konu Anlatımları, Soru Bankası, Çeviri & Paragraf Çalışmaları, 80 Soruluk Özgün Deneme Simülatörleri.</p>
+        </div>
+        <a href="YDT/index.html" class="launchpad-btn btn-ydt">
+          Open YDT Portal ➔
+        </a>
+      </div>
+
+      <div class="launchpad-card card-esl">
+        <div>
+          <div class="launchpad-header">
+            <span class="launchpad-icon" style="background: #dcfce7; color: #16a34a;">🌍</span>
+            <div>
+              <div class="launchpad-title">ESL Curriculum</div>
+              <div style="font-size: 0.75rem; color: #16a34a; font-weight: 700;">CEFR A1 to C2</div>
+            </div>
+          </div>
+          <p class="launchpad-desc">PPP lesson plans, Task-Based Language Teaching (TBLT) labs, speaking simulators & communicative activities.</p>
+        </div>
+        <a href="ESL/index.html" class="launchpad-btn btn-esl">
+          Open ESL Portal ➔
+        </a>
       </div>
     </div>
-  </div>
+
+    <!-- All Workspace Resources -->
+    <div class="section-heading">
+      <h3>📑 All Workspace Resources & Simulators</h3>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterDomain('ALL')">All Modules</button>
+      <button class="filter-btn" onclick="filterDomain('IELTS')">IELTS Academic</button>
+      <button class="filter-btn" onclick="filterDomain('SAT')">Digital SAT</button>
+      <button class="filter-btn" onclick="filterDomain('YDT')">YDT İngilizce</button>
+      <button class="filter-btn" onclick="filterDomain('ESL')">ESL</button>
+      <button class="filter-btn" onclick="filterInteractive()">🚀 Interactive Simulators</button>
+      <input type="text" class="search-input" id="searchBox" placeholder="🔍 Search topics, skills, or titles across entire workspace..." oninput="handleSearch()">
+    </div>
+
+    <div class="card-grid" id="contentGrid">
+      <!-- Injected by JS -->
+    </div>
+  </main>
 
   <script>
-    const questions = [
+    const items = [
   {
-    "number": 1,
-    "section": "Vocabulary",
-    "stem": "The local government decided to implement strict ---- to protect the historical city center from the negative impacts of rapid industrialization.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "constraints"
-      },
-      {
-        "letter": "B",
-        "text": "measures"
-      },
-      {
-        "letter": "C",
-        "text": "compliments"
-      },
-      {
-        "letter": "D",
-        "text": "deviations"
-      },
-      {
-        "letter": "E",
-        "text": "incentives"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Kelime Analizi:**\n- **measures (önlemler):** \"take/implement measures\" (önlem almak/uygulamak) YDT ve ÖSYM sınavlarında son derece yaygın bir ifadedir. Cümle, yerel yönetimin tarihi şehir merkezini hızlı sanayileşmenin olumsuz etkilerinden korumak için sıkı önlemler uygulamaya karar verdiğini belirtmektedir.\n- **constraints (kısıtlamalar/engeller):** Anlamca olumlu bir koruma tedbirini ifade etmek için doğrudan \"önlem\" kelimesi kadar uygun değildir.\n- **compliments (iltifatlar/övgüler):** Bağlam dışıdır.\n- **deviations (sapmalar):** Cümle akışına uymaz.\n- **incentives (teşvikler):** Koruma ve sanayileşmeyi engelleme amacıyla \"sıkı teşvikler uygulamak\" çelişkilidir."
+    "title": "ESL A1 Lesson Plan: Daily Routines & Telling Time",
+    "domain": "ESL",
+    "target_level": "CEFR A1",
+    "topic": "Daily Routines & Telling Time (Present Simple Mastery)",
+    "date_created": "2026-09-01",
+    "content_type": "Lesson Plan & Interactive Worksheet",
+    "path_root": "ESL/A1/a1_daily_routines_and_telling_time_ppp.md",
+    "path_domain": "A1/a1_daily_routines_and_telling_time_ppp.md",
+    "category": "A1",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "a1_daily_routines_and_telling_time_ppp.md"
   },
   {
-    "number": 2,
-    "section": "Vocabulary",
-    "stem": "The impact of the global chip shortage on the automotive industry was ----, leading to massive production cuts and delays worldwide.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "indifferent"
-      },
-      {
-        "letter": "B",
-        "text": "unprecedented"
-      },
-      {
-        "letter": "C",
-        "text": "negligible"
-      },
-      {
-        "letter": "D",
-        "text": "superficial"
-      },
-      {
-        "letter": "E",
-        "text": "reluctant"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Kelime Analizi:**\n- **unprecedented (eşi benzeri görülmemiş):** Küresel çip krizinin otomotiv endüstrisi üzerindeki büyük etkisini (massive production cuts) nitelemek için en uygun sıfattır.\n- **indifferent (kayıtsız/ilgisiz):** İnsanlar için kullanılır, cansız etkiler için uygun değildir.\n- **negligible (ihmal edilebilir/önemsiz):** \"Massive production cuts\" ifadesiyle doğrudan çelişir.\n- **superficial (yüzeysel):** Etkinin derin ve geniş çaplı olmasıyla uyumsuzdur.\n- **reluctant (gönülsüz/isteğiz):** İnsanlar veya kararlar için kullanılır."
+    "title": "Dream Big, Stress Less: Careers & School Life (B1 Teen ESL)",
+    "domain": "ESL",
+    "target_level": "CEFR B1",
+    "topic": "Dream Jobs & Careers + School & Academic Pressures",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan",
+    "path_root": "ESL/B1/b1_dream_jobs_and_school_pressures.md",
+    "path_domain": "B1/b1_dream_jobs_and_school_pressures.md",
+    "category": "B1",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "b1_dream_jobs_and_school_pressures.md"
   },
   {
-    "number": 3,
-    "section": "Vocabulary",
-    "stem": "Psychologists suggest that individuals who fail to ---- stress in their daily lives are more prone to developing chronic anxiety and physical fatigue.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "put off"
-      },
-      {
-        "letter": "B",
-        "text": "cope with"
-      },
-      {
-        "letter": "C",
-        "text": "bring about"
-      },
-      {
-        "letter": "D",
-        "text": "make up for"
-      },
-      {
-        "letter": "E",
-        "text": "turn down"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Kelime Analizi:**\n- **cope with (başa çıkmak/mücadele etmek):** Stres ile başa çıkamayan bireylerin kronik anksiyete yaşamaya daha yatkın olduğu belirtilmektedir.\n- **put off (ertelemek):** Stresi ertelemek mantıklı bir kullanım değildir.\n- **bring about (sebep olmak/yol açmak):** Bireylerin strese sebep olamaması anlamı bozmaktadır.\n- **make up for (telafi etmek):** Stresi telafi etmek bağlama uymaz.\n- **turn down (reddetmek/sesini kısmak):** Stresi reddetmek anlamca karşılamaz."
+    "title": "B1 Past Tenses Speaking Lab (High School Edition): Teacher Guide & Student Handout",
+    "domain": "ESL",
+    "target_level": "CEFR B1",
+    "topic": "Past Simple vs Present Perfect & Past Simple vs Past Perfect (High School / 15yo Speaking Lab)",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Worksheet | Drill",
+    "path_root": "ESL/B1/b1_past_tenses_speaking_lab.md",
+    "path_domain": "B1/b1_past_tenses_speaking_lab.md",
+    "category": "B1",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "b1_past_tenses_speaking_lab.md"
   },
   {
-    "number": 4,
-    "section": "Grammar",
-    "stem": "Until the telescope ---- in the early 17th century, astronomers ---- on simple observations made with the naked eye.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "had been invented / relied"
-      },
-      {
-        "letter": "B",
-        "text": "was invented / had relied"
-      },
-      {
-        "letter": "C",
-        "text": "would be invented / relied"
-      },
-      {
-        "letter": "D",
-        "text": "was invented / have relied"
-      },
-      {
-        "letter": "E",
-        "text": "is invented / had been relying"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Dilbilgisi Analizi:**\n- Cümlede tarihsel bir geçmişten (\"in the early 17th century\") bahsedilmektedir. Bu nedenle her iki boşluk da geçmiş zaman olmalıdır.\n- Teleskobun icat edilmesi (\"was invented\" - Simple Past Passive) geçmişteki bir noktadır. Astronomların çıplak gözle yapılan gözlemlere dayanması ise bu icattan önce süregelen daha eski bir eylemi temsil eder. Dolayısıyla bu eylem Past Perfect (\"had relied\") ile çekimlenmelidir.\n- **Çeldirici Analizi:** A seçeneğinde zaman ilişkisi ters verilmiştir; teleskobun icadı gözlemlerden sonra gerçekleştiği için icadın Past Perfect olması dilbilgisi kurallarına aykırıdır."
+    "title": "ESL B2 Speaking Lab: Mixed Conditionals & Hypothetical Regrets",
+    "domain": "ESL",
+    "target_level": "CEFR B2",
+    "topic": "Mixed Conditionals, Regrets & Hypothetical Dilemmas Speaking Lab",
+    "date_created": "2026-09-01",
+    "content_type": "Lesson Plan & Interactive Speaking Lab",
+    "path_root": "ESL/B2/b2_mixed_conditionals_and_regrets_speaking_lab.md",
+    "path_domain": "B2/b2_mixed_conditionals_and_regrets_speaking_lab.md",
+    "category": "B2",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "b2_mixed_conditionals_and_regrets_speaking_lab.md"
   },
   {
-    "number": 5,
-    "section": "Grammar",
-    "stem": "---- for its rich biodiversity and ancient geothermal vents, the Galapagos Islands continue to attract scientists from all over the world.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Having known"
-      },
-      {
-        "letter": "B",
-        "text": "To be known"
-      },
-      {
-        "letter": "C",
-        "text": "Known"
-      },
-      {
-        "letter": "D",
-        "text": "Knowing"
-      },
-      {
-        "letter": "E",
-        "text": "To know"
-      }
-    ],
-    "correct": "C",
-    "explanation": "**Doğru Cevap: C**\n\n**Dilbilgisi Analizi (Participle Reduction):**\n- Galapagos Adaları kendi kendini bilmez, başkaları tarafından \"bilinir\" (passive/edilgen). Bu yüzden cümlede edilgen bir kısaltma (V3) aranmalıdır.\n- \"Known for...\" (ile bilinen) yapısı, \"Which are known for...\" sıfat cümleciğinin edilgen kısaltmasıdır.\n- **Çeldirici Analizi:** A seçeneği (Having known) ve D seçeneği (Knowing) etkendir. B seçeneği (To be known) ise amaç bildirir ve cümlenin başına bu şekilde gelmez."
+    "title": "ESL C1 Masterclass: Academic Hedging & Nuanced Discourse",
+    "domain": "ESL",
+    "target_level": "CEFR C1",
+    "topic": "Academic Hedging & Nuanced Discourse in Seminars",
+    "date_created": "2026-09-01",
+    "content_type": "Lesson Plan & Interactive Speaking Lab",
+    "path_root": "ESL/C1/c1_academic_hedging_and_nuanced_discourse.md",
+    "path_domain": "C1/c1_academic_hedging_and_nuanced_discourse.md",
+    "category": "C1",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "c1_academic_hedging_and_nuanced_discourse.md"
   },
   {
-    "number": 6,
-    "section": "Grammar",
-    "stem": "Renewable energy sources are key to reducing our dependence ---- fossil fuels, which are primarily responsible ---- rising global temperatures.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "on / for"
-      },
-      {
-        "letter": "B",
-        "text": "of / to"
-      },
-      {
-        "letter": "C",
-        "text": "in / about"
-      },
-      {
-        "letter": "D",
-        "text": "with / in"
-      },
-      {
-        "letter": "E",
-        "text": "from / by"
-      }
-    ],
-    "correct": "A",
-    "explanation": "**Doğru Cevap: A**\n\n**Preposition (Edat) Analizi:**\n- **dependence on (bir şeye bağımlılık):** \"Depend\", \"dependent\" ve \"dependence\" sözcükleri \"on\" edatı ile kullanılır.\n- **responsible for (bir şeyden sorumlu olmak):** \"Responsible\" sıfatı ise \"for\" edatını alır.\n- Bu iki kalıplaşan yapıyı eşleştiren tek seçenek A'dır."
+    "title": "ESL Lesson Flow Master Guide: Task-Based Language Teaching (TBLT)",
+    "domain": "ESL",
+    "target_level": "CEFR A1 - C2",
+    "topic": "Task-Based Language Teaching (TBLT) Framework & Classroom Execution Guide",
+    "date_created": "2026-09-01",
+    "content_type": "Pedagogical Master Guide & Lesson Flow Framework",
+    "path_root": "ESL/Lesson_Flow/tblt_task_based_framework_master_guide.md",
+    "path_domain": "Lesson_Flow/tblt_task_based_framework_master_guide.md",
+    "category": "Lesson_Flow",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "tblt_task_based_framework_master_guide.md"
   },
   {
-    "number": 7,
-    "section": "Grammar",
-    "stem": "---- some species of bacteria are harmful and cause serious diseases, the vast majority are beneficial and play an essential role in human digestion.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Because"
-      },
-      {
-        "letter": "B",
-        "text": "Although"
-      },
-      {
-        "letter": "C",
-        "text": "Unless"
-      },
-      {
-        "letter": "D",
-        "text": "In case"
-      },
-      {
-        "letter": "E",
-        "text": "As long as"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Bağlaç Analizi:**\n- İki cümle arasında açık bir zıtlık vardır: \"some species are harmful\" (bazı türler zararlıdır) ve \"the vast majority are beneficial\" (büyük çoğunluğu yararlıdır).\n- Bu zıtlığı sağlayan tek bağlaç \"Although\" (-e rağmen) seçeneğidir.\n- **Çeldirici Analizi:** Because (çünkü) sebep bildirir. Unless (-medikçe) koşul bildirir ve olumsuzluk gerektirir. In case (durumunda/olur diye) tedbir bildirir."
+    "title": "IELTS Academic Full Diagnostic Practice Examination 01",
+    "domain": "IELTS",
+    "target_level": "Band 6.0 to 8.5",
+    "topic": "IELTS Academic Full Practice Examination: Diagnostic Test 01",
+    "date_created": "2026-08-31",
+    "content_type": "Mock Test | Model Essay | Answer Key",
+    "path_root": "IELTS/Mock_Tests/ielts_academic_full_practice_exam_01.md",
+    "path_domain": "Mock_Tests/ielts_academic_full_practice_exam_01.md",
+    "category": "Mock_Tests",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ielts_academic_full_practice_exam_01.md"
   },
   {
-    "number": 8,
-    "section": "Grammar",
-    "stem": "According to the new environmental regulations, factories must ---- upgrade their waste filtration systems ---- face severe financial penalties.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "neither / nor"
-      },
-      {
-        "letter": "B",
-        "text": "either / or"
-      },
-      {
-        "letter": "C",
-        "text": "not only / but also"
-      },
-      {
-        "letter": "D",
-        "text": "so / that"
-      },
-      {
-        "letter": "E",
-        "text": "both / and"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**İkili Bağlaç Analizi:**\n- Cümlede fabrikalara iki seçenek sunulmaktadır: \"ya filtre sistemlerini yükseltmek\" ya da \"ağır para cezaları ile karşılaşmak\".\n- Seçenek sunan ikili yapı \"either ... or ...\" (ya ... ya da ...) yapısıdır.\n- **Çeldirici Analizi:** \"not only ... but also ...\" (sadece ... değil aynı zamanda ...) fabrikaların hem yükseltme yapıp hem de ceza alacağını söyleyeceği için anlamsız olur."
+    "title": "IELTS Academic Full Practice Exam 02",
+    "domain": "IELTS",
+    "target_level": "Band 7.5 to 9.0",
+    "topic": "IELTS Academic Full Practice Exam 02 (All 4 Skills)",
+    "date_created": "2026-09-01",
+    "content_type": "Full Mock Test",
+    "path_root": "IELTS/Mock_Tests/ielts_academic_full_practice_exam_02.md",
+    "path_domain": "Mock_Tests/ielts_academic_full_practice_exam_02.md",
+    "category": "Mock_Tests",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ielts_academic_full_practice_exam_02.md"
   },
   {
-    "number": 9,
-    "section": "Cloze Test",
-    "stem": "*(Cloze Test Soru 9-13)*\n\nThe Rosetta Stone, discovered in 1799, was the key to understanding Egyptian hieroglyphs. Before its discovery, scholars **(9) ----** unable to decipher the ancient writings because the language had been lost for centuries. The stone features a decree written in three **(10) ----** scripts: Hieroglyphic, Demotic, and Ancient Greek. **(11) ----** studying the Greek text, researchers were able to link the Greek words to the hieroglyphic symbols. This breakthrough occurred **(12) ----** the dedication of Jean-François Champollion, who spent years **(13) ----** on the stone.\n\n**Soru 9:**",
-    "options": [
-      {
-        "letter": "A",
-        "text": "are"
-      },
-      {
-        "letter": "B",
-        "text": "were"
-      },
-      {
-        "letter": "C",
-        "text": "have been"
-      },
-      {
-        "letter": "D",
-        "text": "would be"
-      },
-      {
-        "letter": "E",
-        "text": "will have been"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Cloze Test Analizi:**\n- Paragraf tarihsel bir olayı (\"discovered in 1799\", \"Rosetta Stone\") anlatmaktadır. Dolayısıyla genel zaman yapısı Past olmalıdır.\n- \"Before its discovery\" (keşinden önce) ifadesi geçmişteki bir durumu nitelediği için \"were\" en uygun seçenektir."
+    "title": "IELTS Academic Speaking: Parts 1, 2 & 3 Fluency & Idiomatic Toolkit",
+    "domain": "IELTS",
+    "target_level": "Band 8.0 to 9.0",
+    "topic": "IELTS Academic Speaking Parts 1, 2, 3 Fluency & Idiomatic Toolkit",
+    "date_created": "2026-09-01",
+    "content_type": "Student Strategy Guide & Speaking Toolkit",
+    "path_root": "IELTS/Speaking/ielts_speaking_part1_2_3_student_fluency_and_idiomatic_toolkit.md",
+    "path_domain": "Speaking/ielts_speaking_part1_2_3_student_fluency_and_idiomatic_toolkit.md",
+    "category": "Speaking",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ielts_speaking_part1_2_3_student_fluency_and_idiomatic_toolkit.md"
   },
   {
-    "number": 10,
-    "section": "Cloze Test",
-    "stem": "*(Cloze Test Soru 9-13)*\n\nThe Rosetta Stone, discovered in 1799, was the key to understanding Egyptian hieroglyphs. Before its discovery, scholars **(9) ----** unable to decipher the ancient writings because the language had been lost for centuries. The stone features a decree written in three **(10) ----** scripts: Hieroglyphic, Demotic, and Ancient Greek. **(11) ----** studying the Greek text, researchers were able to link the Greek words to the hieroglyphic symbols. This breakthrough occurred **(12) ----** the dedication of Jean-François Champollion, who spent years **(13) ----** on the stone.\n\n**Soru 10:**",
-    "options": [
-      {
-        "letter": "A",
-        "text": "equivalent"
-      },
-      {
-        "letter": "B",
-        "text": "distinct"
-      },
-      {
-        "letter": "C",
-        "text": "obsolete"
-      },
-      {
-        "letter": "D",
-        "text": "vague"
-      },
-      {
-        "letter": "E",
-        "text": "superficial"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Kelime Analizi:**\n- **distinct (farklı/belirgin):** Taş üzerindeki yazıların 3 farklı yazı türünde (Hieroglyphic, Demotic, Greek) yazıldığını belirtmektedir.\n- **equivalent (eşdeğer):** Yazı türleri (alfabeler) eşdeğer değil, farklıdır (metinler aynı, alfabesi farklıdır).\n- **obsolete (modası geçmiş):** Bağlama uymaz.\n- **vague (belirsiz):** Yazıların net olduğunu biliyoruz, anlamı bozar.\n- **superficial (yüzeysel):** Anlamsızdır."
+    "title": "IELTS Academic: Band 9.0 Lexical Resource Master Matrix",
+    "domain": "IELTS",
+    "target_level": "Band 8.0 to 9.0",
+    "topic": "IELTS Academic Band 9.0 Lexical Resource Master Matrix across 8 Core Topics",
+    "date_created": "2026-09-01",
+    "content_type": "Vocabulary & Lexical Matrix Toolkit",
+    "path_root": "IELTS/Vocabulary_Collocations/ielts_academic_band_9_lexical_resource_master_matrix.md",
+    "path_domain": "Vocabulary_Collocations/ielts_academic_band_9_lexical_resource_master_matrix.md",
+    "category": "Vocabulary_Collocations",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ielts_academic_band_9_lexical_resource_master_matrix.md"
   },
   {
-    "number": 11,
-    "section": "Cloze Test",
-    "stem": "*(Cloze Test Soru 9-13)*\n\nThe Rosetta Stone, discovered in 1799, was the key to understanding Egyptian hieroglyphs. Before its discovery, scholars **(9) ----** unable to decipher the ancient writings because the language had been lost for centuries. The stone features a decree written in three **(10) ----** scripts: Hieroglyphic, Demotic, and Ancient Greek. **(11) ----** studying the Greek text, researchers were able to link the Greek words to the hieroglyphic symbols. This breakthrough occurred **(12) ----** the dedication of Jean-François Champollion, who spent years **(13) ----** on the stone.\n\n**Soru 11:**",
-    "options": [
-      {
-        "letter": "A",
-        "text": "In addition to"
-      },
-      {
-        "letter": "B",
-        "text": "By"
-      },
-      {
-        "letter": "C",
-        "text": "Instead of"
-      },
-      {
-        "letter": "D",
-        "text": "With"
-      },
-      {
-        "letter": "E",
-        "text": "Despite"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Preposition/Gerund Analizi:**\n- **By + V-ing:** Eylemin nasıl yapıldığını belirtir (-erek, -arak anlamı katar). \"By studying the Greek text\" (Yunanca metni inceleyerek) araştırmacılar semboller arası bağlantı kurabilmişlerdir.\n- Diğer seçenekler anlamca çelişir (örneğin \"Instead of studying\" incelenmek yerine demektir)."
+    "title": "IELTS Academic: High-Scoring Collocations & Lexical Resource Bank",
+    "domain": "IELTS",
+    "target_level": "Band 7.0 to 9.0",
+    "topic": "Academic Vocabulary & High-Scoring Thematic Collocations Master Bank",
+    "date_created": "2026-08-31",
+    "content_type": "Vocabulary Bank | Worksheet | Analysis",
+    "path_root": "IELTS/Vocabulary_Collocations/ielts_academic_high_scoring_collocations_and_lexical_resource.md",
+    "path_domain": "Vocabulary_Collocations/ielts_academic_high_scoring_collocations_and_lexical_resource.md",
+    "category": "Vocabulary_Collocations",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ielts_academic_high_scoring_collocations_and_lexical_resource.md"
   },
   {
-    "number": 12,
-    "section": "Cloze Test",
-    "stem": "*(Cloze Test Soru 9-13)*\n\nThe Rosetta Stone, discovered in 1799, was the key to understanding Egyptian hieroglyphs. Before its discovery, scholars **(9) ----** unable to decipher the ancient writings because the language had been lost for centuries. The stone features a decree written in three **(10) ----** scripts: Hieroglyphic, Demotic, and Ancient Greek. **(11) ----** studying the Greek text, researchers were able to link the Greek words to the hieroglyphic symbols. This breakthrough occurred **(12) ----** the dedication of Jean-François Champollion, who spent years **(13) ----** on the stone.\n\n**Soru 12:**",
-    "options": [
-      {
-        "letter": "A",
-        "text": "because"
-      },
-      {
-        "letter": "B",
-        "text": "thanks to"
-      },
-      {
-        "letter": "C",
-        "text": "in terms of"
-      },
-      {
-        "letter": "D",
-        "text": "regardless of"
-      },
-      {
-        "letter": "E",
-        "text": "on behalf of"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Bağlaç Analizi:**\n- **thanks to (sayesinde):** Olumlu bir katkıyı ifade eder. \"thanks to the dedication of ...\" (Champollion'un adanmışlığı sayesinde) bu buluş gerçekleşmiştir.\n- **because (çünkü):** Arkasından cümle (S + V) almalıdır, isim/isim öbeği alamaz. Burada sadece bir isim öbeği (\"the dedication of...\") vardır.\n- **regardless of (bakılmaksızın):** Anlamı bozar."
+    "title": "IELTS Academic Vocabulary: Top 100 Collocations & Lexical Resource Masterclass (Band 7.0 ➔ 9.0)",
+    "domain": "IELTS",
+    "target_level": "Band 7.0 to 9.0",
+    "topic": "Academic Vocabulary: Top 100 High-Frequency Academic Collocations & Thematic Lexicon",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Analysis",
+    "path_root": "IELTS/Vocabulary_Collocations/ielts_academic_top_100_academic_collocations_and_phrasal_verbs.md",
+    "path_domain": "Vocabulary_Collocations/ielts_academic_top_100_academic_collocations_and_phrasal_verbs.md",
+    "category": "Vocabulary_Collocations",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ielts_academic_top_100_academic_collocations_and_phrasal_verbs.md"
   },
   {
-    "number": 13,
-    "section": "Cloze Test",
-    "stem": "*(Cloze Test Soru 9-13)*\n\nThe Rosetta Stone, discovered in 1799, was the key to understanding Egyptian hieroglyphs. Before its discovery, scholars **(9) ----** unable to decipher the ancient writings because the language had been lost for centuries. The stone features a decree written in three **(10) ----** scripts: Hieroglyphic, Demotic, and Ancient Greek. **(11) ----** studying the Greek text, researchers were able to link the Greek words to the hieroglyphic symbols. This breakthrough occurred **(12) ----** the dedication of Jean-François Champollion, who spent years **(13) ----** on the stone.\n\n**Soru 13:**",
-    "options": [
-      {
-        "letter": "A",
-        "text": "working"
-      },
-      {
-        "letter": "B",
-        "text": "to work"
-      },
-      {
-        "letter": "C",
-        "text": "worked"
-      },
-      {
-        "letter": "D",
-        "text": "work"
-      },
-      {
-        "letter": "E",
-        "text": "to have worked"
-      }
-    ],
-    "correct": "A",
-    "explanation": "**Doğru Cevap: A**\n\n**Gerund/Infinitive Analizi:**\n- **spend time + V-ing:** Zaman harcamak kalıbı arkasından daima Gerund (V-ing) yapısını alır. \"spent years working on the stone\" (taş üzerinde çalışarak yıllarını harcadı) ifadesi doğrudur."
+    "title": "IELTS Academic Writing: Task 1 & Task 2 Lexical Booster (Band 7.0 ➔ 9.0)",
+    "domain": "IELTS",
+    "target_level": "Band 7.0 to 9.0",
+    "topic": "Academic Writing: Lexical Booster for Task 1 & Task 2 (Trends, Fractions, Argumentative Verbs & Discourse Connectors)",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Analysis",
+    "path_root": "IELTS/Vocabulary_Collocations/ielts_academic_writing_task1_and_task2_lexical_booster.md",
+    "path_domain": "Vocabulary_Collocations/ielts_academic_writing_task1_and_task2_lexical_booster.md",
+    "category": "Vocabulary_Collocations",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ielts_academic_writing_task1_and_task2_lexical_booster.md"
   },
   {
-    "number": 14,
-    "section": "Sentence Completion",
-    "stem": "While some critics argue that digital art lacks the depth and authenticity of traditional painting, ----.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "classical artists historically rejected new technological tools"
-      },
-      {
-        "letter": "B",
-        "text": "it requires a level of technical mastery that is often underestimated"
-      },
-      {
-        "letter": "C",
-        "text": "digital platforms have failed to capture the interest of modern collectors"
-      },
-      {
-        "letter": "D",
-        "text": "oil paintings are much more susceptible to fading over time"
-      },
-      {
-        "letter": "E",
-        "text": "many museums still prioritize physical exhibitions over online archives"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Cümle Tamamlama Analizi:**\n- **While (iken / rağmen):** Zıtlık bağlacı. Yan cümlede dijital sanatın derinlikten yoksun olduğu eleştirisi yapılmıştır. Ana cümlede bu eleştiriyi dengeleyecek olumlu veya savunan bir ifade yer almalıdır.\n- B seçeneğindeki \"it requires a level of technical mastery that is often underestimated\" (genelde küçümsenen bir teknik ustalık gerektirir) ifadesi zıtlığı kusursuz tamamlar.\n- Diğer seçenekler dijital sanatı desteklemez ya da zıtlık ilişkisi kurmaz."
+    "title": "IELTS Academic Writing Task 1: Master Formula & Overview Guide",
+    "domain": "IELTS",
+    "target_level": "Band 8.0 to 9.0",
+    "topic": "IELTS Academic Writing Task 1 Master Formula & Overview Guide",
+    "date_created": "2026-09-01",
+    "content_type": "Student Strategy Guide & Formula Toolkit",
+    "path_root": "IELTS/Writing_Task1/ielts_academic_writing_task1_master_formula_and_overview_guide.md",
+    "path_domain": "Writing_Task1/ielts_academic_writing_task1_master_formula_and_overview_guide.md",
+    "category": "Writing_Task1",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ielts_academic_writing_task1_master_formula_and_overview_guide.md"
   },
   {
-    "number": 15,
-    "section": "Sentence Completion",
-    "stem": "---- because they do not have the complex root systems required to hold soil together during heavy rains.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Deep-rooted trees are highly effective at preventing landslides on steep hillsides"
-      },
-      {
-        "letter": "B",
-        "text": "Deforested areas are particularly vulnerable to soil erosion and mudslides"
-      },
-      {
-        "letter": "C",
-        "text": "Agricultural lands need to be irrigated regularly in arid regions"
-      },
-      {
-        "letter": "D",
-        "text": "Global warming has significantly altered the rainfall patterns across the continent"
-      },
-      {
-        "letter": "E",
-        "text": "Vegetation cover plays a vital role in maintaining atmospheric humidity levels"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Cümle Tamamlama Analizi:**\n- Yan cümlede \"because they do not have complex root systems...\" (çünkü toprağı tutacak kök sistemlerine sahip değillerdir) denilerek olumsuz bir durum açıklanmıştır. Buradaki \"they\" zamiri çoğul bir isme atıfta bulunmalıdır.\n- B seçeneğindeki \"Deforested areas\" (ormansızlaştırılmış alanlar) çoğul bir kavramdır ve ağaçların yok olması kök sistemlerinin eksikliğini doğrudan açıklar. Bu alanların heyelana açık olması (\"vulnerable to erosion\") sonucu doğurur.\n- **Çeldirici Analizi:** A seçeneği olumlu bir durumdan bahsettiği için sebep-sonuç ilişkisi kurulamaz."
+    "title": "IELTS Academic Writing Task 2: Band 9 Cohesion & Idea Generation Master Guide",
+    "domain": "IELTS",
+    "target_level": "Band 8.0 to 9.0",
+    "topic": "IELTS Academic Writing Task 2 Band 9 Cohesion & Idea Generation Master Guide",
+    "date_created": "2026-09-01",
+    "content_type": "Student Strategy Guide & Essay Blueprint",
+    "path_root": "IELTS/Writing_Task2/ielts_academic_writing_task2_band_9_cohesion_and_idea_generation_guide.md",
+    "path_domain": "Writing_Task2/ielts_academic_writing_task2_band_9_cohesion_and_idea_generation_guide.md",
+    "category": "Writing_Task2",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ielts_academic_writing_task2_band_9_cohesion_and_idea_generation_guide.md"
   },
   {
-    "number": 16,
-    "section": "Sentence Completion",
-    "stem": "Unless governments around the world take immediate action to curb greenhouse gas emissions, ----.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "international agreements have successfully reduced carbon footprints"
-      },
-      {
-        "letter": "B",
-        "text": "global temperatures will continue to rise with catastrophic consequences"
-      },
-      {
-        "letter": "C",
-        "text": "alternative energy technologies had become commercially viable"
-      },
-      {
-        "letter": "D",
-        "text": "ecological systems are capable of adapting to sudden changes"
-      },
-      {
-        "letter": "E",
-        "text": "the transition to electric vehicles would have been accelerated"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Cümle Tamamlama Analizi:**\n- **Unless (-medikçe / -mezse):** Olumsuz koşul bağlacıdır (if ... not). Yan cümle geniş zaman (take action) olduğuna göre, ana cümle büyük ihtimalle Type 1 şart yapısına uygun olarak \"will/can/may + V1\" olmalıdır.\n- Anlamca: \"Eğer hükümetler emisyonları sınırlamak için hemen harekete geçmezse, küresel sıcaklıklar felaket getiren sonuçlarla yükselmeye devam edecektir.\"\n- B seçeneği hem anlam hem de zaman uyumu (will continue) açısından tam uyar."
+    "title": "IELTS Academic Writing Task 2: Opinion Essays Masterclass (Band 5.0 ➔ 6.0)",
+    "domain": "IELTS",
+    "target_level": "Band 5.0 to 6.0",
+    "topic": "Academic Writing Task 2: Opinion (Agree/Disagree) Essay Architecture",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Model Essay | Drill | Analysis",
+    "path_root": "IELTS/Writing_Task2/Band_5.0_to_6.0/academic_writing_task2_opinion_agree_disagree_band5_to_6.md",
+    "path_domain": "Writing_Task2/Band_5.0_to_6.0/academic_writing_task2_opinion_agree_disagree_band5_to_6.md",
+    "category": "Writing_Task2",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_writing_task2_opinion_agree_disagree_band5_to_6.md"
   },
   {
-    "number": 17,
-    "section": "Sentence Completion",
-    "stem": "The James Webb Space Telescope has captured stunning images of distant galaxies, ----.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "which were formed shortly after the Big Bang billions of years ago"
-      },
-      {
-        "letter": "B",
-        "text": "although it was launched from Earth only two months ago"
-      },
-      {
-        "letter": "C",
-        "text": "whose primary mirror is made of lightweight beryllium coated in gold"
-      },
-      {
-        "letter": "D",
-        "text": "since it operates in the infrared spectrum to see through dust clouds"
-      },
-      {
-        "letter": "E",
-        "text": "so that astronomers can study the atmospheric composition of exoplanets"
-      }
-    ],
-    "correct": "A",
-    "explanation": "**Doğru Cevap: A**\n\n**Cümle Tamamlama Analizi:**\n- Cümle sonundaki \"distant galaxies\" (uzak galaksiler) bir Relative Clause (sıfat cümlesi) ile nitelenmeye uygundur.\n- A seçeneğindeki \"which were formed shortly after the Big Bang...\" (milyarlarca yıl önce Büyük Patlama'dan hemen sonra oluşan galaksiler) ifadesi galaksileri niteleyen bir tanımlamadır.\n- Diğer seçenekler anlamca teleskobu açıklasa da yapısal olarak galaksilerden sonra doğrudan gelmeleri akışı bozmaktadır."
+    "title": "IELTS Academic Writing Task 2: Discuss Both Views (Band 6.0 ➔ 7.0)",
+    "domain": "IELTS",
+    "target_level": "Band 6.0 to 7.0",
+    "topic": "Academic Writing Task 2: Discuss Both Views & Give Your Opinion",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Model Essay | Drill | Analysis",
+    "path_root": "IELTS/Writing_Task2/Band_6.0_to_7.0/academic_writing_task2_discuss_both_views_band6_to_7.md",
+    "path_domain": "Writing_Task2/Band_6.0_to_7.0/academic_writing_task2_discuss_both_views_band6_to_7.md",
+    "category": "Writing_Task2",
+    "sub_category": "Band_6.0_to_7.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_writing_task2_discuss_both_views_band6_to_7.md"
   },
   {
-    "number": 18,
-    "section": "Translation",
-    "stem": "Although sleeping pills may provide temporary relief for insomnia, their long-term use can lead to dependency and disrupt natural sleep cycles.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Uyku hapları uykusuzluğa geçici bir çözüm sunsa da uzun süreli kullanımı bağımlılığa yol açabilir ve doğal uyku döngülerini bozabilir."
-      },
-      {
-        "letter": "B",
-        "text": "Uyku haplarının geçici rahatlama sağladığı doğrudur ancak uzun süre kullanıldıklarında bağımlılık yaparlar ve uykuyu bozarlar."
-      },
-      {
-        "letter": "C",
-        "text": "Uykusuzluk için geçici olarak uyku hapı kullanmak bağımlılık yapabilir ve doğal uyku döngüsünü tamamen değiştirebilir."
-      },
-      {
-        "letter": "D",
-        "text": "Uyku hapları uykusuzluk için geçici bir rahatlama sağlasa bile bağımlılığa yol açtığı ve doğal uyku döngülerini bozduğu için uzun süre kullanılmamalıdır."
-      },
-      {
-        "letter": "E",
-        "text": "Uykusuzluk çekenler uyku haplarından geçici bir fayda görse de, bu hapların uzun süreli kullanımı bağımlılık ve uyku döngüsü bozukluğu yaratır."
-      }
-    ],
-    "correct": "A",
-    "explanation": "**Doğru Cevap: A**\n\n**Çeviri Analizi:**\n- **Although (sunsa da / -e rağmen):** Giriş cümlesinde zıtlık yapısı aranmalıdır.\n- **sleeping pills** (uyku hapları - Özne), **may provide temporary relief** (geçici rahatlama/çözüm sunsa da),\n- **their long-term use** (uzun süreli kullanımı - İkinci Özne),\n- **can lead to dependency** (bağımlılığa yol açabilir) **and disrupt natural sleep cycles** (ve doğal uyku döngülerini bozabilir).\n- A seçeneği bu ögeleri tam ve doğru kelimelerle eşleştirmiştir."
+    "title": "IELTS Academic Writing Task 2: Problem & Solution Masterclass (Band 7.0 ➔ 8.0)",
+    "domain": "IELTS",
+    "target_level": "Band 7.0 to 8.0",
+    "topic": "Academic Writing Task 2: Problem-Solution & Cause-Effect Essay Architecture",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Model Essay | Drill | Analysis",
+    "path_root": "IELTS/Writing_Task2/Band_7.0_to_8.0/academic_writing_task2_problem_solution_cause_effect_band7_to_8.md",
+    "path_domain": "Writing_Task2/Band_7.0_to_8.0/academic_writing_task2_problem_solution_cause_effect_band7_to_8.md",
+    "category": "Writing_Task2",
+    "sub_category": "Band_7.0_to_8.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_writing_task2_problem_solution_cause_effect_band7_to_8.md"
   },
   {
-    "number": 19,
-    "section": "Translation",
-    "stem": "Archaeologists have discovered ancient ruins in southern Italy that suggest Greco-Roman influence was widespread in the region much earlier than previously thought.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Güney İtalya'daki arkeolojik kazılarda Greko-Romen etkisinin bölgede sanılandan çok daha önce yaygınlaştığını gösteren antik kalıntılar bulundu."
-      },
-      {
-        "letter": "B",
-        "text": "Arkeologlar, güney İtalya'da Greko-Romen etkisinin bölgede önceden düşünülenden çok daha erken bir dönemde yaygın olduğunu öne süren antik kalıntılar keşfettiler."
-      },
-      {
-        "letter": "C",
-        "text": "Greko-Romen etkisinin güney İtalya'da tahmin edilenden çok daha önce yaygın olduğunu gösteren antik kalıntılar arkeologlarca ortaya çıkarılmıştır."
-      },
-      {
-        "letter": "D",
-        "text": "Güney İtalya'da keşfedilen bazı antik kalıntılar, arkeologlara göre Greko-Romen kültürünün bölgede çok daha erken yaygınlaştığını kanıtlamaktadır."
-      },
-      {
-        "letter": "E",
-        "text": "Arkeologların güney İtalya'da keşfettiği antik kalıntılar, Greko-Romen etkisinin bölgede sanılandan daha önce yaygın olduğunu düşündürmektedir."
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Çeviri Analizi:**\n- **Archaeologists** (Arkeologlar - Özne) + **have discovered** (keşfettiler - Ana Yüklem). Bu ana ögeleri barındıran seçenek doğrudan B'dir.\n- **Greco-Roman influence was widespread** (Greko-Romen etkisinin yaygın olduğunu),\n- **much earlier than previously thought** (önceden düşünülenden çok daha erken bir dönemde),\n- **that suggest** (öne süren / işaret eden).\n- **Çeldirici Analizi:** A ve C seçeneklerinde yüklem edilgen (bulundu, ortaya çıkarılmıştır) verilmiştir, oysa İngilizce metinde etken (have discovered) kullanılmıştır."
+    "title": "IELTS Academic Writing Task 2: Two-Part Direct Questions (Band 9.0)",
+    "domain": "IELTS",
+    "target_level": "Band 8.0 to 9.0",
+    "topic": "Academic Writing Task 2: Two-Part (Direct Question) Essay Masterclass",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Model Essay | Drill | Analysis",
+    "path_root": "IELTS/Writing_Task2/Band_8.0_to_9.0/academic_writing_task2_direct_question_double_prompt_band8_to_9.md",
+    "path_domain": "Writing_Task2/Band_8.0_to_9.0/academic_writing_task2_direct_question_double_prompt_band8_to_9.md",
+    "category": "Writing_Task2",
+    "sub_category": "Band_8.0_to_9.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_writing_task2_direct_question_double_prompt_band8_to_9.md"
   },
   {
-    "number": 20,
-    "section": "Translation",
-    "stem": "Küresel ısınmanın deniz seviyeleri üzerindeki etkisini araştıran bilim insanları, kutup buzullarının beklenenden daha hızlı eridiğini belirtmektedirler.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Glaciers in polar regions are melting faster than expected, which is stated by scientists researching global warming and sea levels."
-      },
-      {
-        "letter": "B",
-        "text": "Scientists researching the impact of global warming on sea levels state that polar glaciers are melting faster than expected."
-      },
-      {
-        "letter": "C",
-        "text": "According to scientists researching global warming, polar glaciers are melting much faster than they had expected due to rising sea levels."
-      },
-      {
-        "letter": "D",
-        "text": "The impact of global warming on sea levels is being researched by scientists who have stated that polar glaciers melt faster than expected."
-      },
-      {
-        "letter": "E",
-        "text": "Research on the impact of global warming on sea levels suggests that polar glaciers have been melting faster than expected."
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Çeviri Analizi:**\n- Türkçe cümlenin öznesi: \"Küresel ısınmanın deniz seviyeleri üzerindeki etkisini araştıran bilim insanları\" (Scientists researching the impact of global warming on sea levels).\n- Yüklem: \"belirtmektedirler\" (state / point out).\n- Nesne Cümleciği: \"kutup buzullarının beklenenden daha hızlı eridiğini\" (that polar glaciers are melting faster than expected).\n- Bu sıralamayı birebir karşılayan seçenek B'dir."
+    "title": "IELTS Academic Writing Task 1: Mixed Charts & Multiple Visuals Masterclass (Band 5.0 ➔ 6.5)",
+    "domain": "IELTS",
+    "target_level": "Band 5.0 to 6.5",
+    "topic": "Academic Writing Task 1: Mixed Charts & Multiple Visuals Strategy",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Model Essay | Drill | Analysis",
+    "path_root": "IELTS/Writing_Task1/Band_5.0_to_6.0/academic_writing_task1_mixed_charts_band5_to_6_5.md",
+    "path_domain": "Writing_Task1/Band_5.0_to_6.0/academic_writing_task1_mixed_charts_band5_to_6_5.md",
+    "category": "Writing_Task1",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_writing_task1_mixed_charts_band5_to_6_5.md"
   },
   {
-    "number": 21,
-    "section": "Translation",
-    "stem": "Bir şirketin uluslararası pazarda başarılı olması, sadece sunduğu ürünlerin kalitesine değil, aynı zamanda yerel kültürleri ne kadar iyi anladığına da bağlıdır.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Whether a company is successful in international markets depends on product quality as well as its understanding of local cultures."
-      },
-      {
-        "letter": "B",
-        "text": "The success of a company in the international market depends not only on the quality of the products it offers but also on how well it understands local cultures."
-      },
-      {
-        "letter": "C",
-        "text": "A company can be successful in the international market if it offers high-quality products and understands local cultures well."
-      },
-      {
-        "letter": "D",
-        "text": "Not only the quality of products but also how well a company understands local cultures determines its success in international markets."
-      },
-      {
-        "letter": "E",
-        "text": "A company's success in international markets is directly related to both its product quality and how it perceives local cultures."
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Çeviri Analizi:**\n- **Özne:** \"Bir şirketin uluslararası pazarda başarılı olması\" (The success of a company in the international market).\n- **Yüklem:** \"... bağlıdır\" (depends on...).\n- **Bağlaç:** \"sadece ... değil, aynı zamanda ... da\" (not only ... but also ...).\n- **Tamamlayıcı Ögeler:** \"sunduğu ürünlerin kalitesine\" (on the quality of the products it offers) + \"yerel kültürleri ne kadar iyi anladığına\" (on how well it understands local cultures).\n- B seçeneği tüm ögeleri hatasız ve tam bir dilbilgisi uyumuyla aktarmıştır."
+    "title": "IELTS Academic Writing Task 1: Band 6+ Breakthrough Masterclass",
+    "domain": "IELTS",
+    "target_level": "Band 5.0 to 6.5",
+    "topic": "Academic Writing Task 1: Complete Band 6+ Breakthrough Guide",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Analysis | Drill",
+    "path_root": "IELTS/Writing_Task1/Band_5.0_to_6.0/ielts_academic_task1_band_5_to_6_breakthrough.md",
+    "path_domain": "Writing_Task1/Band_5.0_to_6.0/ielts_academic_task1_band_5_to_6_breakthrough.md",
+    "category": "Writing_Task1",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ielts_academic_task1_band_5_to_6_breakthrough.md"
   },
   {
-    "number": 22,
-    "section": "Reading Passages",
-    "stem": "*(Reading Passage 1: Soru 22-24)*\n\n**Reading Passage 1:**\nThe Great Barrier Reef, stretching over 2,300 kilometers off the coast of Australia, is the world's largest coral reef system. It is home to thousands of marine species, making it a critical component of global marine biodiversity. However, in recent decades, the reef has faced severe threats from ocean warming caused by climate change. When water temperatures rise even slightly, corals undergo a process known as bleaching. During bleaching, corals expel the colorful algae living in their tissues, which turns them white and deprives them of their primary energy source. Without these algae, corals eventually starve and die. Scientists warn that if global emissions are not drastically reduced, recurrent mass bleaching events could lead to the permanent loss of this ecological wonder. While conservation efforts are underway, including artificial breeding of heat-resistant corals, local measures alone cannot save the reef without a global commitment to reduce greenhouse gases.\n\n**Soru 22: According to the passage, coral bleaching occurs when ----.**",
-    "options": [
-      {
-        "letter": "A",
-        "text": "marine biodiversity increases to an unsustainable level"
-      },
-      {
-        "letter": "B",
-        "text": "water temperatures experience even a minor increase"
-      },
-      {
-        "letter": "C",
-        "text": "corals starve due to a natural lack of nutrients in the ocean"
-      },
-      {
-        "letter": "D",
-        "text": "greenhouse gases are completely eliminated from the atmosphere"
-      },
-      {
-        "letter": "E",
-        "text": "artificial breeding programs fail to produce heat-resistant corals"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Paragraf Analizi:**\n- Pasajda doğrudan şu cümle geçmektedir: \"When water temperatures rise even slightly, corals undergo a process known as bleaching.\"\n- Metindeki \"rise even slightly\" (hafifçe bile yükseldiğinde) ifadesi B seçeneğindeki \"experience even a minor increase\" (küçük bir artış bile yaşandığında) ifadesi ile eşanlamlıdır."
+    "title": "IELTS Academic Writing Task 1: Bar & Pie Charts (Band 6.0 ➔ 7.0)",
+    "domain": "IELTS",
+    "target_level": "Band 6.0 to 7.0",
+    "topic": "Academic Writing Task 1: Comparative Bar Charts & Pie Charts Mastery",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Model Essay | Drill | Analysis",
+    "path_root": "IELTS/Writing_Task1/Band_6.0_to_7.0/academic_writing_task1_bar_and_pie_band6_to_7.md",
+    "path_domain": "Writing_Task1/Band_6.0_to_7.0/academic_writing_task1_bar_and_pie_band6_to_7.md",
+    "category": "Writing_Task1",
+    "sub_category": "Band_6.0_to_7.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_writing_task1_bar_and_pie_band6_to_7.md"
   },
   {
-    "number": 23,
-    "section": "Reading Passages",
-    "stem": "*(Reading Passage 1: Soru 22-24)*\n\n**Soru 23: It can be inferred from the passage that the colorful algae ----.**",
-    "options": [
-      {
-        "letter": "A",
-        "text": "are harmful organisms that cause corals to turn white"
-      },
-      {
-        "letter": "B",
-        "text": "are artificially introduced to corals by marine scientists"
-      },
-      {
-        "letter": "C",
-        "text": "provide the essential energy that corals need to survive"
-      },
-      {
-        "letter": "D",
-        "text": "can survive in much warmer waters than the corals themselves"
-      },
-      {
-        "letter": "E",
-        "text": "prevent heat-resistant corals from breeding in artificial environments"
-      }
-    ],
-    "correct": "C",
-    "explanation": "**Doğru Cevap: C**\n\n**Çıkarım Analizi:**\n- Metinde mercanların beyazlaması sırasında algleri dışarı attığı (\"expel the colorful algae\") ve bunun onları \"temel enerji kaynaklarından yoksun bıraktığı\" (\"deprives them of their primary energy source\") belirtilmektedir. Hemen ardından \"algler olmadan mercanlar açlıktan ölür\" denmektedir.\n- Buradan hareketle alglerin mercanların yaşaması için hayati enerji sağladığı çıkarımı (C seçeneği) net bir şekilde yapılır."
+    "title": "IELTS Academic Writing Task 1: Process & Flowchart Masterclass",
+    "domain": "IELTS",
+    "target_level": "Band 7.0 to 8.0",
+    "topic": "Academic Writing Task 1: Industrial Processes & Natural Life Cycles",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Model Essay | Analysis",
+    "path_root": "IELTS/Writing_Task1/Band_7.0_to_8.0/academic_writing_task1_process_and_flowchart_band7_to_8.md",
+    "path_domain": "Writing_Task1/Band_7.0_to_8.0/academic_writing_task1_process_and_flowchart_band7_to_8.md",
+    "category": "Writing_Task1",
+    "sub_category": "Band_7.0_to_8.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_writing_task1_process_and_flowchart_band7_to_8.md"
   },
   {
-    "number": 24,
-    "section": "Reading Passages",
-    "stem": "*(Reading Passage 1: Soru 22-24)*\n\n**Soru 24: The primary focus of the passage is on ----.**",
-    "options": [
-      {
-        "letter": "A",
-        "text": "the economic benefits of tourism at the Great Barrier Reef"
-      },
-      {
-        "letter": "B",
-        "text": "the history of marine research in the coastal waters of Australia"
-      },
-      {
-        "letter": "C",
-        "text": "the threat of ocean warming to the Great Barrier Reef and the need for global action"
-      },
-      {
-        "letter": "D",
-        "text": "the failure of artificial breeding programs to protect marine species"
-      },
-      {
-        "letter": "E",
-        "text": "the comparison between the Great Barrier Reef and other coral systems"
-      }
-    ],
-    "correct": "C",
-    "explanation": "**Doğru Cevap: C**\n\n**Ana Fikir Analizi:**\n- Pasaj genel olarak Great Barrier Reef'in büyüklüğünden ve öneminden bahsettikten sonra iklim değişikliğinin getirdiği sıcaklık tehdidini (bleaching) ele almakta ve kurtuluşun ancak küresel bir kararlılıkla (global commitment) mümkün olacağını savunmaktadır.\n- C seçeneği bu ana fikri tam olarak özetlemektedir."
+    "title": "IELTS Academic Writing Task 1: Urban Maps & Mixed Graphics (Band 9.0)",
+    "domain": "IELTS",
+    "target_level": "Band 8.0 to 9.0",
+    "topic": "Academic Writing Task 1: Comparative Urban Maps & Mixed Data Synthesis",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Model Essay | Analysis",
+    "path_root": "IELTS/Writing_Task1/Band_8.0_to_9.0/academic_writing_task1_maps_and_mixed_data_band8_to_9.md",
+    "path_domain": "Writing_Task1/Band_8.0_to_9.0/academic_writing_task1_maps_and_mixed_data_band8_to_9.md",
+    "category": "Writing_Task1",
+    "sub_category": "Band_8.0_to_9.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_writing_task1_maps_and_mixed_data_band8_to_9.md"
   },
   {
-    "number": 25,
-    "section": "Reading Passages",
-    "stem": "*(Reading Passage 2: Soru 25-27)*\n\n**Reading Passage 2:**\nThe Indus Valley Civilization, which flourished around 2500 BCE in what is now Pakistan and northwest India, was one of the three great early civilizations of the Old World, alongside Egypt and Mesopotamia. Unlike their contemporaries, who built massive temples and monuments dedicated to kings and gods, the people of the Indus Valley prioritized urban planning, sanitation, and utility. Cities like Harappa and Mohenjo-daro featured grid-like street layouts, sophisticated drainage systems, and large public baths. Their houses were built with standardized baked bricks and had private wells and bathrooms. This emphasis on hygiene and egalitarianism suggests a highly organized society with a strong municipal authority, though no evidence of a centralized monarchy or military ruling class has been found. The civilization's script remains undeciphered, leaving many aspects of their social structure and religious beliefs a mystery. Around 1900 BCE, the civilization began to decline, possibly due to climate shifts that altered the path of the Indus River, leading to agricultural failure.\n\n**Soru 25: The Indus Valley Civilization differed from Egypt and Mesopotamia because it ----.**",
-    "options": [
-      {
-        "letter": "A",
-        "text": "did not have any contact with other early societies"
-      },
-      {
-        "letter": "B",
-        "text": "prioritized public utilities and sanitation over monuments for rulers"
-      },
-      {
-        "letter": "C",
-        "text": "relied entirely on agriculture rather than trade"
-      },
-      {
-        "letter": "D",
-        "text": "was located in a region with no access to major rivers"
-      },
-      {
-        "letter": "E",
-        "text": "developed a script that was quickly deciphered by modern scholars"
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Paragraf Analizi:**\n- Metinde \"Unlike their contemporaries (Egypt/Mesopotamia)... built massive temples and monuments..., the people of the Indus Valley prioritized urban planning, sanitation, and utility.\" denilerek fark açıkça ortaya konmuştur.\n- Bu zıtlık B seçeneğinde \"kamusal hizmetleri ve hijyeni, yöneticiler için yapılan anıtlara tercih etme\" şeklinde doğru ifade edilmiştir."
+    "title": "IELTS Academic Speaking Mock Exam (Band 5.5 – 6.5 Focus)",
+    "domain": "IELTS",
+    "target_level": "Band 5.5 - 6.5",
+    "topic": "Academic Speaking Full Mock Exam & Band 5.5 vs 6.5 Comparative Analysis",
+    "date_created": "2026-08-26",
+    "content_type": "Speaking Mock & Model Responses",
+    "path_root": "IELTS/Speaking/Band_5.0_to_6.0/ielts_academic_speaking_band_5_5_to_6_5_mock.md",
+    "path_domain": "Speaking/Band_5.0_to_6.0/ielts_academic_speaking_band_5_5_to_6_5_mock.md",
+    "category": "Speaking",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ielts_academic_speaking_band_5_5_to_6_5_mock.md"
   },
   {
-    "number": 26,
-    "section": "Reading Passages",
-    "stem": "*(Reading Passage 2: Soru 25-27)*\n\n**Soru 26: It is suggested in the passage that the absence of military monuments or royal tombs implies that the Indus society ----.**",
-    "options": [
-      {
-        "letter": "A",
-        "text": "was constantly invaded by neighboring military empires"
-      },
-      {
-        "letter": "B",
-        "text": "lacked any form of municipal organization or rules"
-      },
-      {
-        "letter": "C",
-        "text": "might not have been ruled by a centralized monarchy or military class"
-      },
-      {
-        "letter": "D",
-        "text": "was extremely poor and could not afford standardized bricks"
-      },
-      {
-        "letter": "E",
-        "text": "completely ignored public hygiene and urban planning"
-      }
-    ],
-    "correct": "C",
-    "explanation": "**Doğru Cevap: C**\n\n**Çıkarım Analizi:**\n- Metindeki \"though no evidence of a centralized monarchy or military ruling class has been found\" (merkezi bir monarşi veya askeri yönetici sınıfa dair hiçbir kanıt bulunamamış olsa da) ifadesi, kral mezarları ve askeri yapıların olmayışıyla birleştiğinde, toplumun bu sınıflar tarafından yönetilmemiş olabileceğini gösterir (C seçeneği)."
+    "title": "IELTS Academic Speaking Part 1: Fluency & Natural Expansion Masterclass (Band 5.0 ➔ 6.5)",
+    "domain": "IELTS",
+    "target_level": "Band 5.0 to 6.0",
+    "topic": "Academic Speaking Part 1: Fluency, Natural Expansion & The RED Formula",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Model Essay",
+    "path_root": "IELTS/Speaking/Band_5.0_to_6.0/speaking_part1_fluency_and_natural_expansion_band5_to_6.md",
+    "path_domain": "Speaking/Band_5.0_to_6.0/speaking_part1_fluency_and_natural_expansion_band5_to_6.md",
+    "category": "Speaking",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "speaking_part1_fluency_and_natural_expansion_band5_to_6.md"
   },
   {
-    "number": 27,
-    "section": "Reading Passages",
-    "stem": "*(Reading Passage 2: Soru 25-27)*\n\n**Soru 27: The decline of the Indus Valley Civilization around 1900 BCE is believed to have been caused by ----.**",
-    "options": [
-      {
-        "letter": "A",
-        "text": "invasions by Mesopotamia and Egypt"
-      },
-      {
-        "letter": "B",
-        "text": "the sudden decipherment of their writing system"
-      },
-      {
-        "letter": "C",
-        "text": "environmental changes that affected their water source and farming"
-      },
-      {
-        "letter": "D",
-        "text": "a sudden revolt by the lower classes against the municipal authority"
-      },
-      {
-        "letter": "E",
-        "text": "the exhaustion of baked brick resources in Harappa and Mohenjo-daro"
-      }
-    ],
-    "correct": "C",
-    "explanation": "**Doğru Cevap: C**\n\n**Paragraf Analizi:**\n- Çöküş nedeni son cümlede belirtilmiştir: \"possibly due to climate shifts that altered the path of the Indus River, leading to agricultural failure\" (nehir yatağını değiştiren iklimsel değişimler ve buna bağlı tarımsal başarısızlık).\n- \"Climate shifts\" (iklim değişimleri) -> \"environmental changes\", \"altered path of the river... agricultural failure\" -> \"affected water source and farming\" eşleşmesiyle C seçeneği doğrudur."
+    "title": "IELTS Academic Speaking Part 2: Long Turn Mastery (Band 6.0 ➔ 7.0)",
+    "domain": "IELTS",
+    "target_level": "Band 6.0 to 7.0",
+    "topic": "Academic Speaking Part 2: 1-Minute Note-Taking Framework & 2-Minute Long Turn",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Model Essay",
+    "path_root": "IELTS/Speaking/Band_6.0_to_7.0/academic_speaking_part2_long_turn_strategy_band6_to_7.md",
+    "path_domain": "Speaking/Band_6.0_to_7.0/academic_speaking_part2_long_turn_strategy_band6_to_7.md",
+    "category": "Speaking",
+    "sub_category": "Band_6.0_to_7.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_speaking_part2_long_turn_strategy_band6_to_7.md"
   },
   {
-    "number": 28,
-    "section": "Dialogue Completion",
-    "stem": "**Professor Green:** It is crucial that we transition to 100% renewable energy within the next decade to avoid the worst effects of climate change.\n\n**Dr. Vance:** I agree with the urgency, but we must also consider the stability of the power grid. Solar and wind are intermittent.\n\n**Professor Green:** ----\n\n**Dr. Vance:** True, but scaling those technologies up to a national level will take time and substantial investment.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "That is why we should continue to invest heavily in coal and natural gas plants."
-      },
-      {
-        "letter": "B",
-        "text": "We can address that issue by integrating advanced battery storage systems and smart grid technology."
-      },
-      {
-        "letter": "C",
-        "text": "The public does not seem to care about grid stability as long as energy is cheap."
-      },
-      {
-        "letter": "D",
-        "text": "Intermittency is a minor problem that will solve itself without any new investments."
-      },
-      {
-        "letter": "E",
-        "text": "Nuclear energy is the only option, so we should discard solar and wind entirely."
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Diyalog Analizi:**\n- Dr. Vance, güneş ve rüzgar enerjisinin kesintili (intermittent) olmasının şebeke kararlılığını bozacağını söylemiştir.\n- Professor Green bu soruna bir çözüm önermelidir ki Dr. Vance \"True, but scaling those...\" (Doğru ama bunları ulusal düzeye taşımak zaman alır) diyerek karşılık versin.\n- B seçeneğinde önerilen \"pil depolama sistemleri (battery storage) ve akıllı şebeke (smart grid)\" bu şebeke sorununa teknik bir çözümdür."
+    "title": "IELTS Academic Speaking Part 3: Abstract Discussion Masterclass (Band 7.0 ➔ 8.0)",
+    "domain": "IELTS",
+    "target_level": "Band 7.0 to 8.0",
+    "topic": "Academic Speaking Part 3: Abstract Discourse, Speculation & The AREA Framework",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Model Essay",
+    "path_root": "IELTS/Speaking/Band_7.0_to_8.0/academic_speaking_part3_abstract_discussion_band7_to_8.md",
+    "path_domain": "Speaking/Band_7.0_to_8.0/academic_speaking_part3_abstract_discussion_band7_to_8.md",
+    "category": "Speaking",
+    "sub_category": "Band_7.0_to_8.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_speaking_part3_abstract_discussion_band7_to_8.md"
   },
   {
-    "number": 29,
-    "section": "Dialogue Completion",
-    "stem": "**Melis:** I started a new diet that completely excludes all carbohydrates, and I've lost three kilos in a single week!\n\n**Gizem:** That sounds fast, but is it actually sustainable and healthy in the long run?\n\n**Melis:** ----\n\n**Gizem:** Exactly. You might gain the weight back quickly once you start eating normally again.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Yes, I plan to never eat any carbohydrates again for the rest of my life."
-      },
-      {
-        "letter": "B",
-        "text": "Probably not, as I already feel constantly tired and crave bread all the time."
-      },
-      {
-        "letter": "C",
-        "text": "Carbohydrates are the body's primary energy source, so we should eat more of them."
-      },
-      {
-        "letter": "D",
-        "text": "My doctor told me that rapid weight loss is always permanent and safe."
-      },
-      {
-        "letter": "E",
-        "text": "I don't care about the long run; I just want to look good for the wedding next weekend."
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Diyalog Analizi:**\n- Gizem, Melis'in hızlı kilo kaybının uzun vadede sürdürülebilir ve sağlıklı olup olmadığını sorguluyor.\n- Melis'in vereceği cevap üzerine Gizem \"Exactly. You might gain the weight back...\" (Kesinlikle, normal yemeye başladığında hemen geri alabilirsin) diyerek Melis'in şüphesini doğrulamaktadır.\n- B seçeneğinde Melis \"Muhtemelen değil (sürdürülebilir değil), zaten sürekli yorgun hissediyorum\" diyerek durumu onaylamaktadır."
+    "title": "IELTS Academic Speaking: Idiomatic Fluency & Pronunciation (Band 9.0)",
+    "domain": "IELTS",
+    "target_level": "Band 8.0 to 9.0",
+    "topic": "Academic Speaking: Native Idiomatic Nuance, Connected Speech & Intonation Mastery",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Analysis",
+    "path_root": "IELTS/Speaking/Band_8.0_to_9.0/academic_speaking_idiomatic_fluency_and_pronunciation_band8_to_9.md",
+    "path_domain": "Speaking/Band_8.0_to_9.0/academic_speaking_idiomatic_fluency_and_pronunciation_band8_to_9.md",
+    "category": "Speaking",
+    "sub_category": "Band_8.0_to_9.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_speaking_idiomatic_fluency_and_pronunciation_band8_to_9.md"
   },
   {
-    "number": 30,
-    "section": "Dialogue Completion",
-    "stem": "**Tuna:** Have you seen the new museum exhibit on Byzantine coins?\n\n**Selin:** Yes, I went yesterday. The collection is impressive, but the lighting in the display cabinets made it hard to read the descriptions.\n\n**Tuna:** ----\n\n**Selin:** I did, but they said they are already working on a new lighting system to fix the glare.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "I think coins are boring anyway, so I didn't go."
-      },
-      {
-        "letter": "B",
-        "text": "Did you mention this issue to the museum staff at the information desk?"
-      },
-      {
-        "letter": "C",
-        "text": "The museum is open until 8 PM on weekends, which is very convenient."
-      },
-      {
-        "letter": "D",
-        "text": "Coins were the primary medium of exchange in the empire for centuries."
-      },
-      {
-        "letter": "E",
-        "text": "I had no trouble reading them because I brought a magnifying glass."
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Diyalog Analizi:**\n- Selin, Tuna'ya müzedeki vitrin ışıklarının açıklamaları okumayı zorlaştırdığını söylüyor.\n- Tuna bir soru sormalı ve Selin buna \"I did, but...\" (Yaptım/Söyledim ama...) diye cevap vermelidir.\n- B seçeneğindeki \"Bu sorunu bilgi masasındaki müze görevlilerine belirttin mi?\" sorusu Selin'in \"Belirttim (I did)...\" cevabı ile tam örtüşür."
+    "title": "IELTS Academic Speaking: Advanced Pronunciation & Connected Speech Masterclass (Band 8.0 ➔ 9.0)",
+    "domain": "IELTS",
+    "target_level": "Band 8.0 to 9.0",
+    "topic": "Academic Speaking: Advanced Pronunciation, Intonation, Chunking & Connected Speech",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Analysis",
+    "path_root": "IELTS/Speaking/Band_8.0_to_9.0/speaking_masterclass_pronunciation_intonation_connected_speech.md",
+    "path_domain": "Speaking/Band_8.0_to_9.0/speaking_masterclass_pronunciation_intonation_connected_speech.md",
+    "category": "Speaking",
+    "sub_category": "Band_8.0_to_9.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "speaking_masterclass_pronunciation_intonation_connected_speech.md"
   },
   {
-    "number": 31,
-    "section": "Restatement",
-    "stem": "**Original Sentence:**\nOnly after the laboratory tests are completed will we know for sure whether the water supply is safe for consumption.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "We cannot be certain about the safety of the water supply until the laboratory tests have been finished."
-      },
-      {
-        "letter": "B",
-        "text": "The laboratory tests will show that the water supply is unsafe, but we must wait for the final report."
-      },
-      {
-        "letter": "C",
-        "text": "Although the laboratory tests are finished, we still do not know if the water supply is safe."
-      },
-      {
-        "letter": "D",
-        "text": "The safety of the water supply is guaranteed, so there is no need to wait for laboratory test results."
-      },
-      {
-        "letter": "E",
-        "text": "If the laboratory tests are not completed soon, the water supply will become unsafe."
-      }
-    ],
-    "correct": "A",
-    "explanation": "**Doğru Cevap: A**\n\n**Yakın Anlam Analizi:**\n- Orijinal cümle: \"Ancak laboratuvar testleri tamamlandıktan sonra su kaynağının tüketim için güvenli olup olmadığından emin olacağız.\"\n- \"Only after ... will we know\" (Ancak ... sonra bileceğiz) yapısı, \"We cannot be certain ... until ...\" (Kadar emin olamayız) yapısı ile tam olarak aynı anlamı taşır (A seçeneği).\n- Diğer seçenekler suyun güvencesiz olduğunu iddia ederek veya testlerin bittiğini söyleyerek anlamı bozmaktadır."
+    "title": "IELTS Academic Reading: True / False / Not Given (T/F/NG) Masterclass",
+    "domain": "IELTS",
+    "target_level": "Band 5.0 to 6.0",
+    "topic": "Academic Reading: True / False / Not Given & Yes / No / Not Given Mastery",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Analysis",
+    "path_root": "IELTS/Reading/Band_5.0_to_6.0/academic_reading_tfng_mastery_band5_to_6.md",
+    "path_domain": "Reading/Band_5.0_to_6.0/academic_reading_tfng_mastery_band5_to_6.md",
+    "category": "Reading",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_reading_tfng_mastery_band5_to_6.md"
   },
   {
-    "number": 32,
-    "section": "Restatement",
-    "stem": "**Original Sentence:**\nDespite the high price of the tickets, the concert hall was completely filled with enthusiastic fans.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "The concert tickets were expensive, so the hall was only partially filled with fans."
-      },
-      {
-        "letter": "B",
-        "text": "Although the tickets for the concert were expensive, the venue was packed with excited supporters."
-      },
-      {
-        "letter": "C",
-        "text": "The fans were enthusiastic because the tickets for the concert were sold at a very low price."
-      },
-      {
-        "letter": "D",
-        "text": "The concert hall was empty because the ticket prices were too high for the fans to afford."
-      },
-      {
-        "letter": "E",
-        "text": "Ticket prices were reduced so that more enthusiastic fans could fill the concert hall."
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Yakın Anlam Analizi:**\n- Orijinal cümle: \"Biletlerin yüksek fiyatına rağmen, konser salonu coşkulu hayranlarla tamamen doluydu.\"\n- **Despite the high price** -> **Although the tickets ... were expensive**.\n- **concert hall was completely filled** -> **venue was packed**.\n- **enthusiastic fans** -> **excited supporters**.\n- Kelime ve bağlaç eşleşmesi açısından B seçeneği hatasız bir yeniden yazımdır."
+    "title": "IELTS Academic Reading: Matching Headings Masterclass (Band 6.0 ➔ 7.0)",
+    "domain": "IELTS",
+    "target_level": "Band 6.0 to 7.0",
+    "topic": "Academic Reading: Matching Headings & Main Idea Identification",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Analysis",
+    "path_root": "IELTS/Reading/Band_6.0_to_7.0/academic_reading_matching_headings_band6_to_7.md",
+    "path_domain": "Reading/Band_6.0_to_7.0/academic_reading_matching_headings_band6_to_7.md",
+    "category": "Reading",
+    "sub_category": "Band_6.0_to_7.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_reading_matching_headings_band6_to_7.md"
   },
   {
-    "number": 33,
-    "section": "Restatement",
-    "stem": "**Original Sentence:**\nIt is highly probable that the ancient library was destroyed by an accidental fire rather than an intentional attack.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "The ancient library was definitely burned down by invaders during a planned attack."
-      },
-      {
-        "letter": "B",
-        "text": "An accidental fire could not have destroyed the library, so it must have been an intentional attack."
-      },
-      {
-        "letter": "C",
-        "text": "The ancient library was most likely destroyed by a fire that started by accident, not by a deliberate assault."
-      },
-      {
-        "letter": "D",
-        "text": "It is certain that the library survived the fire, but it was later destroyed in a war."
-      },
-      {
-        "letter": "E",
-        "text": "No one knows whether the library was destroyed by accident or by an intentional fire."
-      }
-    ],
-    "correct": "C",
-    "explanation": "**Doğru Cevap: C**\n\n**Yakın Anlam Analizi:**\n- Orijinal cümle: \"Antik kütüphanenin kasıtlı bir saldırıdan ziyade kazara çıkan bir yangınla yok edilmiş olması yüksek olasılıktır.\"\n- **highly probable** -> **most likely** (büyük ihtimalle).\n- **accidental fire** -> **fire that started by accident**.\n- **rather than an intentional attack** -> **not by a deliberate assault**.\n- C seçeneği tüm bu anlam ögelerini eşanlamlılarıyla karşılamaktadır."
+    "title": "IELTS Academic Reading: Multiple-Choice Questions (MCQs) Masterclass",
+    "domain": "IELTS",
+    "target_level": "Band 7.5 - 9.0",
+    "topic": "Academic Reading - Multiple-Choice Questions (MCQ) Masterclass",
+    "date_created": "2026-08-26",
+    "content_type": "Lesson Plan & Practice Module",
+    "path_root": "IELTS/Reading/Band_7.0_to_8.0/academic_reading_mcq_masterclass.md",
+    "path_domain": "Reading/Band_7.0_to_8.0/academic_reading_mcq_masterclass.md",
+    "category": "Reading",
+    "sub_category": "Band_7.0_to_8.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_reading_mcq_masterclass.md"
   },
   {
-    "number": 34,
-    "section": "Situation",
-    "stem": "One of your colleagues proposes a major change to a project that is due in two days. You think the change is good but too risky to implement at this late stage. You want to reject the idea politely without discouraging them. What do you say?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "This is a terrible idea that will ruin all our hard work over the past months."
-      },
-      {
-        "letter": "B",
-        "text": "I really like your suggestion, but since we are so close to the deadline, it might be safer to keep it for the next phase."
-      },
-      {
-        "letter": "C",
-        "text": "Why did you wait until the last minute to suggest such a massive change to the project?"
-      },
-      {
-        "letter": "D",
-        "text": "Let's implement your idea immediately and tell the manager that we need a deadline extension."
-      },
-      {
-        "letter": "E",
-        "text": "I don't care about the risk; let's just make the change and see what happens."
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Durum Analizi:**\n- **Hedef:** Fikri beğenmek fakat teslimata 2 gün kala (\"due in two days\") çok riskli olduğu için reddetmek, bunu yaparken de iş arkadaşını kırmamak.\n- B seçeneğinde \"I really like...\" denilerek motivasyon korunur, ardından \"since we are so close to the deadline, it might be safer to keep it for the next phase\" (teslime yakın olduğumuz için sonraki aşamaya saklamak daha güvenli olur) denilerek gerekçeli ve kibar bir ret gerçekleştirilir."
+    "title": "IELTS Academic Reading: Summary Completion & Complex Inference Masterclass (Band 8.0 ➔ 9.0)",
+    "domain": "IELTS",
+    "target_level": "Band 8.0 to 9.0",
+    "topic": "Academic Reading: Summary Completion with Synonyms & Deep Inferential Reasoning",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Analysis",
+    "path_root": "IELTS/Reading/Band_8.0_to_9.0/academic_reading_summary_completion_and_inference_band8_to_9.md",
+    "path_domain": "Reading/Band_8.0_to_9.0/academic_reading_summary_completion_and_inference_band8_to_9.md",
+    "category": "Reading",
+    "sub_category": "Band_8.0_to_9.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "academic_reading_summary_completion_and_inference_band8_to_9.md"
   },
   {
-    "number": 35,
-    "section": "Situation",
-    "stem": "A friend of yours is planning a solo hiking trip in a remote mountain area known for unpredictable weather. You want to warn them strongly to check the weather reports and take emergency gear. What do you say?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Have a great time! The weather is always beautiful in the mountains this time of year."
-      },
-      {
-        "letter": "B",
-        "text": "You shouldn't go hiking at all; it is a boring activity and a waste of time."
-      },
-      {
-        "letter": "C",
-        "text": "Make sure you monitor the forecast closely and pack emergency equipment, as the weather there can change instantly."
-      },
-      {
-        "letter": "D",
-        "text": "If I were you, I would stay at a luxury hotel instead of sleeping in a tent."
-      },
-      {
-        "letter": "E",
-        "text": "I heard that the local rescue team is very efficient, so you don't need to worry about gear."
-      }
-    ],
-    "correct": "C",
-    "explanation": "**Doğru Cevap: C**\n\n**Durum Analizi:**\n- **Hedef:** Arkadaşı tek başına yapacağı dağ yürüyüşündeki ani hava değişimlerine karşı uyarmak, hava raporlarını takip etmesini ve acil durum ekipmanı almasını söylemek.\n- C seçeneğinde \"Make sure you monitor the forecast closely\" (hava durumunu yakından takip ettiğinden emin ol) ve \"pack emergency equipment\" (acil durum ekipmanı çantana koy) ifadeleriyle bu uyarı güçlü biçimde yapılmaktadır."
+    "title": "IELTS Academic Listening: Section 1 Form Completion Masterclass",
+    "domain": "IELTS",
+    "target_level": "Band 5.0 to 6.0",
+    "topic": "Listening Section 1: Form Completion, Numbers, Names & Distraction Traps",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Analysis",
+    "path_root": "IELTS/Listening/Band_5.0_to_6.0/listening_section1_form_completion_band5_to_6.md",
+    "path_domain": "Listening/Band_5.0_to_6.0/listening_section1_form_completion_band5_to_6.md",
+    "category": "Listening",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "listening_section1_form_completion_band5_to_6.md"
   },
   {
-    "number": 36,
-    "section": "Situation",
-    "stem": "You are a university professor. A student asks for a deadline extension on their essay because they have been hospitalized. You want to express sympathy and grant the extension. What do you say?",
-    "options": [
-      {
-        "letter": "A",
-        "text": "I am sorry to hear that, but university rules strictly forbid any extensions."
-      },
-      {
-        "letter": "B",
-        "text": "You should have managed your time better so that you wouldn't have to ask for an extension."
-      },
-      {
-        "letter": "C",
-        "text": "I'm sorry you are going through this. Please focus on your health first; you can submit the essay when you recover."
-      },
-      {
-        "letter": "D",
-        "text": "If you don't submit the essay by tomorrow, you will fail the entire course."
-      },
-      {
-        "letter": "E",
-        "text": "I will grant the extension, but I will deduct 10 points from your grade for late submission."
-      }
-    ],
-    "correct": "C",
-    "explanation": "**Doğru Cevap: C**\n\n**Durum Analizi:**\n- **Hedef:** Hastaneye kaldırılan öğrenciye hem sempati duyduğunu belirtmek (express sympathy) hem de süreyi uzatmak (grant the extension).\n- C seçeneğindeki \"I'm sorry you are going through this\" sempatiyi, \"Please focus on your health first; you can submit... when you recover\" ise ek sürenin koşulsuz verildiğini net bir şekilde gösterir."
+    "title": "IELTS Academic Listening: Section 2 Map Labeling & MCQs Masterclass (Band 6.0 ➔ 7.0)",
+    "domain": "IELTS",
+    "target_level": "Band 6.0 to 7.0",
+    "topic": "Listening Section 2: Monologues, Map/Plan Labeling & Multiple Choice Strategies",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Analysis",
+    "path_root": "IELTS/Listening/Band_6.0_to_7.0/listening_section2_multiple_choice_and_maps_band6_to_7.md",
+    "path_domain": "Listening/Band_6.0_to_7.0/listening_section2_multiple_choice_and_maps_band6_to_7.md",
+    "category": "Listening",
+    "sub_category": "Band_6.0_to_7.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "listening_section2_multiple_choice_and_maps_band6_to_7.md"
   },
   {
-    "number": 37,
-    "section": "Paragraph Completion",
-    "stem": "Photosynthesis is the process by which green plants use sunlight to synthesize nutrients from carbon dioxide and water. ----. Without this crucial chemical reaction, there would be no oxygen in the atmosphere, and aerobic life on Earth would cease to exist.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Some plants have adapted to live in extremely dry desert conditions."
-      },
-      {
-        "letter": "B",
-        "text": "During this process, plants release oxygen as a byproduct into the air."
-      },
-      {
-        "letter": "C",
-        "text": "Chlorophyll is the pigment that gives plants their green color."
-      },
-      {
-        "letter": "D",
-        "text": "Carbon dioxide levels have been rising due to human activities."
-      },
-      {
-        "letter": "E",
-        "text": "Soil quality is another factor that affects plant growth rates."
-      }
-    ],
-    "correct": "B",
-    "explanation": "**Doğru Cevap: B**\n\n**Paragraf Tamamlama Analizi:**\n- Boşluktan sonraki cümle \"Without **this** crucial chemical reaction, there would be no **oxygen** in the atmosphere...\" (Bu önemli kimyasal reaksiyon olmadan atmosferde oksijen olmazdı...) demektedir.\n- \"this... reaction\" ve \"oxygen\" ifadeleri boşluğa gelecek cümlenin oksijen üretimi/salınımı ile ilgili olması gerektiğini gösterir.\n- B seçeneğindeki \"During this process, plants release oxygen...\" (Bu süreçte bitkiler havaya yan ürün olarak oksijen salar) cümlesi akışı mükemmel bağlar."
+    "title": "IELTS Academic Listening: Section 3 Multi-Speaker Discussion Masterclass (Band 7.0 ➔ 8.0)",
+    "domain": "IELTS",
+    "target_level": "Band 7.0 to 8.0",
+    "topic": "Listening Section 3: Multi-Speaker Academic Tutorials, Nuanced Agreement & Flowcharts",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Analysis",
+    "path_root": "IELTS/Listening/Band_7.0_to_8.0/listening_section3_academic_discussion_band7_to_8.md",
+    "path_domain": "Listening/Band_7.0_to_8.0/listening_section3_academic_discussion_band7_to_8.md",
+    "category": "Listening",
+    "sub_category": "Band_7.0_to_8.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "listening_section3_academic_discussion_band7_to_8.md"
   },
   {
-    "number": 38,
-    "section": "Paragraph Completion",
-    "stem": "The Silk Road was an ancient network of trade routes that connected East Asia with the Mediterranean world. It facilitated not only the exchange of goods like silk, spices, and glass, but also the transmission of ideas, religions, and technologies. ----. For instance, the migration of paper-making technology from China to the West revolutionized administration and literacy across Europe.",
-    "options": [
-      {
-        "letter": "A",
-        "text": "Silk was highly valued by Roman elites as a symbol of wealth and status."
-      },
-      {
-        "letter": "B",
-        "text": "The route was eventually abandoned due to the rise of maritime trade."
-      },
-      {
-        "letter": "C",
-        "text": "This cultural exchange had a profound and lasting impact on human history."
-      },
-      {
-        "letter": "D",
-        "text": "Traveling along the Silk Road was dangerous due to bandits and harsh deserts."
-      },
-      {
-        "letter": "E",
-        "text": "Many merchants became wealthy by trading goods over long distances."
-      }
-    ],
-    "correct": "C",
-    "explanation": "**Doğru Cevap: C**\n\n**Paragraf Tamamlama Analizi:**\n- Boşluktan önceki cümlede İpek Yolu'nun mal değişiminin yanı sıra fikir, din ve teknoloji aktarımını da kolaylaştırdığı belirtilmiştir.\n- Boşluktan sonraki cümle ise \"For instance, the migration of paper-making...\" diyerek bu aktarıma bir örnek (kağıt yapım teknolojisinin göçü) sunmaktadır.\n- Boşluğa bu kültürel değişimin genel önemini belirten C seçeneğindeki \"This cultural exchange had a profound and lasting impact...\" ifadesi gelmelidir."
+    "title": "IELTS Academic Listening: Section 4 University Lecture Masterclass (Band 8.0 ➔ 9.0)",
+    "domain": "IELTS",
+    "target_level": "Band 8.0 to 9.0",
+    "topic": "Listening Section 4: University Lecture Note Completion & Complex Academic Signposting",
+    "date_created": "2026-08-31",
+    "content_type": "Lesson Plan | Drill | Analysis",
+    "path_root": "IELTS/Listening/Band_8.0_to_9.0/listening_section4_academic_lecture_notes_band8_to_9.md",
+    "path_domain": "Listening/Band_8.0_to_9.0/listening_section4_academic_lecture_notes_band8_to_9.md",
+    "category": "Listening",
+    "sub_category": "Band_8.0_to_9.0",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "listening_section4_academic_lecture_notes_band8_to_9.md"
   },
   {
-    "number": 39,
-    "section": "Irrelevant Sentence",
-    "stem": "(I) Bioluminescence is the production and emission of light by a living organism. (II) It occurs widely in marine vertebrates and invertebrates, as well as in some fungi and insects. (III) The chemical reaction that produces this light requires a substance called luciferin and an enzyme called luciferase. (IV) Many deep-sea exploration vessels are equipped with high-definition cameras to capture marine life. (V) This cold light is highly efficient, as nearly 90% of the energy is converted into light rather than heat.\n\n**Soru 39:**",
-    "options": [
-      {
-        "letter": "A",
-        "text": "I"
-      },
-      {
-        "letter": "B",
-        "text": "II"
-      },
-      {
-        "letter": "C",
-        "text": "III"
-      },
-      {
-        "letter": "D",
-        "text": "IV"
-      },
-      {
-        "letter": "E",
-        "text": "V"
-      }
-    ],
-    "correct": "D",
-    "explanation": "**Doğru Cevap: D**\n\n**Akışı Bozan Cümle Analizi:**\n- Paragraf biyolojik bir ışık üretimi olan biyolüminesansı (bioluminescence) tanımlamakta, kimyasal reaksiyonunu ve verimliliğini anlatmaktadır.\n- I, II, III ve V numaralı cümleler doğrudan bu fenomenin doğasıyla ilgilidir. Ancak IV numaralı cümle konuyu derin deniz keşif gemilerinin kameralarına getirerek bütünlüğü tamamen bozmaktadır."
+    "title": "Digital SAT Math: Full Practice Module 1",
+    "domain": "SAT",
+    "target_level": "Score 700 - 800",
+    "topic": "Digital SAT Math Full Practice Test Module 1",
+    "date_created": "2026-09-01",
+    "content_type": "Full Practice Module / Mock Test",
+    "path_root": "SAT/Practice_Modules/sat_digital_full_practice_test_01_math_module.md",
+    "path_domain": "Practice_Modules/sat_digital_full_practice_test_01_math_module.md",
+    "category": "Practice_Modules",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_digital_full_practice_test_01_math_module.md"
   },
   {
-    "number": 40,
-    "section": "Irrelevant Sentence",
-    "stem": "(I) The printing press, invented by Johannes Gutenberg in the 15th century, is widely regarded as one of the most important inventions in history. (II) Before its development, books had to be copied by hand, which was a slow and expensive process. (III) Gutenberg's machine allowed for the mass production of books, making information accessible to a wider audience. (IV) Modern e-readers have become increasingly popular among younger generations. (V) Consequently, literacy rates across Europe increased dramatically, fueling the Renaissance and the Scientific Revolution.\n\n**Soru 40:**",
-    "options": [
-      {
-        "letter": "A",
-        "text": "I"
-      },
-      {
-        "letter": "B",
-        "text": "II"
-      },
-      {
-        "letter": "C",
-        "text": "III"
-      },
-      {
-        "letter": "D",
-        "text": "IV"
-      },
-      {
-        "letter": "E",
-        "text": "V"
-      }
-    ],
-    "correct": "D",
-    "explanation": "**Doğru Cevap: D**\n\n**Akışı Bozan Cümle Analizi:**\n- Paragraf matbaanın icadını, elle kitap yazımından seri üretime geçişini ve bunun tarihsel etkilerini (Rönesans, okuryazarlık) anlatmaktadır.\n- I, II, III ve V numaralı cümleler tarihsel matbaa ve sonuçları üzerinedir. IV numaralı cümle ise konuyu aniden günümüz e-kitap okuyucularına getirerek tarihsel akışı kesmektedir."
+    "title": "Digital SAT Reading and Writing: Full Practice Module 1",
+    "domain": "SAT",
+    "target_level": "Score 700 - 800",
+    "topic": "Digital SAT Reading and Writing Full Practice Test Module 1",
+    "date_created": "2026-09-01",
+    "content_type": "Full Practice Module / Mock Test",
+    "path_root": "SAT/Practice_Modules/sat_digital_full_practice_test_01_rw_module.md",
+    "path_domain": "Practice_Modules/sat_digital_full_practice_test_01_rw_module.md",
+    "category": "Practice_Modules",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_digital_full_practice_test_01_rw_module.md"
+  },
+  {
+    "title": "The Ultimate Digital SAT Desmos Calculator Mastery Guide & Speed Hacks",
+    "domain": "SAT",
+    "target_level": "Score 750 - 800",
+    "topic": "The Ultimate Digital SAT Desmos Calculator Mastery Guide & Speed Hacks",
+    "date_created": "2026-09-01",
+    "content_type": "Student Toolkit & Strategy Guide",
+    "path_root": "SAT/Question_Banks/sat_desmos_calculator_mastery_guide_and_hacks.md",
+    "path_domain": "Question_Banks/sat_desmos_calculator_mastery_guide_and_hacks.md",
+    "category": "Question_Banks",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_desmos_calculator_mastery_guide_and_hacks.md"
+  },
+  {
+    "title": "Digital SAT Reading & Writing: Distractor Trap Radar & Strategy Guide",
+    "domain": "SAT",
+    "target_level": "Score 750 - 800",
+    "topic": "Digital SAT Reading & Writing Distractor Radar & Strategy Cheat Sheet",
+    "date_created": "2026-09-01",
+    "content_type": "Student Strategy Guide & Cheat Sheet",
+    "path_root": "SAT/Question_Banks/sat_digital_rw_distractor_trap_radar_and_cheat_sheet.md",
+    "path_domain": "Question_Banks/sat_digital_rw_distractor_trap_radar_and_cheat_sheet.md",
+    "category": "Question_Banks",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_digital_rw_distractor_trap_radar_and_cheat_sheet.md"
+  },
+  {
+    "title": "Digital SAT Reading & Writing: Cross-Text Connections Masterclass",
+    "domain": "SAT",
+    "target_level": "Score 750 - 800",
+    "topic": "Cross-Text Connections & Author Stance Comparative Set",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "SAT/Reading_Writing/Craft_and_Structure/sat_craft_and_structure_cross_text_connections_set_02.md",
+    "path_domain": "Reading_Writing/Craft_and_Structure/sat_craft_and_structure_cross_text_connections_set_02.md",
+    "category": "Reading_Writing",
+    "sub_category": "Craft_and_Structure",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_craft_and_structure_cross_text_connections_set_02.md"
+  },
+  {
+    "title": "Digital SAT Reading & Writing: Words in Context Drill Set 01",
+    "domain": "SAT",
+    "target_level": "Score 700 - 800",
+    "topic": "Craft and Structure: High-Utility Words in Context & Rhetorical Precision",
+    "date_created": "2026-08-31",
+    "content_type": "Question Bank / Drill",
+    "path_root": "SAT/Reading_Writing/Craft_and_Structure/sat_craft_and_structure_words_in_context_set_01.md",
+    "path_domain": "Reading_Writing/Craft_and_Structure/sat_craft_and_structure_words_in_context_set_01.md",
+    "category": "Reading_Writing",
+    "sub_category": "Craft_and_Structure",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_craft_and_structure_words_in_context_set_01.md"
+  },
+  {
+    "title": "Digital SAT Reading & Writing: Expression of Ideas Masterclass",
+    "domain": "SAT",
+    "target_level": "Score 700 - 800",
+    "topic": "Transitions & Rhetorical Synthesis Precision Set",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "SAT/Reading_Writing/Expression_of_Ideas/sat_expression_of_ideas_transitions_rhetorical_synthesis_set_01.md",
+    "path_domain": "Reading_Writing/Expression_of_Ideas/sat_expression_of_ideas_transitions_rhetorical_synthesis_set_01.md",
+    "category": "Reading_Writing",
+    "sub_category": "Expression_of_Ideas",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_expression_of_ideas_transitions_rhetorical_synthesis_set_01.md"
+  },
+  {
+    "title": "Digital SAT Reading & Writing: Information and Ideas Masterclass",
+    "domain": "SAT",
+    "target_level": "Score 700 - 800",
+    "topic": "Command of Evidence, Central Ideas & Inferences Masterclass",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "SAT/Reading_Writing/Information_and_Ideas/sat_information_and_ideas_evidence_inference_set_01.md",
+    "path_domain": "Reading_Writing/Information_and_Ideas/sat_information_and_ideas_evidence_inference_set_01.md",
+    "category": "Reading_Writing",
+    "sub_category": "Information_and_Ideas",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_information_and_ideas_evidence_inference_set_01.md"
+  },
+  {
+    "title": "Digital SAT Reading & Writing: Scientific Data Tables & Quantitative Evidence",
+    "domain": "SAT",
+    "target_level": "Score 750 - 800",
+    "topic": "Scientific Data Tables & Quantitative Evidence Interpretation",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "SAT/Reading_Writing/Information_and_Ideas/sat_information_and_ideas_scientific_tables_and_graphs_set_02.md",
+    "path_domain": "Reading_Writing/Information_and_Ideas/sat_information_and_ideas_scientific_tables_and_graphs_set_02.md",
+    "category": "Reading_Writing",
+    "sub_category": "Information_and_Ideas",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_information_and_ideas_scientific_tables_and_graphs_set_02.md"
+  },
+  {
+    "title": "Digital SAT Reading & Writing: Standard English Conventions Masterclass",
+    "domain": "SAT",
+    "target_level": "Score 700 - 800",
+    "topic": "Boundaries, Modifiers & Syntactic Form Mastery",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "SAT/Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_boundaries_and_modifiers_set_01.md",
+    "path_domain": "Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_boundaries_and_modifiers_set_01.md",
+    "category": "Reading_Writing",
+    "sub_category": "Standard_English_Conventions",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_standard_english_conventions_boundaries_and_modifiers_set_01.md"
+  },
+  {
+    "title": "Digital SAT Reading & Writing: Verbs, Pronouns & Parallelism",
+    "domain": "SAT",
+    "target_level": "Score 750 - 800",
+    "topic": "Verbs, Pronoun-Antecedents & Advanced Parallelism Set",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "SAT/Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_verbs_pronouns_parallelism_set_02.md",
+    "path_domain": "Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_verbs_pronouns_parallelism_set_02.md",
+    "category": "Reading_Writing",
+    "sub_category": "Standard_English_Conventions",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_standard_english_conventions_verbs_pronouns_parallelism_set_02.md"
+  },
+  {
+    "title": "Digital SAT Math: Polynomials, Remainder Theorem & Nonlinear Systems",
+    "domain": "SAT",
+    "target_level": "Score 750 - 800",
+    "topic": "Polynomials, Remainder Theorem & Nonlinear Systems",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "SAT/Math/Advanced_Math/sat_math_advanced_math_polynomials_and_nonlinear_systems_set_02.md",
+    "path_domain": "Math/Advanced_Math/sat_math_advanced_math_polynomials_and_nonlinear_systems_set_02.md",
+    "category": "Math",
+    "sub_category": "Advanced_Math",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_math_advanced_math_polynomials_and_nonlinear_systems_set_02.md"
+  },
+  {
+    "title": "Digital SAT Math: Algebra & Advanced Math Masterclass",
+    "domain": "SAT",
+    "target_level": "Score 750 - 800",
+    "topic": "Algebra & Advanced Math High-Yield Problem Set",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "SAT/Math/Algebra/sat_math_algebra_and_advanced_functions_set_01.md",
+    "path_domain": "Math/Algebra/sat_math_algebra_and_advanced_functions_set_01.md",
+    "category": "Math",
+    "sub_category": "Algebra",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_math_algebra_and_advanced_functions_set_01.md"
+  },
+  {
+    "title": "Digital SAT Math: Geometry, Trigonometry & Data Analysis Masterclass",
+    "domain": "SAT",
+    "target_level": "Score 750 - 800",
+    "topic": "Geometry, Trigonometry & Data Analysis Masterclass",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "SAT/Math/Geometry_and_Trigonometry/sat_math_geometry_trigonometry_and_data_set_01.md",
+    "path_domain": "Math/Geometry_and_Trigonometry/sat_math_geometry_trigonometry_and_data_set_01.md",
+    "category": "Math",
+    "sub_category": "Geometry_and_Trigonometry",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_math_geometry_trigonometry_and_data_set_01.md"
+  },
+  {
+    "title": "Digital SAT Math: Statistics, Probability & Data Distributions",
+    "domain": "SAT",
+    "target_level": "Score 750 - 800",
+    "topic": "Statistics, Probability, Data Distributions & Margin of Error",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "SAT/Math/Problem_Solving_and_Data_Analysis/sat_math_problem_solving_data_statistics_set_01.md",
+    "path_domain": "Math/Problem_Solving_and_Data_Analysis/sat_math_problem_solving_data_statistics_set_01.md",
+    "category": "Math",
+    "sub_category": "Problem_Solving_and_Data_Analysis",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "sat_math_problem_solving_data_statistics_set_01.md"
+  },
+  {
+    "title": "YDT İngilizce — 40 Soruluk Tanılama Deneme Sınavı",
+    "domain": "YDT",
+    "target_level": "YDT 55-65 Net | CEFR B1-B2",
+    "topic": "Diagnostic YDT Mock Exam (40 Questions)",
+    "date_created": "2026-08-28",
+    "content_type": "Mock Test",
+    "path_root": "YDT/Denemeler/ydt_mock_exam_40q.md",
+    "path_domain": "Denemeler/ydt_mock_exam_40q.md",
+    "category": "Denemeler",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ydt_mock_exam_40q.md"
+  },
+  {
+    "title": "YDT İngilizce: 12 Tense Master Konu Anlatımı, Kullanım Rehberi ve ÖSYM Soru Bankası",
+    "domain": "YDT",
+    "target_level": "YDT 75+ Net | ÖSYM Standard",
+    "topic": "İngilizce 12 Tense Master Konu Anlatımı, Tüm Kullanım Alanları (5 Örnekli), 60 ÖSYM Çıkmış/Özgün Soru Bankası, İleri Düzey Tuzaklar ve Şık Eleme Stratejileri",
+    "date_created": "2026-08-28",
+    "content_type": "Konu Anlatımı & Master Web Simulator",
+    "path_root": "YDT/Konu_Anlatimi/ydt_tenses_konu_anlatimi.md",
+    "path_domain": "Konu_Anlatimi/ydt_tenses_konu_anlatimi.md",
+    "category": "Konu_Anlatimi",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ydt_tenses_konu_anlatimi.md"
+  },
+  {
+    "title": "YDT İngilizce: Yüksek Frekanslı Akademik Kelime Rehberi & Özgün Kelime Testi",
+    "domain": "YDT",
+    "target_level": "YDT 70+ Net | CEFR B1 - B2",
+    "topic": "YDT İngilizce Yüksek Frekanslı Akademik Kelimeler, Phrasal Verbs & Çözümlü Test",
+    "date_created": "2026-08-26",
+    "content_type": "Vocabulary Bank & Drills",
+    "path_root": "YDT/Vocabulary/ydt_essential_academic_vocabulary_set_01.md",
+    "path_domain": "Vocabulary/ydt_essential_academic_vocabulary_set_01.md",
+    "category": "Vocabulary",
+    "sub_category": "",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ydt_essential_academic_vocabulary_set_01.md"
+  },
+  {
+    "title": "YDT İngilizce: Karşılıklı Konuşma & Anlamca En Yakın Cümle (50–59. Sorular)",
+    "domain": "YDT",
+    "target_level": "YDT 75+ Net",
+    "topic": "YDT Karşılıklı Konuşma & Anlamca En Yakın Cümle Soru Bankası",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "YDT/Soru_Bankasi/Dialogue_Restatement/ydt_diyalog_ve_anlamca_yakin_01.md",
+    "path_domain": "Soru_Bankasi/Dialogue_Restatement/ydt_diyalog_ve_anlamca_yakin_01.md",
+    "category": "Soru_Bankasi",
+    "sub_category": "Dialogue_Restatement",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ydt_diyalog_ve_anlamca_yakin_01.md"
+  },
+  {
+    "title": "YDT İngilizce: Dilbilgisi ve Cloze Test Soru Bankası (1–20. Sorular)",
+    "domain": "YDT",
+    "target_level": "YDT 75+ Net",
+    "topic": "YDT Dilbilgisi & Cloze Test Soru Bankası Modülü",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "YDT/Soru_Bankasi/Grammar_Cloze/ydt_grammar_cloze_soru_bankasi_01.md",
+    "path_domain": "Soru_Bankasi/Grammar_Cloze/ydt_grammar_cloze_soru_bankasi_01.md",
+    "category": "Soru_Bankasi",
+    "sub_category": "Grammar_Cloze",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ydt_grammar_cloze_soru_bankasi_01.md"
+  },
+  {
+    "title": "YDT İngilizce — Okuma Parçaları (Reading Passages) Çalışma Modülü",
+    "domain": "YDT",
+    "target_level": "YDT 70+ Net | CEFR B2-C1",
+    "topic": "YDT Paragraf Soruları & Okuma Becerileri Kapsamlı Çalışma Modülü",
+    "date_created": "2026-08-26",
+    "content_type": "Worksheet | Drill | Analysis",
+    "path_root": "YDT/Soru_Bankasi/Reading_Passages/ydt_okuma_parcalari_calisma_modulu_01.md",
+    "path_domain": "Soru_Bankasi/Reading_Passages/ydt_okuma_parcalari_calisma_modulu_01.md",
+    "category": "Soru_Bankasi",
+    "sub_category": "Reading_Passages",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ydt_okuma_parcalari_calisma_modulu_01.md"
+  },
+  {
+    "title": "YDT İngilizce: Cümle Tamamlama Soru Bankası (21–28. Sorular)",
+    "domain": "YDT",
+    "target_level": "YDT 75+ Net",
+    "topic": "YDT Cümle Tamamlama (Sentence Completion) Soru Bankası Modülü",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "YDT/Soru_Bankasi/Sentence_Completion/ydt_cumle_tamamlama_soru_bankasi_01.md",
+    "path_domain": "Soru_Bankasi/Sentence_Completion/ydt_cumle_tamamlama_soru_bankasi_01.md",
+    "category": "Soru_Bankasi",
+    "sub_category": "Sentence_Completion",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ydt_cumle_tamamlama_soru_bankasi_01.md"
+  },
+  {
+    "title": "YDT İngilizce: Çeviri Soru Bankası (29–34. Sorular)",
+    "domain": "YDT",
+    "target_level": "YDT 75+ Net",
+    "topic": "YDT Çeviri (Translation EN-TR & TR-EN) Soru Bankası Modülü",
+    "date_created": "2026-09-01",
+    "content_type": "Question Bank / Drill",
+    "path_root": "YDT/Soru_Bankasi/Translation/ydt_ceviri_soru_bankasi_01.md",
+    "path_domain": "Soru_Bankasi/Translation/ydt_ceviri_soru_bankasi_01.md",
+    "category": "Soru_Bankasi",
+    "sub_category": "Translation",
+    "is_interactive": false,
+    "file_type": "Markdown",
+    "filename": "ydt_ceviri_soru_bankasi_01.md"
+  },
+  {
+    "title": "YDT İngilizce — 40 Soruluk Tanılama Deneme Sınavı | YDT Academic Study Module",
+    "domain": "YDT",
+    "target_level": "Interactive Webapp",
+    "topic": "Ydt Mock Exam 40Q",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "YDT/Denemeler/ydt_mock_exam_40q.html",
+    "path_domain": "Denemeler/ydt_mock_exam_40q.html",
+    "category": "Denemeler",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ydt_mock_exam_40q.html"
+  },
+  {
+    "title": "YDT İngilizce: 12 Tense Master Konu Anlatımı, Kullanım Rehberi ve ÖSYM Soru Bankası | YDT Academic Study Module",
+    "domain": "YDT",
+    "target_level": "Interactive Webapp",
+    "topic": "Ydt Tenses Konu Anlatimi",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "YDT/Konu_Anlatimi/ydt_tenses_konu_anlatimi.html",
+    "path_domain": "Konu_Anlatimi/ydt_tenses_konu_anlatimi.html",
+    "category": "Konu_Anlatimi",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ydt_tenses_konu_anlatimi.html"
+  },
+  {
+    "title": "YDT İngilizce: Yüksek Frekanslı Akademik Kelime Rehberi &amp; Özgün Kelime Testi | YDT Academic Study Module",
+    "domain": "YDT",
+    "target_level": "Interactive Webapp",
+    "topic": "Ydt Essential Academic Vocabulary Set 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "YDT/Vocabulary/ydt_essential_academic_vocabulary_set_01.html",
+    "path_domain": "Vocabulary/ydt_essential_academic_vocabulary_set_01.html",
+    "category": "Vocabulary",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ydt_essential_academic_vocabulary_set_01.html"
+  },
+  {
+    "title": "YDT İngilizce: Yüksek Frekanslı Akademik Kelime Rehberi & Özgün Kelime Testi | Interactive Exam Simulator",
+    "domain": "YDT",
+    "target_level": "Interactive Webapp",
+    "topic": "Ydt Vocabulary Quiz App",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "YDT/Vocabulary/ydt_vocabulary_quiz_app.html",
+    "path_domain": "Vocabulary/ydt_vocabulary_quiz_app.html",
+    "category": "Vocabulary",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ydt_vocabulary_quiz_app.html"
+  },
+  {
+    "title": "YDT İngilizce: Karşılıklı Konuşma &amp; Anlamca En Yakın Cümle (50–59. Sorular) | YDT Academic Study Module",
+    "domain": "YDT",
+    "target_level": "Interactive Webapp",
+    "topic": "Ydt Diyalog Ve Anlamca Yakin 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "YDT/Soru_Bankasi/Dialogue_Restatement/ydt_diyalog_ve_anlamca_yakin_01.html",
+    "path_domain": "Soru_Bankasi/Dialogue_Restatement/ydt_diyalog_ve_anlamca_yakin_01.html",
+    "category": "Soru_Bankasi",
+    "sub_category": "Dialogue_Restatement",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ydt_diyalog_ve_anlamca_yakin_01.html"
+  },
+  {
+    "title": "YDT İngilizce: Dilbilgisi ve Cloze Test Soru Bankası (1–20. Sorular) | YDT Academic Study Module",
+    "domain": "YDT",
+    "target_level": "Interactive Webapp",
+    "topic": "Ydt Grammar Cloze Soru Bankasi 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "YDT/Soru_Bankasi/Grammar_Cloze/ydt_grammar_cloze_soru_bankasi_01.html",
+    "path_domain": "Soru_Bankasi/Grammar_Cloze/ydt_grammar_cloze_soru_bankasi_01.html",
+    "category": "Soru_Bankasi",
+    "sub_category": "Grammar_Cloze",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ydt_grammar_cloze_soru_bankasi_01.html"
+  },
+  {
+    "title": "YDT İngilizce — Okuma Parçaları (Reading Passages) Çalışma Modülü | YDT Academic Study Module",
+    "domain": "YDT",
+    "target_level": "Interactive Webapp",
+    "topic": "Ydt Okuma Parcalari Calisma Modulu 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "YDT/Soru_Bankasi/Reading_Passages/ydt_okuma_parcalari_calisma_modulu_01.html",
+    "path_domain": "Soru_Bankasi/Reading_Passages/ydt_okuma_parcalari_calisma_modulu_01.html",
+    "category": "Soru_Bankasi",
+    "sub_category": "Reading_Passages",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ydt_okuma_parcalari_calisma_modulu_01.html"
+  },
+  {
+    "title": "YDT İngilizce: Cümle Tamamlama Soru Bankası (21–28. Sorular) | YDT Academic Study Module",
+    "domain": "YDT",
+    "target_level": "Interactive Webapp",
+    "topic": "Ydt Cumle Tamamlama Soru Bankasi 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "YDT/Soru_Bankasi/Sentence_Completion/ydt_cumle_tamamlama_soru_bankasi_01.html",
+    "path_domain": "Soru_Bankasi/Sentence_Completion/ydt_cumle_tamamlama_soru_bankasi_01.html",
+    "category": "Soru_Bankasi",
+    "sub_category": "Sentence_Completion",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ydt_cumle_tamamlama_soru_bankasi_01.html"
+  },
+  {
+    "title": "YDT İngilizce: Çeviri Soru Bankası (29–34. Sorular) | YDT Academic Study Module",
+    "domain": "YDT",
+    "target_level": "Interactive Webapp",
+    "topic": "Ydt Ceviri Soru Bankasi 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "YDT/Soru_Bankasi/Translation/ydt_ceviri_soru_bankasi_01.html",
+    "path_domain": "Soru_Bankasi/Translation/ydt_ceviri_soru_bankasi_01.html",
+    "category": "Soru_Bankasi",
+    "sub_category": "Translation",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ydt_ceviri_soru_bankasi_01.html"
+  },
+  {
+    "title": "Digital SAT Math: Full Practice Module 1 | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Digital Full Practice Test 01 Math Module",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Practice_Modules/sat_digital_full_practice_test_01_math_module.html",
+    "path_domain": "Practice_Modules/sat_digital_full_practice_test_01_math_module.html",
+    "category": "Practice_Modules",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_digital_full_practice_test_01_math_module.html"
+  },
+  {
+    "title": "Digital SAT Reading and Writing: Full Practice Module 1 | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Digital Full Practice Test 01 Rw Module",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Practice_Modules/sat_digital_full_practice_test_01_rw_module.html",
+    "path_domain": "Practice_Modules/sat_digital_full_practice_test_01_rw_module.html",
+    "category": "Practice_Modules",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_digital_full_practice_test_01_rw_module.html"
+  },
+  {
+    "title": "The Ultimate Digital SAT Desmos Calculator Mastery Guide &amp; Speed Hacks | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Desmos Calculator Mastery Guide And Hacks",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Question_Banks/sat_desmos_calculator_mastery_guide_and_hacks.html",
+    "path_domain": "Question_Banks/sat_desmos_calculator_mastery_guide_and_hacks.html",
+    "category": "Question_Banks",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_desmos_calculator_mastery_guide_and_hacks.html"
+  },
+  {
+    "title": "Digital SAT Reading &amp; Writing: Distractor Trap Radar &amp; Strategy Guide | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Digital Rw Distractor Trap Radar And Cheat Sheet",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Question_Banks/sat_digital_rw_distractor_trap_radar_and_cheat_sheet.html",
+    "path_domain": "Question_Banks/sat_digital_rw_distractor_trap_radar_and_cheat_sheet.html",
+    "category": "Question_Banks",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_digital_rw_distractor_trap_radar_and_cheat_sheet.html"
+  },
+  {
+    "title": "Digital SAT EBRW Practice Module: Craft & Structure | Interactive Simulator",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Digital Ebrw Interactive Trainer",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Reading_Writing/sat_digital_ebrw_interactive_trainer.html",
+    "path_domain": "Reading_Writing/sat_digital_ebrw_interactive_trainer.html",
+    "category": "Reading_Writing",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_digital_ebrw_interactive_trainer.html"
+  },
+  {
+    "title": "Digital SAT Reading &amp; Writing: Cross-Text Connections Masterclass | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Craft And Structure Cross Text Connections Set 02",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Reading_Writing/Craft_and_Structure/sat_craft_and_structure_cross_text_connections_set_02.html",
+    "path_domain": "Reading_Writing/Craft_and_Structure/sat_craft_and_structure_cross_text_connections_set_02.html",
+    "category": "Reading_Writing",
+    "sub_category": "Craft_and_Structure",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_craft_and_structure_cross_text_connections_set_02.html"
+  },
+  {
+    "title": "Digital SAT Reading &amp; Writing: Words in Context Drill Set 01 | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Craft And Structure Words In Context Set 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Reading_Writing/Craft_and_Structure/sat_craft_and_structure_words_in_context_set_01.html",
+    "path_domain": "Reading_Writing/Craft_and_Structure/sat_craft_and_structure_words_in_context_set_01.html",
+    "category": "Reading_Writing",
+    "sub_category": "Craft_and_Structure",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_craft_and_structure_words_in_context_set_01.html"
+  },
+  {
+    "title": "Digital SAT Reading &amp; Writing: Expression of Ideas Masterclass | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Expression Of Ideas Transitions Rhetorical Synthesis Set 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Reading_Writing/Expression_of_Ideas/sat_expression_of_ideas_transitions_rhetorical_synthesis_set_01.html",
+    "path_domain": "Reading_Writing/Expression_of_Ideas/sat_expression_of_ideas_transitions_rhetorical_synthesis_set_01.html",
+    "category": "Reading_Writing",
+    "sub_category": "Expression_of_Ideas",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_expression_of_ideas_transitions_rhetorical_synthesis_set_01.html"
+  },
+  {
+    "title": "Digital SAT Reading &amp; Writing: Information and Ideas Masterclass | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Information And Ideas Evidence Inference Set 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Reading_Writing/Information_and_Ideas/sat_information_and_ideas_evidence_inference_set_01.html",
+    "path_domain": "Reading_Writing/Information_and_Ideas/sat_information_and_ideas_evidence_inference_set_01.html",
+    "category": "Reading_Writing",
+    "sub_category": "Information_and_Ideas",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_information_and_ideas_evidence_inference_set_01.html"
+  },
+  {
+    "title": "Digital SAT Reading &amp; Writing: Scientific Data Tables &amp; Quantitative Evidence | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Information And Ideas Scientific Tables And Graphs Set 02",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Reading_Writing/Information_and_Ideas/sat_information_and_ideas_scientific_tables_and_graphs_set_02.html",
+    "path_domain": "Reading_Writing/Information_and_Ideas/sat_information_and_ideas_scientific_tables_and_graphs_set_02.html",
+    "category": "Reading_Writing",
+    "sub_category": "Information_and_Ideas",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_information_and_ideas_scientific_tables_and_graphs_set_02.html"
+  },
+  {
+    "title": "Digital SAT Reading &amp; Writing: Standard English Conventions Masterclass | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Standard English Conventions Boundaries And Modifiers Set 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_boundaries_and_modifiers_set_01.html",
+    "path_domain": "Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_boundaries_and_modifiers_set_01.html",
+    "category": "Reading_Writing",
+    "sub_category": "Standard_English_Conventions",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_standard_english_conventions_boundaries_and_modifiers_set_01.html"
+  },
+  {
+    "title": "Digital SAT Reading &amp; Writing: Verbs, Pronouns &amp; Parallelism | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Standard English Conventions Verbs Pronouns Parallelism Set 02",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_verbs_pronouns_parallelism_set_02.html",
+    "path_domain": "Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_verbs_pronouns_parallelism_set_02.html",
+    "category": "Reading_Writing",
+    "sub_category": "Standard_English_Conventions",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_standard_english_conventions_verbs_pronouns_parallelism_set_02.html"
+  },
+  {
+    "title": "Digital SAT Math: Polynomials, Remainder Theorem &amp; Nonlinear Systems | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Math Advanced Math Polynomials And Nonlinear Systems Set 02",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Math/Advanced_Math/sat_math_advanced_math_polynomials_and_nonlinear_systems_set_02.html",
+    "path_domain": "Math/Advanced_Math/sat_math_advanced_math_polynomials_and_nonlinear_systems_set_02.html",
+    "category": "Math",
+    "sub_category": "Advanced_Math",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_math_advanced_math_polynomials_and_nonlinear_systems_set_02.html"
+  },
+  {
+    "title": "Digital SAT Math: Algebra &amp; Advanced Math Masterclass | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Math Algebra And Advanced Functions Set 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Math/Algebra/sat_math_algebra_and_advanced_functions_set_01.html",
+    "path_domain": "Math/Algebra/sat_math_algebra_and_advanced_functions_set_01.html",
+    "category": "Math",
+    "sub_category": "Algebra",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_math_algebra_and_advanced_functions_set_01.html"
+  },
+  {
+    "title": "Digital SAT Math: Geometry, Trigonometry &amp; Data Analysis Masterclass | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Math Geometry Trigonometry And Data Set 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Math/Geometry_and_Trigonometry/sat_math_geometry_trigonometry_and_data_set_01.html",
+    "path_domain": "Math/Geometry_and_Trigonometry/sat_math_geometry_trigonometry_and_data_set_01.html",
+    "category": "Math",
+    "sub_category": "Geometry_and_Trigonometry",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_math_geometry_trigonometry_and_data_set_01.html"
+  },
+  {
+    "title": "Digital SAT Math: Statistics, Probability &amp; Data Distributions | SAT Academic Study Module",
+    "domain": "SAT",
+    "target_level": "Interactive Webapp",
+    "topic": "Sat Math Problem Solving Data Statistics Set 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "SAT/Math/Problem_Solving_and_Data_Analysis/sat_math_problem_solving_data_statistics_set_01.html",
+    "path_domain": "Math/Problem_Solving_and_Data_Analysis/sat_math_problem_solving_data_statistics_set_01.html",
+    "category": "Math",
+    "sub_category": "Problem_Solving_and_Data_Analysis",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "sat_math_problem_solving_data_statistics_set_01.html"
+  },
+  {
+    "title": "IELTS Academic Full Diagnostic Practice Examination 01 | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Ielts Academic Full Practice Exam 01",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Mock_Tests/ielts_academic_full_practice_exam_01.html",
+    "path_domain": "Mock_Tests/ielts_academic_full_practice_exam_01.html",
+    "category": "Mock_Tests",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ielts_academic_full_practice_exam_01.html"
+  },
+  {
+    "title": "IELTS Academic Full Practice Exam 02 | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Ielts Academic Full Practice Exam 02",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Mock_Tests/ielts_academic_full_practice_exam_02.html",
+    "path_domain": "Mock_Tests/ielts_academic_full_practice_exam_02.html",
+    "category": "Mock_Tests",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ielts_academic_full_practice_exam_02.html"
+  },
+  {
+    "title": "IELTS Academic Speaking: Parts 1, 2 &amp; 3 Fluency &amp; Idiomatic Toolkit | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Ielts Speaking Part1 2 3 Student Fluency And Idiomatic Toolkit",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Speaking/ielts_speaking_part1_2_3_student_fluency_and_idiomatic_toolkit.html",
+    "path_domain": "Speaking/ielts_speaking_part1_2_3_student_fluency_and_idiomatic_toolkit.html",
+    "category": "Speaking",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ielts_speaking_part1_2_3_student_fluency_and_idiomatic_toolkit.html"
+  },
+  {
+    "title": "IELTS Academic: Band 9.0 Lexical Resource Master Matrix | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Ielts Academic Band 9 Lexical Resource Master Matrix",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Vocabulary_Collocations/ielts_academic_band_9_lexical_resource_master_matrix.html",
+    "path_domain": "Vocabulary_Collocations/ielts_academic_band_9_lexical_resource_master_matrix.html",
+    "category": "Vocabulary_Collocations",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ielts_academic_band_9_lexical_resource_master_matrix.html"
+  },
+  {
+    "title": "IELTS Academic: High-Scoring Collocations &amp; Lexical Resource Bank | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Ielts Academic High Scoring Collocations And Lexical Resource",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Vocabulary_Collocations/ielts_academic_high_scoring_collocations_and_lexical_resource.html",
+    "path_domain": "Vocabulary_Collocations/ielts_academic_high_scoring_collocations_and_lexical_resource.html",
+    "category": "Vocabulary_Collocations",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ielts_academic_high_scoring_collocations_and_lexical_resource.html"
+  },
+  {
+    "title": "IELTS Academic Vocabulary: Top 100 Collocations &amp; Lexical Resource Masterclass (Band 7.0 ➔ 9.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Ielts Academic Top 100 Academic Collocations And Phrasal Verbs",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Vocabulary_Collocations/ielts_academic_top_100_academic_collocations_and_phrasal_verbs.html",
+    "path_domain": "Vocabulary_Collocations/ielts_academic_top_100_academic_collocations_and_phrasal_verbs.html",
+    "category": "Vocabulary_Collocations",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ielts_academic_top_100_academic_collocations_and_phrasal_verbs.html"
+  },
+  {
+    "title": "IELTS Academic Writing: Task 1 &amp; Task 2 Lexical Booster (Band 7.0 ➔ 9.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Ielts Academic Writing Task1 And Task2 Lexical Booster",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Vocabulary_Collocations/ielts_academic_writing_task1_and_task2_lexical_booster.html",
+    "path_domain": "Vocabulary_Collocations/ielts_academic_writing_task1_and_task2_lexical_booster.html",
+    "category": "Vocabulary_Collocations",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ielts_academic_writing_task1_and_task2_lexical_booster.html"
+  },
+  {
+    "title": "IELTS Academic Writing Task 1 — Line Graph Mastery Training Pack",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Ielts Academic Task1 Line Graph Training Pack",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Writing_Task1/ielts_academic_task1_line_graph_training_pack.html",
+    "path_domain": "Writing_Task1/ielts_academic_task1_line_graph_training_pack.html",
+    "category": "Writing_Task1",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ielts_academic_task1_line_graph_training_pack.html"
+  },
+  {
+    "title": "IELTS Academic Writing Task 1: Master Formula &amp; Overview Guide | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Ielts Academic Writing Task1 Master Formula And Overview Guide",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Writing_Task1/ielts_academic_writing_task1_master_formula_and_overview_guide.html",
+    "path_domain": "Writing_Task1/ielts_academic_writing_task1_master_formula_and_overview_guide.html",
+    "category": "Writing_Task1",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ielts_academic_writing_task1_master_formula_and_overview_guide.html"
+  },
+  {
+    "title": "IELTS Academic Writing Task 2: Band 9 Cohesion &amp; Idea Generation Master Guide | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Ielts Academic Writing Task2 Band 9 Cohesion And Idea Generation Guide",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Writing_Task2/ielts_academic_writing_task2_band_9_cohesion_and_idea_generation_guide.html",
+    "path_domain": "Writing_Task2/ielts_academic_writing_task2_band_9_cohesion_and_idea_generation_guide.html",
+    "category": "Writing_Task2",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ielts_academic_writing_task2_band_9_cohesion_and_idea_generation_guide.html"
+  },
+  {
+    "title": "IELTS Academic Writing Task 2: Opinion Essays Masterclass (Band 5.0 ➔ 6.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Writing Task2 Opinion Agree Disagree Band5 To 6",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Writing_Task2/Band_5.0_to_6.0/academic_writing_task2_opinion_agree_disagree_band5_to_6.html",
+    "path_domain": "Writing_Task2/Band_5.0_to_6.0/academic_writing_task2_opinion_agree_disagree_band5_to_6.html",
+    "category": "Writing_Task2",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_writing_task2_opinion_agree_disagree_band5_to_6.html"
+  },
+  {
+    "title": "IELTS Academic Writing Task 2: Discuss Both Views (Band 6.0 ➔ 7.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Writing Task2 Discuss Both Views Band6 To 7",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Writing_Task2/Band_6.0_to_7.0/academic_writing_task2_discuss_both_views_band6_to_7.html",
+    "path_domain": "Writing_Task2/Band_6.0_to_7.0/academic_writing_task2_discuss_both_views_band6_to_7.html",
+    "category": "Writing_Task2",
+    "sub_category": "Band_6.0_to_7.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_writing_task2_discuss_both_views_band6_to_7.html"
+  },
+  {
+    "title": "IELTS Academic Writing Task 2: Problem &amp; Solution Masterclass (Band 7.0 ➔ 8.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Writing Task2 Problem Solution Cause Effect Band7 To 8",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Writing_Task2/Band_7.0_to_8.0/academic_writing_task2_problem_solution_cause_effect_band7_to_8.html",
+    "path_domain": "Writing_Task2/Band_7.0_to_8.0/academic_writing_task2_problem_solution_cause_effect_band7_to_8.html",
+    "category": "Writing_Task2",
+    "sub_category": "Band_7.0_to_8.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_writing_task2_problem_solution_cause_effect_band7_to_8.html"
+  },
+  {
+    "title": "IELTS Academic Writing Task 2: Two-Part Direct Questions (Band 9.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Writing Task2 Direct Question Double Prompt Band8 To 9",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Writing_Task2/Band_8.0_to_9.0/academic_writing_task2_direct_question_double_prompt_band8_to_9.html",
+    "path_domain": "Writing_Task2/Band_8.0_to_9.0/academic_writing_task2_direct_question_double_prompt_band8_to_9.html",
+    "category": "Writing_Task2",
+    "sub_category": "Band_8.0_to_9.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_writing_task2_direct_question_double_prompt_band8_to_9.html"
+  },
+  {
+    "title": "IELTS Academic Writing Task 1: Mixed Charts &amp; Multiple Visuals Masterclass (Band 5.0 ➔ 6.5) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Writing Task1 Mixed Charts Band5 To 6 5",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Writing_Task1/Band_5.0_to_6.0/academic_writing_task1_mixed_charts_band5_to_6_5.html",
+    "path_domain": "Writing_Task1/Band_5.0_to_6.0/academic_writing_task1_mixed_charts_band5_to_6_5.html",
+    "category": "Writing_Task1",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_writing_task1_mixed_charts_band5_to_6_5.html"
+  },
+  {
+    "title": "IELTS Academic Writing Task 1: Band 6+ Breakthrough Masterclass | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Ielts Academic Task1 Band 5 To 6 Breakthrough",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Writing_Task1/Band_5.0_to_6.0/ielts_academic_task1_band_5_to_6_breakthrough.html",
+    "path_domain": "Writing_Task1/Band_5.0_to_6.0/ielts_academic_task1_band_5_to_6_breakthrough.html",
+    "category": "Writing_Task1",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ielts_academic_task1_band_5_to_6_breakthrough.html"
+  },
+  {
+    "title": "IELTS Academic Writing Task 1: Bar &amp; Pie Charts (Band 6.0 ➔ 7.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Writing Task1 Bar And Pie Band6 To 7",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Writing_Task1/Band_6.0_to_7.0/academic_writing_task1_bar_and_pie_band6_to_7.html",
+    "path_domain": "Writing_Task1/Band_6.0_to_7.0/academic_writing_task1_bar_and_pie_band6_to_7.html",
+    "category": "Writing_Task1",
+    "sub_category": "Band_6.0_to_7.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_writing_task1_bar_and_pie_band6_to_7.html"
+  },
+  {
+    "title": "IELTS Academic Writing Task 1: Process &amp; Flowchart Masterclass | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Writing Task1 Process And Flowchart Band7 To 8",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Writing_Task1/Band_7.0_to_8.0/academic_writing_task1_process_and_flowchart_band7_to_8.html",
+    "path_domain": "Writing_Task1/Band_7.0_to_8.0/academic_writing_task1_process_and_flowchart_band7_to_8.html",
+    "category": "Writing_Task1",
+    "sub_category": "Band_7.0_to_8.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_writing_task1_process_and_flowchart_band7_to_8.html"
+  },
+  {
+    "title": "IELTS Academic Writing Task 1: Urban Maps &amp; Mixed Graphics (Band 9.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Writing Task1 Maps And Mixed Data Band8 To 9",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Writing_Task1/Band_8.0_to_9.0/academic_writing_task1_maps_and_mixed_data_band8_to_9.html",
+    "path_domain": "Writing_Task1/Band_8.0_to_9.0/academic_writing_task1_maps_and_mixed_data_band8_to_9.html",
+    "category": "Writing_Task1",
+    "sub_category": "Band_8.0_to_9.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_writing_task1_maps_and_mixed_data_band8_to_9.html"
+  },
+  {
+    "title": "IELTS Academic Speaking Mock Exam (Band 5.5 – 6.5 Focus) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Ielts Academic Speaking Band 5 5 To 6 5 Mock",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Speaking/Band_5.0_to_6.0/ielts_academic_speaking_band_5_5_to_6_5_mock.html",
+    "path_domain": "Speaking/Band_5.0_to_6.0/ielts_academic_speaking_band_5_5_to_6_5_mock.html",
+    "category": "Speaking",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ielts_academic_speaking_band_5_5_to_6_5_mock.html"
+  },
+  {
+    "title": "IELTS Academic Speaking Part 1: Fluency &amp; Natural Expansion Masterclass (Band 5.0 ➔ 6.5) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Speaking Part1 Fluency And Natural Expansion Band5 To 6",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Speaking/Band_5.0_to_6.0/speaking_part1_fluency_and_natural_expansion_band5_to_6.html",
+    "path_domain": "Speaking/Band_5.0_to_6.0/speaking_part1_fluency_and_natural_expansion_band5_to_6.html",
+    "category": "Speaking",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "speaking_part1_fluency_and_natural_expansion_band5_to_6.html"
+  },
+  {
+    "title": "IELTS Academic Speaking Part 2: Long Turn Mastery (Band 6.0 ➔ 7.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Speaking Part2 Long Turn Strategy Band6 To 7",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Speaking/Band_6.0_to_7.0/academic_speaking_part2_long_turn_strategy_band6_to_7.html",
+    "path_domain": "Speaking/Band_6.0_to_7.0/academic_speaking_part2_long_turn_strategy_band6_to_7.html",
+    "category": "Speaking",
+    "sub_category": "Band_6.0_to_7.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_speaking_part2_long_turn_strategy_band6_to_7.html"
+  },
+  {
+    "title": "IELTS Academic Speaking Part 3: Abstract Discussion Masterclass (Band 7.0 ➔ 8.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Speaking Part3 Abstract Discussion Band7 To 8",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Speaking/Band_7.0_to_8.0/academic_speaking_part3_abstract_discussion_band7_to_8.html",
+    "path_domain": "Speaking/Band_7.0_to_8.0/academic_speaking_part3_abstract_discussion_band7_to_8.html",
+    "category": "Speaking",
+    "sub_category": "Band_7.0_to_8.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_speaking_part3_abstract_discussion_band7_to_8.html"
+  },
+  {
+    "title": "IELTS Academic Speaking: Idiomatic Fluency &amp; Pronunciation (Band 9.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Speaking Idiomatic Fluency And Pronunciation Band8 To 9",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Speaking/Band_8.0_to_9.0/academic_speaking_idiomatic_fluency_and_pronunciation_band8_to_9.html",
+    "path_domain": "Speaking/Band_8.0_to_9.0/academic_speaking_idiomatic_fluency_and_pronunciation_band8_to_9.html",
+    "category": "Speaking",
+    "sub_category": "Band_8.0_to_9.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_speaking_idiomatic_fluency_and_pronunciation_band8_to_9.html"
+  },
+  {
+    "title": "IELTS Academic Speaking: Advanced Pronunciation &amp; Connected Speech Masterclass (Band 8.0 ➔ 9.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Speaking Masterclass Pronunciation Intonation Connected Speech",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Speaking/Band_8.0_to_9.0/speaking_masterclass_pronunciation_intonation_connected_speech.html",
+    "path_domain": "Speaking/Band_8.0_to_9.0/speaking_masterclass_pronunciation_intonation_connected_speech.html",
+    "category": "Speaking",
+    "sub_category": "Band_8.0_to_9.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "speaking_masterclass_pronunciation_intonation_connected_speech.html"
+  },
+  {
+    "title": "IELTS Academic Reading: True / False / Not Given (T/F/NG) Masterclass | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Reading Tfng Mastery Band5 To 6",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Reading/Band_5.0_to_6.0/academic_reading_tfng_mastery_band5_to_6.html",
+    "path_domain": "Reading/Band_5.0_to_6.0/academic_reading_tfng_mastery_band5_to_6.html",
+    "category": "Reading",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_reading_tfng_mastery_band5_to_6.html"
+  },
+  {
+    "title": "IELTS Academic Reading: Matching Headings Masterclass (Band 6.0 ➔ 7.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Reading Matching Headings Band6 To 7",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Reading/Band_6.0_to_7.0/academic_reading_matching_headings_band6_to_7.html",
+    "path_domain": "Reading/Band_6.0_to_7.0/academic_reading_matching_headings_band6_to_7.html",
+    "category": "Reading",
+    "sub_category": "Band_6.0_to_7.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_reading_matching_headings_band6_to_7.html"
+  },
+  {
+    "title": "IELTS Academic Reading: Multiple-Choice Questions (MCQs) Masterclass | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Reading Mcq Masterclass",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Reading/Band_7.0_to_8.0/academic_reading_mcq_masterclass.html",
+    "path_domain": "Reading/Band_7.0_to_8.0/academic_reading_mcq_masterclass.html",
+    "category": "Reading",
+    "sub_category": "Band_7.0_to_8.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_reading_mcq_masterclass.html"
+  },
+  {
+    "title": "IELTS Academic Reading: MCQ Masterclass & Interactive Simulator",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Ielts Reading Mcq App",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Reading/Band_7.0_to_8.0/ielts_reading_mcq_app.html",
+    "path_domain": "Reading/Band_7.0_to_8.0/ielts_reading_mcq_app.html",
+    "category": "Reading",
+    "sub_category": "Band_7.0_to_8.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "ielts_reading_mcq_app.html"
+  },
+  {
+    "title": "IELTS Academic Reading: Summary Completion &amp; Complex Inference Masterclass (Band 8.0 ➔ 9.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Academic Reading Summary Completion And Inference Band8 To 9",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Reading/Band_8.0_to_9.0/academic_reading_summary_completion_and_inference_band8_to_9.html",
+    "path_domain": "Reading/Band_8.0_to_9.0/academic_reading_summary_completion_and_inference_band8_to_9.html",
+    "category": "Reading",
+    "sub_category": "Band_8.0_to_9.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "academic_reading_summary_completion_and_inference_band8_to_9.html"
+  },
+  {
+    "title": "IELTS Academic Listening: Section 1 Form Completion Masterclass | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Listening Section1 Form Completion Band5 To 6",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Listening/Band_5.0_to_6.0/listening_section1_form_completion_band5_to_6.html",
+    "path_domain": "Listening/Band_5.0_to_6.0/listening_section1_form_completion_band5_to_6.html",
+    "category": "Listening",
+    "sub_category": "Band_5.0_to_6.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "listening_section1_form_completion_band5_to_6.html"
+  },
+  {
+    "title": "IELTS Academic Listening: Section 2 Map Labeling &amp; MCQs Masterclass (Band 6.0 ➔ 7.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Listening Section2 Multiple Choice And Maps Band6 To 7",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Listening/Band_6.0_to_7.0/listening_section2_multiple_choice_and_maps_band6_to_7.html",
+    "path_domain": "Listening/Band_6.0_to_7.0/listening_section2_multiple_choice_and_maps_band6_to_7.html",
+    "category": "Listening",
+    "sub_category": "Band_6.0_to_7.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "listening_section2_multiple_choice_and_maps_band6_to_7.html"
+  },
+  {
+    "title": "IELTS Academic Listening: Section 3 Multi-Speaker Discussion Masterclass (Band 7.0 ➔ 8.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Listening Section3 Academic Discussion Band7 To 8",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Listening/Band_7.0_to_8.0/listening_section3_academic_discussion_band7_to_8.html",
+    "path_domain": "Listening/Band_7.0_to_8.0/listening_section3_academic_discussion_band7_to_8.html",
+    "category": "Listening",
+    "sub_category": "Band_7.0_to_8.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "listening_section3_academic_discussion_band7_to_8.html"
+  },
+  {
+    "title": "IELTS Academic Listening: Section 4 University Lecture Masterclass (Band 8.0 ➔ 9.0) | IELTS Academic Study Module",
+    "domain": "IELTS",
+    "target_level": "Interactive Webapp",
+    "topic": "Listening Section4 Academic Lecture Notes Band8 To 9",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "IELTS/Listening/Band_8.0_to_9.0/listening_section4_academic_lecture_notes_band8_to_9.html",
+    "path_domain": "Listening/Band_8.0_to_9.0/listening_section4_academic_lecture_notes_band8_to_9.html",
+    "category": "Listening",
+    "sub_category": "Band_8.0_to_9.0",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "listening_section4_academic_lecture_notes_band8_to_9.html"
+  },
+  {
+    "title": "ESL A1 Lesson Plan: Daily Routines &amp; Telling Time | ESL Academic Study Module",
+    "domain": "ESL",
+    "target_level": "Interactive Webapp",
+    "topic": "A1 Daily Routines And Telling Time Ppp",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "ESL/A1/a1_daily_routines_and_telling_time_ppp.html",
+    "path_domain": "A1/a1_daily_routines_and_telling_time_ppp.html",
+    "category": "A1",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "a1_daily_routines_and_telling_time_ppp.html"
+  },
+  {
+    "title": "Dream Big, Stress Less: Careers &amp; School Life (B1 Teen ESL) | ESL Academic Study Module",
+    "domain": "ESL",
+    "target_level": "Interactive Webapp",
+    "topic": "B1 Dream Jobs And School Pressures",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "ESL/B1/b1_dream_jobs_and_school_pressures.html",
+    "path_domain": "B1/b1_dream_jobs_and_school_pressures.html",
+    "category": "B1",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "b1_dream_jobs_and_school_pressures.html"
+  },
+  {
+    "title": "B1 Past Tenses Speaking Lab (High School Edition): Teacher Guide &amp; Student Handout | ESL Academic Study Module",
+    "domain": "ESL",
+    "target_level": "Interactive Webapp",
+    "topic": "B1 Past Tenses Speaking Lab",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "ESL/B1/b1_past_tenses_speaking_lab.html",
+    "path_domain": "B1/b1_past_tenses_speaking_lab.html",
+    "category": "B1",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "b1_past_tenses_speaking_lab.html"
+  },
+  {
+    "title": "B1 Past Tenses Speaking Lab (High School Edition) | Past Simple, Present Perfect & Past Perfect",
+    "domain": "ESL",
+    "target_level": "Interactive Webapp",
+    "topic": "Past-Tenses-B1-Speaking-Lab",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "ESL/B1/past-tenses-b1-speaking-lab.html",
+    "path_domain": "B1/past-tenses-b1-speaking-lab.html",
+    "category": "B1",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "past-tenses-b1-speaking-lab.html"
+  },
+  {
+    "title": "ESL B2 Speaking Lab: Mixed Conditionals &amp; Hypothetical Regrets | ESL Academic Study Module",
+    "domain": "ESL",
+    "target_level": "Interactive Webapp",
+    "topic": "B2 Mixed Conditionals And Regrets Speaking Lab",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "ESL/B2/b2_mixed_conditionals_and_regrets_speaking_lab.html",
+    "path_domain": "B2/b2_mixed_conditionals_and_regrets_speaking_lab.html",
+    "category": "B2",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "b2_mixed_conditionals_and_regrets_speaking_lab.html"
+  },
+  {
+    "title": "ESL C1 Masterclass: Academic Hedging &amp; Nuanced Discourse | ESL Academic Study Module",
+    "domain": "ESL",
+    "target_level": "Interactive Webapp",
+    "topic": "C1 Academic Hedging And Nuanced Discourse",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "ESL/C1/c1_academic_hedging_and_nuanced_discourse.html",
+    "path_domain": "C1/c1_academic_hedging_and_nuanced_discourse.html",
+    "category": "C1",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "c1_academic_hedging_and_nuanced_discourse.html"
+  },
+  {
+    "title": "ESL Lesson Flow Master Guide: Task-Based Language Teaching (TBLT) | ESL Academic Study Module",
+    "domain": "ESL",
+    "target_level": "Interactive Webapp",
+    "topic": "Tblt Task Based Framework Master Guide",
+    "date_created": "2026",
+    "content_type": "Interactive Simulator",
+    "path_root": "ESL/Lesson_Flow/tblt_task_based_framework_master_guide.html",
+    "path_domain": "Lesson_Flow/tblt_task_based_framework_master_guide.html",
+    "category": "Lesson_Flow",
+    "sub_category": "",
+    "is_interactive": true,
+    "file_type": "HTML Simulator",
+    "filename": "tblt_task_based_framework_master_guide.html"
   }
 ];
 
-    let currentIndex = 0;
-    let answers = {};
-    let flagged = new Set();
-    let isSubmitted = false;
-    let timerInterval = null;
-    let timeRemaining = 3600; // 60 minutes
-
-    function init() {
-      renderNavigator();
-      loadQuestion();
-      startTimer();
-    }
-
-    function startTimer() {
-      timerInterval = setInterval(() => {
-        timeRemaining--;
-        if (timeRemaining <= 0) {
-          clearInterval(timerInterval);
-          submitExam();
-        }
-        const mins = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
-        const secs = (timeRemaining % 60).toString().padStart(2, '0');
-        document.getElementById('timer').innerText = `${mins}:${secs}`;
-      }, 1000);
-    }
-
-    function renderNavigator() {
-      const grid = document.getElementById('navigatorGrid');
-      grid.innerHTML = '';
-      questions.forEach((q, idx) => {
-        const btn = document.createElement('button');
-        btn.className = 'nav-btn';
-        btn.innerText = q.number;
-        btn.onclick = () => jumpToQuestion(idx);
-
-        if (idx === currentIndex) btn.classList.add('active');
-        if (answers[q.number]) btn.classList.add('answered');
-        if (flagged.has(q.number)) btn.classList.add('flagged');
-
-        grid.appendChild(btn);
-      });
-    }
-
-    function loadQuestion() {
-      if (isSubmitted) return;
-      const q = questions[currentIndex];
-      const workspace = document.getElementById('workspaceContent');
-      
-      const hasPassage = q.stem.includes("Reading Passage 1:") || q.stem.includes("Reading Passage 2:") || q.stem.includes("Cloze Test Soru");
-      
-      if (hasPassage) {
-        // Split view
-        workspace.style.width = "100%";
-        workspace.style.height = "100%";
-        
-        let textContent = "";
-        if (q.stem.includes("Reading Passage 1:")) {
-          textContent = `
-            <div class="text-pane-title">Reading Passage 1</div>
-            <p><strong>The Great Barrier Reef</strong>, stretching over 2,300 kilometers off the coast of Australia, is the world's largest coral reef system. It is home to thousands of marine species, making it a critical component of global marine biodiversity. However, in recent decades, the reef has faced severe threats from ocean warming caused by climate change. When water temperatures rise even slightly, corals undergo a process known as bleaching. During bleaching, corals expel the colorful algae living in their tissues, which turns them white and deprives them of their primary energy source. Without these algae, corals eventually starve and die. Scientists warn that if global emissions are not drastically reduced, recurrent mass bleaching events could lead to the permanent loss of this ecological wonder. While conservation efforts are underway, including artificial breeding of heat-resistant corals, local measures alone cannot save the reef without a global commitment to reduce greenhouse gases.</p>
-          `;
-        } else if (q.stem.includes("Reading Passage 2:")) {
-          textContent = `
-            <div class="text-pane-title">Reading Passage 2</div>
-            <p><strong>The Indus Valley Civilization</strong>, which flourished around 2500 BCE in what is now Pakistan and northwest India, was one of the three great early civilizations of the Old World, alongside Egypt and Mesopotamia. Unlike their contemporaries, who built massive temples and monuments dedicated to kings and gods, the people of the Indus Valley prioritized urban planning, sanitation, and utility. Cities like Harappa and Mohenjo-daro featured grid-like street layouts, sophisticated drainage systems, and large public baths. Their houses were built with standardized baked bricks and had private wells and bathrooms. This emphasis on hygiene and egalitarianism suggests a highly organized society with a strong municipal authority, though no evidence of a centralized monarchy or military ruling class has been found. The civilization's script remains undeciphered, leaving many aspects of their social structure and religious beliefs a mystery. Around 1900 BCE, the civilization began to decline, possibly due to climate shifts that altered the path of the Indus River, leading to agricultural failure.</p>
-          `;
-        } else {
-          textContent = `
-            <div class="text-pane-title">Cloze Test Passage</div>
-            <p>The Rosetta Stone, discovered in 1799, was the key to understanding Egyptian hieroglyphs. Before its discovery, scholars <strong>(9) ----</strong> unable to decipher the ancient writings because the language had been lost for centuries. The stone features a decree written in three <strong>(10) ----</strong> scripts: Hieroglyphic, Demotic, and Ancient Greek. <strong>(11) ----</strong> studying the Greek text, researchers were able to link the Greek words to the hieroglyphic symbols. This breakthrough occurred <strong>(12) ----</strong> the dedication of Jean-François Champollion, who spent years <strong>(13) ----</strong> on the stone.</p>
-          `;
-        }
-
-        // Clean up stem from header
-        let displayStem = q.stem;
-        displayStem = displayStem.replace(/\*\(Reading Passage \d: Soru \d+-\d+\)\*/g, "");
-        displayStem = displayStem.replace(/\*\(Cloze Test Soru \d+-\d+\)\*/g, "");
-        displayStem = displayStem.replace(/Reading Passage \d:/g, "");
-        displayStem = displayStem.replace(/Cloze Test Soru/g, "");
-
-        workspace.innerHTML = `
-          <div class="split-pane">
-            <div class="pane-left">${textContent}</div>
-            <div class="pane-right">
-              <div class="question-card" style="width:100%; box-shadow:none; border:none; padding:1rem;">
-                <div class="question-section">${q.section} | Soru ${q.number}</div>
-                <div class="question-stem">${displayStem}</div>
-                <div class="options-list">
-                  ${q.options.map(opt => `
-                    <div class="option-card ${answers[q.number] === opt.letter ? 'selected' : ''}" onclick="selectOption('${opt.letter}')">
-                      <span class="option-letter">${opt.letter}</span>
-                      <span>${opt.text}</span>
-                    </div>
-                  `).join('')}
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-      } else {
-        // Standard view
-        workspace.style.width = "auto";
-        workspace.style.height = "auto";
-        workspace.innerHTML = `
-          <div class="question-card">
-            <div class="question-section">${q.section} | Soru ${q.number}</div>
-            <div class="question-stem">${q.stem}</div>
-            <div class="options-list">
-              ${q.options.map(opt => `
-                <div class="option-card ${answers[q.number] === opt.letter ? 'selected' : ''}" onclick="selectOption('${opt.letter}')">
-                  <span class="option-letter">${opt.letter}</span>
-                  <span>${opt.text}</span>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        `;
-      }
-
-      // Update flag button state
-      const flagBtn = document.getElementById('flagBtn');
-      if (flagged.has(q.number)) {
-        flagBtn.classList.add('active');
-        document.getElementById('flagIcon').innerText = '🚩';
-      } else {
-        flagBtn.classList.remove('active');
-        document.getElementById('flagIcon').innerText = '🏳️';
-      }
-
-      renderNavigator();
-    }
-
-    function selectOption(letter) {
-      const q = questions[currentIndex];
-      if (answers[q.number] === letter) {
-        delete answers[q.number]; // Toggle off
-      } else {
-        answers[q.number] = letter;
-      }
-      loadQuestion();
-    }
-
-    function toggleFlag() {
-      const q = questions[currentIndex];
-      if (flagged.has(q.number)) {
-        flagged.delete(q.number);
-      } else {
-        flagged.add(q.number);
-      }
-      loadQuestion();
-    }
-
-    function prevQuestion() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        loadQuestion();
-      }
-    }
-
-    function nextQuestion() {
-      if (currentIndex < questions.length - 1) {
-        currentIndex++;
-        loadQuestion();
-      }
-    }
-
-    function jumpToQuestion(idx) {
-      currentIndex = idx;
-      loadQuestion();
-    }
-
-    function submitExam() {
-      if (isSubmitted) return;
-      if (!confirm("Sınavı bitirmek istediğinizden emin misiniz? Cevaplarınız kaydedilecek ve analiz ekranı açılacaktır.")) return;
-      
-      clearInterval(timerInterval);
-      isSubmitted = true;
-
-      let correctCount = 0;
-      let wrongCount = 0;
-      let emptyCount = 0;
-
-      questions.forEach(q => {
-        const userAns = answers[q.number];
-        if (!userAns) {
-          emptyCount++;
-        } else if (userAns === q.correct) {
-          correctCount++;
-        } else {
-          wrongCount++;
-        }
-      });
-
-      const netScore = (correctCount - (wrongCount * 0.25)).toFixed(2);
-
-      // Hide workspace/sidebar layout and show results
-      const mainContainer = document.querySelector('.main-container');
-      mainContainer.innerHTML = `
-        <div class="results-screen">
-          <h2 style="margin-bottom:1.5rem; text-align:center;">Sınav Sonuçları ve Analizi</h2>
-          
-          <div class="summary-grid">
-            <div class="summary-card">
-              <div class="summary-num" style="color:var(--success);">${correctCount}</div>
-              <div style="font-weight:700;">Doğru</div>
-            </div>
-            <div class="summary-card">
-              <div class="summary-num" style="color:var(--danger);">${wrongCount}</div>
-              <div style="font-weight:700;">Yanlış</div>
-            </div>
-            <div class="summary-card">
-              <div class="summary-num" style="color:var(--text-muted);">${emptyCount}</div>
-              <div style="font-weight:700;">Boş</div>
-            </div>
-            <div class="summary-card">
-              <div class="summary-num" style="color:var(--primary);">${netScore}</div>
-              <div style="font-weight:700;">Net Skoru</div>
-            </div>
-          </div>
-
-          <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; margin-bottom:2rem; box-shadow:var(--shadow);">
-            <h3 style="margin-bottom:0.75rem; color:var(--primary);">Kişiselleştirilmiş Öğrenci Profili Analizi</h3>
-            <p>2 ay önce girdiğiniz sınavda <strong>57 Doğru, 22 Yanlış (51.5 Net)</strong> yapmıştınız. Bu testteki performansınızla o zamandan bu yana kaydettiğiniz ilerlemeyi kıyaslayabilirsiniz.</p>
-            <p style="margin-top:0.75rem;">YDT Net hesaplamasında 4 yanlış 1 doğruyu götürmektedir. Özellikle bağlaç yapıları, cümle tamamlama ve restatement sorularında çeldirici analizlerini dikkatle okumanız önerilir.</p>
-          </div>
-
-          <h3 style="margin-bottom:1rem;">Detaylı Soru İncelemesi</h3>
-          <div class="review-list">
-            ${questions.map((q, idx) => {
-              const userAns = answers[q.number] || "Boş";
-              const isCorrect = userAns === q.correct;
-              const statusClass = userAns === "Boş" ? "status-empty" : (isCorrect ? "status-correct" : "status-wrong");
-              const statusText = userAns === "Boş" ? "Boş" : (isCorrect ? "Doğru" : "Yanlış");
-
-              return `
-                <div class="review-item">
-                  <div class="review-header">
-                    <span style="font-weight:800; color:var(--primary);">${q.section} | Soru ${q.number}</span>
-                    <span class="status-badge ${statusClass}">${statusText}</span>
-                  </div>
-                  <div class="question-stem" style="font-size:1rem; margin-bottom:1rem;">${q.stem}</div>
-                  <div class="options-list" style="margin-bottom:1rem; pointer-events:none;">
-                    ${q.options.map(opt => {
-                      let optClass = "";
-                      if (opt.letter === q.correct) optClass = "selected"; // Show correct in green
-                      return `
-                        <div class="option-card ${optClass}" style="padding:8px 12px; font-size:0.9rem;">
-                          <span class="option-letter" style="width:20px; height:20px; font-size:0.8rem;">${opt.letter}</span>
-                          <span>${opt.text}</span>
-                        </div>
-                      `;
-                    }).join('')}
-                  </div>
-                  <div style="font-size:0.9rem; color:var(--text-muted); margin-top:0.5rem;">
-                    <strong>Sizin Cevabınız:</strong> ${userAns} | <strong>Doğru Cevap:</strong> ${q.correct}
-                  </div>
-                  
-                  <button class="accordion-toggle" onclick="toggleExplanation(${q.number})">Çözüm ve Çeldirici Analizini Göster</button>
-                  
-                  <div class="explanation-box" id="explanation-${q.number}">
-                    ${q.explanation.replace(/\n/g, '<br>')}
-                  </div>
-                </div>
-              `;
-            }).join('')}
-          </div>
-        </div>
-      `;
-      // Remove timer and finish button
-      document.querySelector('.header-controls').innerHTML = `<span style="font-weight:700; color:var(--success);">Tamamlandı</span>`;
-    }
-
-    function toggleExplanation(qNum) {
-      const box = document.getElementById("explanation-" + qNum);
-      box.classList.toggle('visible');
-    }
+    let activeFilter = 'ALL';
+    let onlyInteractive = false;
+    let searchQuery = '';
 
     function toggleTheme() {
-      const current = document.documentElement.getAttribute('data-theme');
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
       const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('ydt_theme', next);
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('ag_theme', next);
     }
 
-    const savedTheme = localStorage.getItem('ydt_theme');
+    const savedTheme = localStorage.getItem('ag_theme');
     if (savedTheme) {
       document.documentElement.setAttribute('data-theme', savedTheme);
     }
 
-    init();
+    function renderGrid() {
+      const grid = document.getElementById('contentGrid');
+      const filtered = items.filter(item => {
+        if (onlyInteractive && !item.is_interactive) return false;
+        if (activeFilter !== 'ALL' && item.domain !== activeFilter) return false;
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          const matchTitle = item.title.toLowerCase().includes(q);
+          const matchTopic = item.topic.toLowerCase().includes(q);
+          const matchLevel = item.target_level.toLowerCase().includes(q);
+          if (!matchTitle && !matchTopic && !matchLevel) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted); background: var(--surface); border-radius: var(--radius);">No matching resources found.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => `
+        <div class="content-card">
+          <div>
+            <div class="card-header">
+              <span class="domain-badge domain-${item.domain}">${item.domain}</span>
+              <span class="level-badge">${item.target_level}</span>
+            </div>
+            <h3 class="card-title">${item.title}</h3>
+            <p class="card-meta">
+              <strong>Type:</strong> ${item.content_type}<br>
+              <strong>Topic:</strong> ${item.topic}
+            </p>
+          </div>
+          <div class="card-actions">
+            <a href="${item.path_root}" class="btn-launch ${item.is_interactive ? 'btn-interactive' : ''}">
+              ${item.is_interactive ? '🚀 Launch Simulator' : '📄 Open Document'}
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterDomain(dom) {
+      activeFilter = dom;
+      onlyInteractive = false;
+      updateFilterButtons();
+      renderGrid();
+    }
+
+    function filterInteractive() {
+      onlyInteractive = !onlyInteractive;
+      updateFilterButtons();
+      renderGrid();
+    }
+
+    function updateFilterButtons() {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (!onlyInteractive && btn.innerText.includes(activeFilter)) {
+          btn.classList.add('active');
+        } else if (onlyInteractive && btn.innerText.includes('Interactive')) {
+          btn.classList.add('active');
+        } else if (!onlyInteractive && activeFilter === 'ALL' && btn.innerText.includes('All')) {
+          btn.classList.add('active');
+        }
+      });
+    }
+
+    function handleSearch() {
+      searchQuery = document.getElementById('searchBox').value.trim();
+      renderGrid();
+    }
+
+    renderGrid();
   </script>
 </body>
 </html>
