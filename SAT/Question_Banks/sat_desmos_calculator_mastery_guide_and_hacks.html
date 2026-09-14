@@ -11,6 +11,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}, {left: '\(', right: '\)', display: false}, {left: '\[', right: '\]', display: true}]});"></script>
+
+  <!-- Mermaid for diagram rendering (mindmap, flowchart) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    .mermaid-diagram{background:#fff;border:1px solid var(--border,#e2e8f0);border-radius:10px;padding:1rem;margin:.6rem 0;overflow-x:auto;text-align:center}
+  </style>
   <style>
     :root {
       --primary: #8b5cf6;
@@ -1218,6 +1224,28 @@
       if (banner) banner.style.display = count === 4 ? 'block' : 'none';
     }
     (function() { renderMastery(); })();
+  </script>
+
+  <script>
+  /* Render mermaid source blocks as diagrams; source code stays for Read/Copy. */
+  window.addEventListener('load', function () {
+    if (!window.mermaid) return;
+    try {
+      var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'default', securityLevel: 'loose' });
+      document.querySelectorAll('code.language-mermaid').forEach(function (code, i) {
+        var text = code.textContent;
+        if (!text || !text.trim()) return;
+        mermaid.render('sat-mrd-' + i, text).then(function (res) {
+          var holder = document.createElement('div');
+          holder.className = 'mermaid-diagram';
+          holder.innerHTML = res.svg;
+          var pre = code.closest('pre');
+          if (pre && pre.parentNode) pre.parentNode.insertBefore(holder, pre);
+        }).catch(function () {});
+      });
+    } catch (e) {}
+  });
   </script>
 </body>
 </html>
