@@ -666,22 +666,8 @@
         <button class="btn-close-drawer" onclick="toggleTeacherMode()">✕ Close</button>
       </div>
       <div class="teacher-drawer-body">
-        <div class="teacher-block">
-          <h4>⏱️ Suggested Lesson Flow (45–60 Mins)</h4>
-          <ul>
-            <li><strong>Warmer (5m):</strong> Project the prompt and ask students: <em>"What is the single biggest trend you notice?"</em></li>
-            <li><strong>Strategy Breakdown (15m):</strong> Review the 4-paragraph structure and highlight the Dual Overview rule.</li>
-            <li><strong>Guided Practice (15m):</strong> Students complete the fill-in-the-blank sentence frames in pairs.</li>
-            <li><strong>Independent Timed Writing (20m):</strong> Launch the live Writing Arena timer.</li>
-          </ul>
-        </div>
-        <div class="teacher-block">
-          <h4>💡 Concept Checking Questions (CCQs)</h4>
-          <ul>
-            <li><em>"Should we include raw percentages (e.g. 48%) in the overview?"</em> ➔ <strong>No (Instant Band 5 penalty).</strong></li>
-            <li><em>"If we have a table and a pie chart, how many body paragraphs should we write?"</em> ➔ <strong>Two separate paragraphs.</strong></li>
-          </ul>
-        </div>
+        
+        
         <div class="teacher-block">
           <h4>🖨️ Classroom Printing</h4>
           <p>Click below to format this module into a clean, 2-page student handout for classroom distribution:</p>
@@ -1424,40 +1410,6 @@
       }
     }
 
-    function insertSentenceStarter(type) {
-      const editor = document.getElementById('essayEditor');
-      if (!editor) return;
-      let text = '';
-      if (type === 'intro') {
-        text = 'The provided charts illustrate the volume of... across... over a period from... to... ';
-      } else if (type === 'overview') {
-        text = 'Overall, it is clear that while... experienced a substantial upward trend, ... recorded a marked decline. ';
-      } else if (type === 'body1') {
-        text = 'Looking first at the leading category, ... accounted for the largest proportion at ..., followed closely by ... at ... ';
-      } else if (type === 'body2') {
-        text = 'In stark contrast, ... comprised merely a negligible fraction of ..., before recovering slightly to ... ';
-      }
-      editor.value += text;
-      editor.focus();
-      updateWordStats(250);
-    }
-
-    // Copy Code Helper
-    function copyCode(btn) {
-      const pre = btn.closest('.code-block-wrapper').querySelector('pre code');
-      if (pre) {
-        navigator.clipboard.writeText(pre.innerText).then(() => {
-          btn.innerText = '✅ Copied!';
-          setTimeout(() => btn.innerText = '📋 Copy', 2000);
-        });
-      }
-    }
-
-    // Web Speech Audio Reader
-    let currentUtterance = null;
-    let isSpeaking = false;
-    let audioRate = 1.0;
-
     function updateAudioSpeed() {
       audioRate = parseFloat(document.getElementById('audioSpeed').value) || 1.0;
       if (isSpeaking) {
@@ -1516,123 +1468,6 @@
         utter.rate = audioRate;
         window.speechSynthesis.speak(utter);
       }
-    }
-
-    // Writing Arena Logic
-    let timerInterval = null;
-    let timerSeconds = 2400;
-    function startWritingTimer(mins) {
-      clearInterval(timerInterval);
-      timerSeconds = mins * 60;
-      updateTimerDisplay();
-      timerInterval = setInterval(() => {
-        if (timerSeconds <= 0) {
-          clearInterval(timerInterval);
-          alert('⏰ Time is up! Review and edit your response.');
-          return;
-        }
-        timerSeconds--;
-        updateTimerDisplay();
-      }, 1000);
-    }
-    function pauseWritingTimer() { clearInterval(timerInterval); }
-    function resetWritingTimer(mins) {
-      clearInterval(timerInterval);
-      timerSeconds = mins * 60;
-      updateTimerDisplay();
-    }
-    function updateTimerDisplay() {
-      const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
-      const s = (timerSeconds % 60).toString().padStart(2, '0');
-      const el = document.getElementById('timerDisplay');
-      if (el) el.innerText = `${m}:${s}`;
-    }
-    function updateWordStats(target) {
-      const text = document.getElementById('essayEditor').value.trim();
-      const words = text ? text.split(/\s+/).length : 0;
-      const countEl = document.getElementById('wordCount');
-      const progEl = document.getElementById('wordProgressBar');
-      const fbEl = document.getElementById('wordFeedback');
-      if (countEl) countEl.innerText = words;
-      const pct = Math.min(100, Math.round((words / target) * 100));
-      if (progEl) {
-        progEl.style.width = pct + '%';
-        progEl.style.background = words >= target ? '#10b981' : '#f59e0b';
-      }
-      if (fbEl) {
-        if (words >= target) {
-          fbEl.innerText = `✅ Met Target (${words} words)`;
-          fbEl.style.color = '#10b981';
-        } else {
-          fbEl.innerText = `Need ${target - words} more words`;
-          fbEl.style.color = '#f59e0b';
-        }
-      }
-      localStorage.setItem('draft_' + window.location.pathname, text);
-    }
-    function clearWritingDraft() {
-      if (confirm('Clear current draft?')) {
-        document.getElementById('essayEditor').value = '';
-        updateWordStats(250);
-      }
-    }
-    (function() {
-      const saved = localStorage.getItem('draft_' + window.location.pathname);
-      const editor = document.getElementById('essayEditor');
-      if (saved && editor) {
-        editor.value = saved;
-        updateWordStats(250);
-      }
-    })();
-
-    // Speaking Arena Logic
-    let speakingInterval = null;
-    let speakingSecs = 60;
-    function startSpeakingPrep() {
-      clearInterval(speakingInterval);
-      speakingSecs = 60;
-      document.getElementById('speakingPhaseBadge').innerText = '1-Min Prep';
-      document.getElementById('speakingPhaseBadge').style.background = '#f59e0b';
-      document.getElementById('speakingFeedback').innerText = 'Taking notes... Think about Past, Present, Future context.';
-      speakingInterval = setInterval(() => {
-        if (speakingSecs <= 0) {
-          clearInterval(speakingInterval);
-          alert('⏰ Prep time over! Begin speaking now.');
-          startSpeakingTurn();
-          return;
-        }
-        speakingSecs--;
-        updateSpeakingUI(60);
-      }, 1000);
-    }
-    function startSpeakingTurn() {
-      clearInterval(speakingInterval);
-      speakingSecs = 120;
-      document.getElementById('speakingPhaseBadge').innerText = 'Speaking (2m)';
-      document.getElementById('speakingPhaseBadge').style.background = '#10b981';
-      document.getElementById('speakingFeedback').innerText = '🎙️ Speak continuously. Develop your points fully!';
-      speakingInterval = setInterval(() => {
-        if (speakingSecs <= 0) {
-          clearInterval(speakingInterval);
-          alert('🏁 2 minutes complete! Excellent practice.');
-          document.getElementById('speakingPhaseBadge').innerText = 'Completed';
-          return;
-        }
-        speakingSecs--;
-        updateSpeakingUI(120);
-      }, 1000);
-    }
-    function stopSpeakingTimer() {
-      clearInterval(speakingInterval);
-      document.getElementById('speakingPhaseBadge').innerText = 'Stopped';
-    }
-    function updateSpeakingUI(total) {
-      const m = Math.floor(speakingSecs / 60).toString().padStart(2, '0');
-      const s = (speakingSecs % 60).toString().padStart(2, '0');
-      document.getElementById('speakingTimerDisplay').innerText = `${m}:${s}`;
-      const elapsed = total - speakingSecs;
-      const pct = Math.round((elapsed / total) * 100);
-      document.getElementById('speakingProgressBar').style.width = pct + '%';
     }
 
     // Mastery Checklist Logic
