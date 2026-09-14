@@ -92,3 +92,12 @@ When choosing transition words, classify the relationship before looking at choi
 
 > [!TIP]
 > **Elimination Rule of Thumb**: If two answer choices belong to the exact same transition category (e.g., *A) Furthermore* and *B) Moreover*), **both are almost certainly wrong** because neither is uniquely superior.
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../index.html) (interactive pen / highlight / mark tools)
+---

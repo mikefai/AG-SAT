@@ -448,3 +448,12 @@ The student wants to **emphasize Marie Maynard Daly's historic academic mileston
 - **Q25 (C)**: Fulfills the exact prompt goal by explaining how the permafrost $-18^\circ\text{C}$ protects seeds during power outages.
 - **Q26 (B)**: Fulfills the goal by stating the exact metrics (70% tunnel boom reduction, 15% electricity savings).
 - **Q27 (B)**: Directly highlights the historic 1947 milestone (first African American woman to earn a Ph.D. in chemistry in the US).
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../index.html) (interactive pen / highlight / mark tools)
+---

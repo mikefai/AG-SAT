@@ -131,3 +131,12 @@ Which choice best uses data from the table to support the engineers' claim?
 
 ### Question 4
 - **Correct Answer: B**: Directly proves synergy by comparing the 1.5% Hybrid blend (11.4 MPa, 10.6 toughness) against 1.5% Steel alone (9.8 MPa, 8.4) and 1.5% Basalt alone (7.6 MPa, 5.2).
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../../index.html) (interactive pen / highlight / mark tools)
+---

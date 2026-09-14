@@ -4,7 +4,7 @@ Welcome to the **Digital SAT** dedicated workspace and standalone web platform.
 
 - 🌐 **Independent Web Portal**: [`index.html`](index.html) *(Open locally or publish via GitHub Pages)*
 - 🔗 **GitHub Repository**: [`https://github.com/mikefai/AG-SAT`](https://github.com/mikefai/AG-SAT)
-- 🏠 **Master Workspace Hub**: [`../index.html`](../index.html)
+- 🏠 **Master Workspace Hub**: [`./index.html`](./index.html)
 
 ---
 
@@ -50,3 +50,12 @@ When generating SAT content:
    - Explicitly detail why the correct answer is logically/grammatically sound.
    - Provide precise error breakdown for each of the 3 distractors.
 4. **Synchronization**: After creating new items, execute `python scripts/build_workspace_index.py` to update the connected portal.
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](./Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](./Test/mock_01.html)
+- **Portal:** [SAT/index.html](./index.html) (interactive pen / highlight / mark tools)
+---

@@ -132,3 +132,12 @@ Which choice completes the text with the most logical and precise word or phrase
   - **A (elucidate)**: *Incorrect.* Means to clarify or explain; doesn't pair with the idea of introducing culturally specific altering inflections.
   - **C (replicate)**: *Incorrect.* Redundant with "preserve" and contradicts the idea that translation is not a transparent mirror.
   - **D (nullify)**: *Incorrect.* Means to completely cancel or invalidate; too extreme because the sentence says translations still "preserve" the intention.
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../../index.html) (interactive pen / highlight / mark tools)
+---

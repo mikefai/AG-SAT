@@ -380,3 +380,12 @@ A right circular cylinder has a base radius of $4\text{ cm}$ and a height of $9\
 
 ### Question 22
 - **Algebraic**: Cylinder volume $V = \pi r^2 h = \pi (4)^2 (9) = \pi (16)(9) = 144\pi \implies k = 144$.
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../index.html) (interactive pen / highlight / mark tools)
+---

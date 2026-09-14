@@ -1,0 +1,148 @@
+"""Build lessons.json — full Teach-layer lesson bodies for the SAT web service."""
+import json, os
+
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.path.join(BASE, "SAT", "webapp", "data")
+os.makedirs(OUT, exist_ok=True)
+
+LESSONS = [
+ {
+  "id": "craft-structure",
+  "title": "Craft & Structure",
+  "domain": "Reading & Writing",
+  "time": "25 min",
+  "summary": "Main purpose, text function, and words-in-context: what a passage does, not just what it says.",
+  "sections": [
+   {"h": "1. Main purpose questions", "body": "Ask what the passage DOES: report a finding, propose a policy, explain a mechanism, qualify a claim. Eliminate choices that describe content the passage never covers, and choices that upgrade a report into persuasion (or vice versa). Watch for scope words: 'primarily', 'mainly', 'chiefly'.",
+    "bullets": ["Match the verb: report / propose / explain / argue / describe.", "Too narrow and too broad are the two classic traps.", "A prescription ('should') is never the answer to a descriptive passage."]},
+   {"h": "2. Function / transition questions", "body": "Map contrast markers (although, however, nevertheless, despite) vs cause markers (because, therefore, consequently) vs illustration markers (for example, for instance). The sentence after the marker tells you the job: concession + pivot is the most tested pattern.",
+    "bullets": ["'Although X, Y' → Y is the point; X is conceded.", "'Nevertheless' always pivots against the previous sentence.", "Summaries come last; definitions come first — position matters."]},
+   {"h": "3. Words in context", "body": "Use sentence logic, not the dictionary. Cover the word, predict a synonym from context clues (contrast, cause, example), then match. 'Resilient' next to 'fragile ... not ___' must mean 'able to recover'.",
+    "bullets": ["Predict before you peek at choices.", "Contrast clues ('not', 'rather than') flip the meaning.", "Cause clues ('altering ... for years') imply depth/duration."]},
+  ],
+  "traps": ["Prescription answer to a descriptive passage", "True statement that answers the wrong question", "Half-right choice covering only one paragraph"],
+  "checklist": ["I can name the passage's job in one verb", "I map every transition word before answering", "I predict vocabulary answers before reading choices"],
+ },
+ {
+  "id": "information-ideas",
+  "title": "Information & Ideas",
+  "domain": "Reading & Writing",
+  "time": "30 min",
+  "summary": "Evidence, inference, and data: only claim what the text and numbers actually support.",
+  "sections": [
+   {"h": "1. Command of evidence", "body": "The right answer is the sentence that PROVES the claim — not background, not method, not a related fact. For 'most effectively illustrates' questions, match the claim's key term to the quotation's key term (e.g. executive function → task-switching scores).",
+    "bullets": ["Underline the claim's key noun before scanning choices.", "Method details ('twelve schools') never prove a result.", "Equal-performance results prove nothing changed."]},
+   {"h": "2. Inferences", "body": "A valid inference is a small step from stated facts, never a leap. Correlation language ('was correlated with', 'might', 'may') is safe; absolute language ('all', 'every', 'always', 'never', 'causes') is almost always wrong.",
+    "bullets": ["If it says 'suggests', the answer hedges too.", "Survey results justify awareness-type conclusions.", "Never infer motives the text never mentions."]},
+   {"h": "3. Quantitative evidence", "body": "Read axes, units, and endpoints first. Compute before choosing: sums for combined indices, differences for gains, endpoints for trends. Distractors swap components (one high column ≠ highest total) or reverse direction.",
+    "bullets": ["Write the arithmetic in the margin.", "Largest single-year gain ≠ largest value.", "Flat lines mean zero change, not missing data."]},
+  ],
+  "traps": ["True-but-irrelevant background fact", "Absolute wording on a hedged passage", "Reversed trend or swapped table columns"],
+  "checklist": ["I match claim keywords to evidence keywords", "I reject absolute answers on hedged texts", "I compute table values before choosing"],
+ },
+ {
+  "id": "expression-ideas",
+  "title": "Expression of Ideas",
+  "domain": "Reading & Writing",
+  "time": "25 min",
+  "summary": "Transitions, synthesis, and organization: make ideas connect cleanly.",
+  "sections": [
+   {"h": "1. Transitions", "body": "Identify the relationship FIRST (contrast / cause / addition / illustration), then pick the word. Mixed results + more testing needed = concession ('nevertheless', 'however'). Support + uncertainty = contrast. Never let a grammatically fine word with the wrong logic win.",
+    "bullets": ["Contrast: however, nevertheless, although, despite.", "Cause: therefore, consequently, thus, because.", "Illustration: for example, for instance — needs a general claim first."]},
+   {"h": "2. Rhetorical synthesis", "body": "The best combination keeps BOTH facts with the RIGHT relationship and no new claims. Test each choice: does it drop a fact? flip cause and effect? add a judgment ('failed', 'always')? Kill it if yes.",
+    "bullets": ["Both facts must survive.", "Relationship word must match (but ≠ so).", "Shorter is better only when meaning is preserved."]},
+   {"h": "3. Organization", "body": "Default arc: context → problem → solution → conclusion. Claims open; evidence follows; conclusions close. Moving a claim to the introduction is the most common correct revision.",
+    "bullets": ["Solutions never precede problems.", "Conclusions never open.", "New anecdotes never fix structure."]},
+  ],
+  "traps": ["Grammatically perfect but logically wrong connector", "Combination that drops one of the two facts", "Revision that only rewords without restructuring"],
+  "checklist": ["I name the logical relationship before reading choices", "I verify both facts survive a combination", "I check paragraph order against context→problem→solution"],
+ },
+ {
+  "id": "standard-conventions",
+  "title": "Standard English Conventions",
+  "domain": "Reading & Writing",
+  "time": "30 min",
+  "summary": "Grammar that preserves meaning: modifiers, agreement, parallelism, boundaries.",
+  "sections": [
+   {"h": "1. Modifiers", "body": "A modifier must touch what it modifies. 'Walking to school, the rain...' dangles — rain doesn't walk. Fix by naming the walker: 'As I walked to school, the rain...'. Same rule for 'Having studied...' and participial openers.",
+    "bullets": ["Find the noun right after the comma — can it do the action?", "Nonrestrictive extras ('built in 1921') need paired commas.", "Extra info about an identified noun = commas; identifying info = no commas."]},
+   {"h": "2. Agreement: verbs, pronouns, parallelism", "body": "Collective nouns ('team', 'committee', 'list') are singular — ignore interrupting phrases ('of researchers', 'including safety checks'). Pronouns must match number and be unambiguous. Lists must stay parallel: running, swimming, cycling.",
+    "bullets": ["Cross out prepositional phrases to find the true subject.", "'Its' never refers to people; 'their' needs a plural antecedent.", "Mixed infinitives + gerunds always lose."]},
+   {"h": "3. Boundaries", "body": "Two independent clauses need a period, semicolon, or comma + FANBOYS. '...10 a.m. however...' is a run-on: fix with '; however,'. Introductory phrases take a single comma; colons need a complete sentence first.",
+    "bullets": [" however, / therefore, / consequently, → semicolon before.", "After an opener ('After the concert') → comma.", "Semicolon never precedes a fragment."]},
+  ],
+  "traps": ["Verb agreeing with a nearby noun instead of the subject", "Comma splice dressed up with 'however'", "Answer that fixes grammar but changes meaning"],
+  "checklist": ["I bracket the true subject before choosing verbs", "I check every opener's attachment", "I test boundaries: two full sentences need strong punctuation"],
+ },
+ {
+  "id": "algebra",
+  "title": "Algebra",
+  "domain": "Math",
+  "time": "30 min",
+  "summary": "Linear equations, systems, and functions: isolate, substitute, verify.",
+  "sections": [
+   {"h": "1. Linear equations & inequalities", "body": "Isolate in order: distribute, combine, move, divide. Flip the inequality sign only when multiplying/dividing by a negative. Always plug back — sign and division errors are the #1 trap.",
+    "bullets": ["3x + 7 = 22 → 3x = 15 → x = 5.", "Inequality + negative divisor = flip.", "Verify by substitution, every time."]},
+   {"h": "2. Systems", "body": "Substitution when one variable is isolated; elimination when coefficients align. Solve for one variable, back-substitute for the other, and check in BOTH equations.",
+    "bullets": ["y = 2x+3 with y = −x+9 → 3x = 6 → x = 2, y = 7.", "Parallel lines (same slope) = no solution.", "Same line = infinitely many solutions."]},
+   {"h": "3. Functions & slope", "body": "Slope = rise/run = (y2−y1)/(x2−x1). Line through (2,4),(5,10): 6/3 = 2. For f(x), evaluate directly; for intersections, set equal and solve (x²−4 = x+2 → x = 3 or −2, sum = 1).",
+    "bullets": ["Δy over Δx — never reversed.", "Parallel lines share slopes; perpendicular flip to negative reciprocal.", "Intersection = set equal, solve, sum if asked."]},
+  ],
+  "traps": ["Sign error when distributing a negative", "Solving for x when the question asks for y", "Forgetting to flip an inequality"],
+  "checklist": ["I verify every solution by plugging back", "I back-substitute systems into both equations", "I label which variable the question wants"],
+ },
+ {
+  "id": "advanced-math",
+  "title": "Advanced Math",
+  "domain": "Math",
+  "time": "30 min",
+  "summary": "Quadratics, nonlinear systems, functions: factor first, formula second.",
+  "sections": [
+   {"h": "1. Quadratics", "body": "Try factoring first (x²−5x+6 = (x−2)(x−3) → roots 2, 3). Use sum = −b/a and product = c/a as instant checks. Vertex form (x−h)²+k gives vertex (h,k) directly.",
+    "bullets": ["Integer roots? Factor. Otherwise quadratic formula.", "Sum/product checks catch sign slips.", "(x−3)²+7 → vertex (3, 7)."]},
+   {"h": "2. Nonlinear systems & rationals", "body": "Substitute the linear equation into the nonlinear one and count intersections (y=x² with y=2x+3 → two solutions). For rationals, multiply out and check the denominator is never zero.",
+    "bullets": ["Substitution reduces to one quadratic.", "Two intersections = two solutions.", "Excluded values first, then solve."]},
+   {"h": "3. Functions, exponents, domain", "body": "Inverse: swap and solve (f(x)=2x+4 → f⁻¹(10) = 3). Exponents: (2³)²/2⁴ = 2⁶⁻⁴ = 4. Square roots need non-negative radicands: √(x−3) → x ≥ 3.",
+    "bullets": ["Inverse undoes: subtract then divide.", "Add exponents when multiplying, subtract when dividing.", "Domain of √: inside ≥ 0."]},
+  ],
+  "traps": ["Sign flip in factored roots", "Forgetting extraneous values in rationals", "Reading (x−3) as vertex x = −3"],
+  "checklist": ["I factor before reaching for the formula", "I verify roots by plugging back", "I check domain restrictions first"],
+ },
+ {
+  "id": "problem-solving",
+  "title": "Problem Solving & Data Analysis",
+  "domain": "Math",
+  "time": "25 min",
+  "summary": "Statistics, probability, ratios: right denominator, right comparison.",
+  "sections": [
+   {"h": "1. Statistics", "body": "Mean = sum/n. z-score = (value − mean)/SD: 70 with mean 50, SD 10 → z = 2. Margin of error gives an interval: 35% ± 3% → 32–38%. Outliers sit off the trend — describe, don't delete.",
+    "bullets": ["z = how many SDs above/below the mean.", "± margin = interval, not a single number.", "Describe outliers relative to trend."]},
+   {"h": "2. Probability", "body": "P = favorable/total with the RIGHT total. Hearts: 13/52 = 1/4. Sequential events multiply: P(rain and cloudy) = 0.40 × 0.80 = 0.32. Combined rates add reciprocally: 1/6 + 1/3 = 1/2 → 2 hours together.",
+    "bullets": ["Denominator = the full relevant set.", "'And' across stages = multiply.", "Work-together = add rates, not times."]},
+   {"h": "3. Ratios, percent, change", "body": "Percent change = change/original. $400→$480 = 80/400 = 20%. Ratios scale both sides: 3:2 flour-to-sugar with 9 flour → 6 sugar. Growth tables: compare gains, not just values.",
+    "bullets": ["Original value is always the denominator.", "Scale ratios, don't add.", "Largest gain = biggest difference, not biggest value."]},
+  ],
+  "traps": ["Wrong denominator in probability", "Percent of the new value instead of the original", "Adding times instead of rates"],
+  "checklist": ["I circle the denominator before computing", "I verify percent against the original value", "I sanity-check: does the answer size make sense?"],
+ },
+ {
+  "id": "geometry-trig",
+  "title": "Geometry & Trigonometry",
+  "domain": "Math",
+  "time": "25 min",
+  "summary": "Shapes, circles, coordinates: draw it, label it, then compute.",
+  "sections": [
+   {"h": "1. Triangles & polygons", "body": "6-8-10 is a right triangle (Pythagoras) → largest angle 90°. Similar triangles scale all sides: 3-4-5 × 2 = 6-8-10. Cube volume = side³; rectangle area minus circle area = subtract carefully with correct radius.",
+    "bullets": ["Check Pythagoras before assuming angles.", "Scale factor multiplies every side.", "Diameter 4 → radius 2 → area 4π."]},
+   {"h": "2. Circles", "body": "C = 2πr, A = πr². Circumference 10π → r = 5. Central angle proportion: arc/360. Equilateral triangle in circle radius 2: side 2√3, area 3√3.",
+    "bullets": ["Divide circumference by 2π for radius.", "Keep π symbolic until the final step.", "Draw radii to triangle vertices."]},
+   {"h": "3. Coordinate & trig", "body": "Slope = (y2−y1)/(x2−x1); line through (1,3) slope 2 → 3 = 2+b → intercept 1. Distance = √((Δx)²+(Δy)²): (1,2)→(4,6) = 5. SOH-CAH-TOA: sin30° = 1/2 → opposite = hypotenuse/2.",
+    "bullets": ["Intercept: plug the point, solve for b.", "Distance is the hypotenuse of Δx, Δy.", "30° opposite = half the hypotenuse."]},
+  ],
+  "traps": ["Using diameter as radius", "Slope upside-down (Δx/Δy)", "Adjacent instead of opposite in trig"],
+  "checklist": ["I sketch and label before computing", "I halve diameters immediately", "I verify trig side against the angle"],
+ },
+]
+
+json.dump(LESSONS, open(os.path.join(OUT, "lessons.json"), "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+print(f"{len(LESSONS)} lessons -> SAT/webapp/data/lessons.json")

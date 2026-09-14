@@ -127,3 +127,12 @@ Based on the texts, how does Text 2 qualify the claims made in Text 1?
   - **A**: Text 2 does not claim predators accelerate loss.
   - **C**: Extreme claim; Text 2 focuses on abiotic limitations, not denying movement changes entirely.
   - **D**: Text 2 does not discuss herbivore extinction.
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../../index.html) (interactive pen / highlight / mark tools)
+---

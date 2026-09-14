@@ -165,3 +165,12 @@ mindmap
   - Type any quadratic $f(x) = ax^2 + bx + c$.
   - Click on the peak (maximum) or valley (minimum).
   - The gray dot displays $(h, k)$ where $h = -\frac{b}{2a}$ and $k = f(h)$.
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../index.html) (interactive pen / highlight / mark tools)
+---

@@ -119,3 +119,12 @@ The cubic equation $x^3 - 9x^2 + 23x - 15 = 0$ has three distinct real roots $r_
   By Vieta's formulas for $x^3 - bx^2 + cx - d = 0$, the sum of the roots equals $-\frac{-9}{1} = 9$:
   $$r_1 + r_2 + r_3 = 9 \implies 1 + 3 + r_3 = 9 \implies 4 + r_3 = 9 \implies r_3 = 5$$
   Also by product of roots: $r_1 \cdot r_2 \cdot r_3 = 15 \implies (1)(3)(r_3) = 15 \implies r_3 = 5$.
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../../index.html) (interactive pen / highlight / mark tools)
+---

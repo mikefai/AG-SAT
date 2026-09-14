@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SATPrep Studio — Teach, Practice, Master the Digital SAT</title>
+  <meta name="description" content="SAT preparation studio: lessons, practice sets, timed homework, 1:1 sessions and progress tracking.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="topbar">
+    <span>SATPrep Studio runs 100% in your browser — progress is saved on this device.</span>
+    <a href="../index.html">← SAT Portal</a>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#/home" aria-label="SATPrep Studio home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 10v6"/></svg>
+        </span>
+        <span class="brand-name">SATPrep<strong>Studio</strong></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#/lessons" data-nav="lessons">Lessons</a>
+        <a href="#/practice" data-nav="practice">Practice</a>
+        <a href="#/homework" data-nav="homework">Homework</a>
+        <a href="#/sessions" data-nav="sessions">1:1 Sessions</a>
+        <a href="#/progress" data-nav="progress">Progress</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="icon-btn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+        <a href="#/sessions" class="btn btn-primary btn-sm">Book 1:1</a>
+      </div>
+    </div>
+  </header>
+
+  <div id="toolbar" class="toolbar" hidden>
+    <span class="toolbar-label">Study tools</span>
+    <button class="tool-btn" id="toolHighlight" title="Highlight selected text">🖍 Highlight</button>
+    <button class="tool-btn" id="toolPen" title="Draw with pen">✏ Pen</button>
+    <button class="tool-btn" id="toolClear" title="Clear annotations">Clear</button>
+  </div>
+  <canvas id="penCanvas" hidden></canvas>
+  <div id="hlTip" class="hl-tip" hidden><button id="hlApply">Highlight selection</button></div>
+
+  <main id="app" class="app" tabindex="-1"></main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span><strong>SATPrep Studio</strong> · Teach → Show → Test</span>
+      <span>280 practice questions · 8 lessons · content scraped from the SAT workspace banks</span>
+    </div>
+  </footer>
+
+  <script src="data/questions.js"></script>
+  <script src="data/lessons.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/tools.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/views2.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -150,3 +150,12 @@ The student wants to **contrast the solutions** proposed by Lewis Mumford and Ja
   - **A**: *Incorrect.* States similarities and publication year without contrasting their proposed solutions.
   - **C**: *Incorrect.* Only presents Jacobs' view, omitting Mumford entirely.
   - **D**: *Incorrect.* Contrasts their general topical focus rather than their prescriptive solutions.
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../../index.html) (interactive pen / highlight / mark tools)
+---

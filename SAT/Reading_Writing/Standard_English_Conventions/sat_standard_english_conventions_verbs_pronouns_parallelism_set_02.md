@@ -117,3 +117,12 @@ Which choice completes the text so that it conforms to the conventions of Standa
 - **Correct Answer: C (*is*)**
   - **Indefinite Pronoun Rule**: In formal Standard English, `Neither` when used as the subject pronoun is singular (*"Neither of the [plural noun] is..."*). The intervening phrase *"of the two autonomous deep-sea research submersibles"* is a modifier. Singular present verb `is` is required.
   - **Distractors (A, B, D)**: Plural verbs (*are, were, have been*).
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../../index.html) (interactive pen / highlight / mark tools)
+---

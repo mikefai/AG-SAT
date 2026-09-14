@@ -420,7 +420,21 @@
     }
   </style>
 </head>
-<body>
+<body><div id="sat-tools" style="position:sticky;top:0;z-index:200;background:#0f172a;color:#fff;padding:.6rem 2rem;font-family:system-ui;border-bottom:2px solid #3b82f6;">
+<div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+<strong style="color:#60a5fa">SAT Interactive Tools</strong>
+<button onclick="setMode('pen')" style="background:#334155;border:none;color:#fff;padding:.35rem .7rem;border-radius:6px;cursor:pointer">✏ Pen</button>
+<button onclick="setMode('highlight')" style="background:#334155;border:none;color:#fff;padding:.35rem .7rem;border-radius:6px;cursor:pointer">🖍 Highlight</button>
+<button onclick="setMode('mark')" style="background:#334155;border:none;color:#fff;padding:.35rem .7rem;border-radius:6px;cursor:pointer">⭐ Mark</button>
+<button onclick="clearAnnotations()" style="background:#ef4444;border:none;color:#fff;padding:.35rem .7rem;border-radius:6px;cursor:pointer">Clear</button>
+<span style="margin-left:auto;font-size:.85rem;color:#94a3b8">Teach → Show → Test</span>
+</div>
+</div>
+<script>
+let mode='none';function setMode(m){mode=m;document.body.style.cursor=m==='pen'?'crosshair':m==='highlight'?'text':'default';}
+function clearAnnotations(){document.querySelectorAll('.annotation').forEach(e=>e.remove());}
+</script>
+<style>.annotation{position:absolute;border-radius:6px;padding:2px 6px;font-size:.85rem;pointer-events:none;user-select:none;}.annot-pen{border:2px solid #f59e0b;background:rgba(245,158,11,.15);}.annot-highlight{background:rgba(59,130,246,.25);}</style><nav style="background:#1e293b;color:#fff;padding:.75rem 2rem;font-family:system-ui"><div style="max-width:1240px;margin:0 auto;display:flex;gap:1rem;flex-wrap:wrap"><strong>Master Portal:</strong> <a href="index.html" style="color:#fff">SAT</a> | <a href="../ESL/index.html" style="color:#fff">ESL</a> | <a href="../IELTS/index.html" style="color:#fff">IELTS</a> | <a href="../YDT/index.html" style="color:#fff">YDT</a></div></nav>
 
   <header>
     <div class="header-content">
@@ -522,13 +536,13 @@
     "topic": "Digital SAT Math Full Practice Test Module 1",
     "date_created": "2026-09-01",
     "content_type": "Full Practice Module / Mock Test",
-    "path_root": "SAT/Practice_Modules/sat_digital_full_practice_test_01_math_module.md",
-    "path_domain": "Practice_Modules/sat_digital_full_practice_test_01_math_module.md",
+    "path_root": "SAT/Practice_Modules/sat_digital_full_practice_test_01_math_module.html",
+    "path_domain": "Practice_Modules/sat_digital_full_practice_test_01_math_module.html",
     "category": "Practice_Modules",
     "sub_category": "",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_digital_full_practice_test_01_math_module.md"
+    "filename": "sat_digital_full_practice_test_01_math_module.html"
   },
   {
     "title": "Digital SAT Reading and Writing: Full Practice Module 1",
@@ -537,13 +551,13 @@
     "topic": "Digital SAT Reading and Writing Full Practice Test Module 1",
     "date_created": "2026-09-01",
     "content_type": "Full Practice Module / Mock Test",
-    "path_root": "SAT/Practice_Modules/sat_digital_full_practice_test_01_rw_module.md",
-    "path_domain": "Practice_Modules/sat_digital_full_practice_test_01_rw_module.md",
+    "path_root": "SAT/Practice_Modules/sat_digital_full_practice_test_01_rw_module.html",
+    "path_domain": "Practice_Modules/sat_digital_full_practice_test_01_rw_module.html",
     "category": "Practice_Modules",
     "sub_category": "",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_digital_full_practice_test_01_rw_module.md"
+    "filename": "sat_digital_full_practice_test_01_rw_module.html"
   },
   {
     "title": "The Ultimate Digital SAT Desmos Calculator Mastery Guide & Speed Hacks",
@@ -552,13 +566,13 @@
     "topic": "The Ultimate Digital SAT Desmos Calculator Mastery Guide & Speed Hacks",
     "date_created": "2026-09-01",
     "content_type": "Student Toolkit & Strategy Guide",
-    "path_root": "SAT/Question_Banks/sat_desmos_calculator_mastery_guide_and_hacks.md",
-    "path_domain": "Question_Banks/sat_desmos_calculator_mastery_guide_and_hacks.md",
+    "path_root": "SAT/Question_Banks/sat_desmos_calculator_mastery_guide_and_hacks.html",
+    "path_domain": "Question_Banks/sat_desmos_calculator_mastery_guide_and_hacks.html",
     "category": "Question_Banks",
     "sub_category": "",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_desmos_calculator_mastery_guide_and_hacks.md"
+    "filename": "sat_desmos_calculator_mastery_guide_and_hacks.html"
   },
   {
     "title": "Digital SAT Reading & Writing: Distractor Trap Radar & Strategy Guide",
@@ -567,13 +581,13 @@
     "topic": "Digital SAT Reading & Writing Distractor Radar & Strategy Cheat Sheet",
     "date_created": "2026-09-01",
     "content_type": "Student Strategy Guide & Cheat Sheet",
-    "path_root": "SAT/Question_Banks/sat_digital_rw_distractor_trap_radar_and_cheat_sheet.md",
-    "path_domain": "Question_Banks/sat_digital_rw_distractor_trap_radar_and_cheat_sheet.md",
+    "path_root": "SAT/Question_Banks/sat_digital_rw_distractor_trap_radar_and_cheat_sheet.html",
+    "path_domain": "Question_Banks/sat_digital_rw_distractor_trap_radar_and_cheat_sheet.html",
     "category": "Question_Banks",
     "sub_category": "",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_digital_rw_distractor_trap_radar_and_cheat_sheet.md"
+    "filename": "sat_digital_rw_distractor_trap_radar_and_cheat_sheet.html"
   },
   {
     "title": "Digital SAT Reading & Writing: Cross-Text Connections Masterclass",
@@ -582,13 +596,13 @@
     "topic": "Cross-Text Connections & Author Stance Comparative Set",
     "date_created": "2026-09-01",
     "content_type": "Question Bank / Drill",
-    "path_root": "SAT/Reading_Writing/Craft_and_Structure/sat_craft_and_structure_cross_text_connections_set_02.md",
-    "path_domain": "Reading_Writing/Craft_and_Structure/sat_craft_and_structure_cross_text_connections_set_02.md",
+    "path_root": "SAT/Reading_Writing/Craft_and_Structure/sat_craft_and_structure_cross_text_connections_set_02.html",
+    "path_domain": "Reading_Writing/Craft_and_Structure/sat_craft_and_structure_cross_text_connections_set_02.html",
     "category": "Reading_Writing",
     "sub_category": "Craft_and_Structure",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_craft_and_structure_cross_text_connections_set_02.md"
+    "filename": "sat_craft_and_structure_cross_text_connections_set_02.html"
   },
   {
     "title": "Digital SAT Reading & Writing: Words in Context Drill Set 01",
@@ -597,13 +611,13 @@
     "topic": "Craft and Structure: High-Utility Words in Context & Rhetorical Precision",
     "date_created": "2026-08-31",
     "content_type": "Question Bank / Drill",
-    "path_root": "SAT/Reading_Writing/Craft_and_Structure/sat_craft_and_structure_words_in_context_set_01.md",
-    "path_domain": "Reading_Writing/Craft_and_Structure/sat_craft_and_structure_words_in_context_set_01.md",
+    "path_root": "SAT/Reading_Writing/Craft_and_Structure/sat_craft_and_structure_words_in_context_set_01.html",
+    "path_domain": "Reading_Writing/Craft_and_Structure/sat_craft_and_structure_words_in_context_set_01.html",
     "category": "Reading_Writing",
     "sub_category": "Craft_and_Structure",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_craft_and_structure_words_in_context_set_01.md"
+    "filename": "sat_craft_and_structure_words_in_context_set_01.html"
   },
   {
     "title": "Digital SAT Reading & Writing: Expression of Ideas Masterclass",
@@ -612,13 +626,13 @@
     "topic": "Transitions & Rhetorical Synthesis Precision Set",
     "date_created": "2026-09-01",
     "content_type": "Question Bank / Drill",
-    "path_root": "SAT/Reading_Writing/Expression_of_Ideas/sat_expression_of_ideas_transitions_rhetorical_synthesis_set_01.md",
-    "path_domain": "Reading_Writing/Expression_of_Ideas/sat_expression_of_ideas_transitions_rhetorical_synthesis_set_01.md",
+    "path_root": "SAT/Reading_Writing/Expression_of_Ideas/sat_expression_of_ideas_transitions_rhetorical_synthesis_set_01.html",
+    "path_domain": "Reading_Writing/Expression_of_Ideas/sat_expression_of_ideas_transitions_rhetorical_synthesis_set_01.html",
     "category": "Reading_Writing",
     "sub_category": "Expression_of_Ideas",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_expression_of_ideas_transitions_rhetorical_synthesis_set_01.md"
+    "filename": "sat_expression_of_ideas_transitions_rhetorical_synthesis_set_01.html"
   },
   {
     "title": "Digital SAT Reading & Writing: Information and Ideas Masterclass",
@@ -627,13 +641,13 @@
     "topic": "Command of Evidence, Central Ideas & Inferences Masterclass",
     "date_created": "2026-09-01",
     "content_type": "Question Bank / Drill",
-    "path_root": "SAT/Reading_Writing/Information_and_Ideas/sat_information_and_ideas_evidence_inference_set_01.md",
-    "path_domain": "Reading_Writing/Information_and_Ideas/sat_information_and_ideas_evidence_inference_set_01.md",
+    "path_root": "SAT/Reading_Writing/Information_and_Ideas/sat_information_and_ideas_evidence_inference_set_01.html",
+    "path_domain": "Reading_Writing/Information_and_Ideas/sat_information_and_ideas_evidence_inference_set_01.html",
     "category": "Reading_Writing",
     "sub_category": "Information_and_Ideas",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_information_and_ideas_evidence_inference_set_01.md"
+    "filename": "sat_information_and_ideas_evidence_inference_set_01.html"
   },
   {
     "title": "Digital SAT Reading & Writing: Scientific Data Tables & Quantitative Evidence",
@@ -642,13 +656,13 @@
     "topic": "Scientific Data Tables & Quantitative Evidence Interpretation",
     "date_created": "2026-09-01",
     "content_type": "Question Bank / Drill",
-    "path_root": "SAT/Reading_Writing/Information_and_Ideas/sat_information_and_ideas_scientific_tables_and_graphs_set_02.md",
-    "path_domain": "Reading_Writing/Information_and_Ideas/sat_information_and_ideas_scientific_tables_and_graphs_set_02.md",
+    "path_root": "SAT/Reading_Writing/Information_and_Ideas/sat_information_and_ideas_scientific_tables_and_graphs_set_02.html",
+    "path_domain": "Reading_Writing/Information_and_Ideas/sat_information_and_ideas_scientific_tables_and_graphs_set_02.html",
     "category": "Reading_Writing",
     "sub_category": "Information_and_Ideas",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_information_and_ideas_scientific_tables_and_graphs_set_02.md"
+    "filename": "sat_information_and_ideas_scientific_tables_and_graphs_set_02.html"
   },
   {
     "title": "Digital SAT Reading & Writing: Standard English Conventions Masterclass",
@@ -657,13 +671,13 @@
     "topic": "Boundaries, Modifiers & Syntactic Form Mastery",
     "date_created": "2026-09-01",
     "content_type": "Question Bank / Drill",
-    "path_root": "SAT/Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_boundaries_and_modifiers_set_01.md",
-    "path_domain": "Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_boundaries_and_modifiers_set_01.md",
+    "path_root": "SAT/Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_boundaries_and_modifiers_set_01.html",
+    "path_domain": "Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_boundaries_and_modifiers_set_01.html",
     "category": "Reading_Writing",
     "sub_category": "Standard_English_Conventions",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_standard_english_conventions_boundaries_and_modifiers_set_01.md"
+    "filename": "sat_standard_english_conventions_boundaries_and_modifiers_set_01.html"
   },
   {
     "title": "Digital SAT Reading & Writing: Verbs, Pronouns & Parallelism",
@@ -672,13 +686,13 @@
     "topic": "Verbs, Pronoun-Antecedents & Advanced Parallelism Set",
     "date_created": "2026-09-01",
     "content_type": "Question Bank / Drill",
-    "path_root": "SAT/Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_verbs_pronouns_parallelism_set_02.md",
-    "path_domain": "Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_verbs_pronouns_parallelism_set_02.md",
+    "path_root": "SAT/Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_verbs_pronouns_parallelism_set_02.html",
+    "path_domain": "Reading_Writing/Standard_English_Conventions/sat_standard_english_conventions_verbs_pronouns_parallelism_set_02.html",
     "category": "Reading_Writing",
     "sub_category": "Standard_English_Conventions",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_standard_english_conventions_verbs_pronouns_parallelism_set_02.md"
+    "filename": "sat_standard_english_conventions_verbs_pronouns_parallelism_set_02.html"
   },
   {
     "title": "Digital SAT Math: Polynomials, Remainder Theorem & Nonlinear Systems",
@@ -687,13 +701,13 @@
     "topic": "Polynomials, Remainder Theorem & Nonlinear Systems",
     "date_created": "2026-09-01",
     "content_type": "Question Bank / Drill",
-    "path_root": "SAT/Math/Advanced_Math/sat_math_advanced_math_polynomials_and_nonlinear_systems_set_02.md",
-    "path_domain": "Math/Advanced_Math/sat_math_advanced_math_polynomials_and_nonlinear_systems_set_02.md",
+    "path_root": "SAT/Math/Advanced_Math/sat_math_advanced_math_polynomials_and_nonlinear_systems_set_02.html",
+    "path_domain": "Math/Advanced_Math/sat_math_advanced_math_polynomials_and_nonlinear_systems_set_02.html",
     "category": "Math",
     "sub_category": "Advanced_Math",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_math_advanced_math_polynomials_and_nonlinear_systems_set_02.md"
+    "filename": "sat_math_advanced_math_polynomials_and_nonlinear_systems_set_02.html"
   },
   {
     "title": "Digital SAT Math: Algebra & Advanced Math Masterclass",
@@ -702,13 +716,13 @@
     "topic": "Algebra & Advanced Math High-Yield Problem Set",
     "date_created": "2026-09-01",
     "content_type": "Question Bank / Drill",
-    "path_root": "SAT/Math/Algebra/sat_math_algebra_and_advanced_functions_set_01.md",
-    "path_domain": "Math/Algebra/sat_math_algebra_and_advanced_functions_set_01.md",
+    "path_root": "SAT/Math/Algebra/sat_math_algebra_and_advanced_functions_set_01.html",
+    "path_domain": "Math/Algebra/sat_math_algebra_and_advanced_functions_set_01.html",
     "category": "Math",
     "sub_category": "Algebra",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_math_algebra_and_advanced_functions_set_01.md"
+    "filename": "sat_math_algebra_and_advanced_functions_set_01.html"
   },
   {
     "title": "Digital SAT Math: Geometry, Trigonometry & Data Analysis Masterclass",
@@ -717,13 +731,13 @@
     "topic": "Geometry, Trigonometry & Data Analysis Masterclass",
     "date_created": "2026-09-01",
     "content_type": "Question Bank / Drill",
-    "path_root": "SAT/Math/Geometry_and_Trigonometry/sat_math_geometry_trigonometry_and_data_set_01.md",
-    "path_domain": "Math/Geometry_and_Trigonometry/sat_math_geometry_trigonometry_and_data_set_01.md",
+    "path_root": "SAT/Math/Geometry_and_Trigonometry/sat_math_geometry_trigonometry_and_data_set_01.html",
+    "path_domain": "Math/Geometry_and_Trigonometry/sat_math_geometry_trigonometry_and_data_set_01.html",
     "category": "Math",
     "sub_category": "Geometry_and_Trigonometry",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_math_geometry_trigonometry_and_data_set_01.md"
+    "filename": "sat_math_geometry_trigonometry_and_data_set_01.html"
   },
   {
     "title": "Digital SAT Math: Statistics, Probability & Data Distributions",
@@ -732,13 +746,13 @@
     "topic": "Statistics, Probability, Data Distributions & Margin of Error",
     "date_created": "2026-09-01",
     "content_type": "Question Bank / Drill",
-    "path_root": "SAT/Math/Problem_Solving_and_Data_Analysis/sat_math_problem_solving_data_statistics_set_01.md",
-    "path_domain": "Math/Problem_Solving_and_Data_Analysis/sat_math_problem_solving_data_statistics_set_01.md",
+    "path_root": "SAT/Math/Problem_Solving_and_Data_Analysis/sat_math_problem_solving_data_statistics_set_01.html",
+    "path_domain": "Math/Problem_Solving_and_Data_Analysis/sat_math_problem_solving_data_statistics_set_01.html",
     "category": "Math",
     "sub_category": "Problem_Solving_and_Data_Analysis",
     "is_interactive": false,
     "file_type": "Markdown",
-    "filename": "sat_math_problem_solving_data_statistics_set_01.md"
+    "filename": "sat_math_problem_solving_data_statistics_set_01.html"
   },
   {
     "title": "Digital SAT Math: Full Practice Module 1 | SAT Academic Study Module",
@@ -1075,5 +1089,21 @@
 
     renderGrid();
   </script>
-</body>
+<section style="max-width:1240px;margin:2rem auto;padding:0 2rem"><h2>SAT Exam Prep Routes</h2><ul><li><a href="Reading_Writing/index.html">Reading &amp; Writing</a></li><li><a href="Math/index.html">Math</a></li><li><a href="Question_Banks/index.html">Question Banks</a></li><li><a href="Practice_Modules/index.html">Practice Modules</a></li></ul></section><section style="max-width:1240px;margin:3rem auto;padding:0 2rem;font-family:system-ui">
+<h1 style="font-size:2rem;color:#0f172a">SAT Prep Flow</h1>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:1.5rem">
+<article style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.5rem;box-shadow:0 4px 6px -1px rgb(0,0,0,.05)">
+<h2 style="color:#3b82f6;margin:0 0 .5rem">1. Teach</h2>
+<p>Detailed strategy breakdowns for each SAT question type — Craft &amp; Structure, Information &amp; Ideas, Standard English Conventions, Expression of Ideas, Algebra, Advanced Math, Problem Solving, Geometry.</p>
+</article>
+<article style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.5rem;box-shadow:0 4px 6px -1px rgb(0,0,0,.05)">
+<h2 style="color:#10b981;margin:0 0 .5rem">2. Show</h2>
+<p>Walkthrough solving each question type. Start easy → medium → hard (3+ examples per type) with step-by-step reasoning and common distractor analysis.</p>
+</article>
+<article style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.5rem;box-shadow:0 4px 6px -1px rgb(0,0,0,.05)">
+<h2 style="color:#8b5cf6;margin:0 0 .5rem">3. Test</h2>
+<p>Real-life SAT difficulty sets. 4 full exam-style mocks with 4-option items, digital timer, instant grading, and performance analytics.</p>
+</article>
+</div>
+</section><section style="max-width:1240px;margin:2rem auto;padding:0 2rem;font-family:system-ui"><div style="background:linear-gradient(135deg,#0a1a3c,#1a5fd0);color:#fff;border-radius:14px;padding:1.8rem 2rem;box-shadow:0 6px 18px rgba(15,40,100,.25)"><h2 style="margin:0 0 .4rem">SATPrep Studio — the interactive web service</h2><p style="margin:0 0 1rem;color:#cfe0ff">Lessons, practice sets, timed homework, 1:1 session booking and progress tracking — 80 questions, all in your browser.</p><a href="webapp/index.html" style="display:inline-block;background:#fff;color:#1a5fd0;font-weight:800;border-radius:999px;padding:.6rem 1.5rem;text-decoration:none">Open SATPrep Studio →</a></div></section></body>
 </html>

@@ -140,3 +140,12 @@ Which choice completes the text so that it conforms to the conventions of Standa
   - **B (*1967*)**: *Incorrect.* Omitting the closing comma leaves the non-essential clause unclosed, creating a punctuation boundary error.
   - **C (*1967;*)**: *Incorrect.* A semicolon cannot close a non-essential relative clause embedded inside a main clause.
   - **D (*1967—*)**: *Incorrect.* Punctuation marks around non-essential information must match (comma with comma, dash with dash). A comma was used to open the clause, so an em-dash cannot close it.
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../../index.html) (interactive pen / highlight / mark tools)
+---

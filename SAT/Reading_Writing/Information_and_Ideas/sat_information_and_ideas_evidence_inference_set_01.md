@@ -151,3 +151,12 @@ Based on the text, what would the sociolinguists most likely conclude about lang
   - **B (*Families deliberately reject signage*)**: *Incorrect.* The text presents no evidence of active hostility or rejection from families.
   - **C (*Measurement difficulty*)**: *Incorrect.* The text provides concrete percentages for both; ease of measurement is not discussed.
   - **D (*Eliminating bilingual signs*)**: *Incorrect.* The sociolinguists do not advocate removing signs, but rather emphasize that signage alone is insufficient.
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../../index.html) (interactive pen / highlight / mark tools)
+---

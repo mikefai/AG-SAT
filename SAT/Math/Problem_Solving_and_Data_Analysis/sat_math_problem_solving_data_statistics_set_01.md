@@ -135,3 +135,12 @@ What is the sample standard deviation, in millimeters, of this measurement set?
   - Standard deviation measures the dispersion or spread of data points around the arithmetic mean.
   - Because all 5 ball bearings have the identical diameter ($25.0\text{ mm}$), the mean is $25.0\text{ mm}$ and every deviation $(x_i - \bar{x}) = 0$.
   - The variance and sample standard deviation are strictly $0$.
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../../index.html) (interactive pen / highlight / mark tools)
+---

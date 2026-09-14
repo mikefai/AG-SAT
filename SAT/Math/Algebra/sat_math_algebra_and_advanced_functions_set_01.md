@@ -171,3 +171,12 @@ where $t$ represents time in hours. If after $72$ hours the population reaches $
   $$7200 = 450 \cdot 2^{\frac{72}{k}}$$
   $$\frac{7200}{450} = 16 = 2^4$$
   $$2^4 = 2^{\frac{72}{k}} \implies 4 = \frac{72}{k} \implies k = \frac{72}{4} = 18$$
+
+---
+## New System Alignment (Updated)
+**Flow:** Teach → Show → Test
+- **Teach:** Detailed strategy and rules (this file)
+- **Show:** Walkthrough solving examples — [SAT/Show/show_walkthrough.html](../../Show/show_walkthrough.html)
+- **Test:** Real SAT difficulty mock — [SAT/Test/mock_01.html](../../Test/mock_01.html)
+- **Portal:** [SAT/index.html](../../index.html) (interactive pen / highlight / mark tools)
+---
